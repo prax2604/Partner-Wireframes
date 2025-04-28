@@ -7,6 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* Reset and base styles */
     * {
@@ -115,58 +117,70 @@
     
     /* Sidebar */
     .sidebar {
-      background-color: #0e2140;
-      color: #fff;
-      padding: 1.5rem 0;
-      grid-row: 2 / span 1;
-    }
-    .nav-section {
-      margin-bottom: 2rem;
-    }
-    .nav-heading {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: rgba(255,255,255,0.6);
-      padding: 0 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-    .nav-items {
-      list-style: none;
-    }
-    .nav-item {
-      margin-bottom: 0.25rem;
-    }
-    .nav-link {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.75rem 1.5rem;
-      color: rgba(255,255,255,0.9);
-      transition: background-color 0.2s;
-      position: relative;
-    }
-    .nav-link:hover {
-      background-color: rgba(255,255,255,0.1);
-      text-decoration: none;
-    }
-    .nav-link.active {
-      background-color: rgba(255,255,255,0.15);
-    }
-    .nav-link.active::before {
-      content: "";
-      position: absolute;
+      width: 250px;
+      background-color: white;
+      height: 100vh;
+      position: fixed;
+      top: 70px;
       left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background-color: #ff444f;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      padding-top: 20px;
+      overflow-y: auto;
     }
-    .nav-icon {
-      font-size: 1.25rem;
+    
+    .sidebar-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .sidebar-menu li {
+      margin-bottom: 5px;
+    }
+    
+    .sidebar-menu a {
+      text-decoration: none;
+      color: #333;
+      padding: 12px 20px;
+      display: block;
+      transition: all 0.3s;
+      font-size: 14px;
+    }
+    
+    .sidebar-menu a:hover {
+      background-color: #f8f9fa;
+      color: var(--deriv-red);
+    }
+    
+    .sidebar-menu a.active {
+      background-color: #f0f0f0;
+      color: var(--deriv-red);
+      border-left: 4px solid var(--deriv-red);
+    }
+    
+    .sidebar-menu i {
+      margin-right: 10px;
       width: 20px;
       text-align: center;
+    }
+    
+    .sidebar-section {
+      margin-top: 20px;
+      padding: 0 20px;
+    }
+    
+    .sidebar-section-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    
+    .external-link-icon {
+      font-size: 12px;
+      margin-left: 5px;
     }
     
     /* Main content */
@@ -735,6 +749,344 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* Additional styles for the updated dashboard */
+    .welcome-section {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .tier-status {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .tier-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 15px;
+      border-radius: 50px;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .tier-badge i {
+      margin-right: 8px;
+    }
+
+    .tier-badge.gold {
+      background: linear-gradient(45deg, #FFD700, #FFA500);
+    }
+
+    .tier-badge.silver {
+      background: linear-gradient(45deg, #C0C0C0, #A9A9A9);
+    }
+
+    .tier-badge.bronze {
+      background: linear-gradient(45deg, #CD7F32, #A0522D);
+    }
+
+    .tier-details-link {
+      color: var(--deriv-red);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .tier-details-link:hover {
+      text-decoration: underline;
+    }
+
+    .metrics-row {
+      margin-bottom: 20px;
+    }
+
+    .metric-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .metric-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      font-size: 20px;
+    }
+
+    .bg-light-blue {
+      background-color: rgba(52, 152, 219, 0.15);
+      color: #3498db;
+    }
+
+    .bg-light-green {
+      background-color: rgba(46, 204, 113, 0.15);
+      color: #2ecc71;
+    }
+
+    .bg-light-purple {
+      background-color: rgba(155, 89, 182, 0.15);
+      color: #9b59b6;
+    }
+
+    .bg-light-orange {
+      background-color: rgba(243, 156, 18, 0.15);
+      color: #f39c12;
+    }
+
+    .metric-details h3 {
+      font-size: 20px;
+      margin: 0 0 5px 0;
+      font-weight: 700;
+    }
+
+    .metric-details p {
+      color: #777;
+      margin: 0 0 5px 0;
+      font-size: 14px;
+    }
+
+    .trend {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .trend.positive {
+      color: #2ecc71;
+    }
+
+    .trend.negative {
+      color: #e74c3c;
+    }
+
+    .chart-placeholder, .donut-chart-placeholder {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    .chart-legend {
+      display: flex;
+      flex-direction: column;
+      margin-top: 15px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .legend-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      margin-right: 8px;
+    }
+
+    .legend-label {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .activity-list, .events-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .activity-item {
+      display: flex;
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+
+    .activity-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      font-size: 16px;
+    }
+
+    .activity-details h6 {
+      margin: 0 0 5px 0;
+      font-size: 15px;
+    }
+
+    .activity-details p {
+      margin: 0 0 5px 0;
+    }
+
+    .activity-details small {
+      color: #999;
+      font-size: 12px;
+    }
+
+    .event-item {
+      display: flex;
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .event-item:last-child {
+      border-bottom: none;
+    }
+
+    .event-date {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 50px;
+      margin-right: 15px;
+    }
+
+    .event-date .date {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--deriv-red);
+    }
+
+    .event-date .month {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .event-details h6 {
+      margin: 0 0 8px 0;
+      font-size: 15px;
+    }
+
+    .event-meta {
+      color: #777;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .event-meta i {
+      margin-right: 5px;
+    }
+
+    .event-meta i.ml-2 {
+      margin-left: 8px;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .quick-link-item {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+      color: #333;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+
+    .quick-link-item:last-child {
+      border-bottom: none;
+    }
+
+    .quick-link-item:hover {
+      background-color: #f8f9fa;
+    }
+
+    .quick-link-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: var(--deriv-red);
+    }
+
+    .quick-link-details {
+      flex: 1;
+    }
+
+    .quick-link-details h6 {
+      margin: 0 0 5px 0;
+      font-size: 15px;
+    }
+
+    .quick-link-details p {
+      margin: 0;
+      font-size: 13px;
+      color: #777;
+    }
+
+    .resources-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .resource-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #f8f9fa;
+      color: #333;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .resource-item:hover {
+      background-color: #f0f0f0;
+      transform: translateY(-2px);
+    }
+
+    .resource-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: var(--deriv-red);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .resource-details h6 {
+      margin: 0 0 5px 0;
+      font-size: 15px;
+    }
+
+    .resource-details p {
+      margin: 0;
+      font-size: 13px;
+      color: #777;
+    }
   </style>
 </head>
 <body>
@@ -760,447 +1112,345 @@
     
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
-      <div class="nav-section">
-        <h3 class="nav-heading">Core</h3>
-        <ul class="nav-items">
-          <li class="nav-item">
-            <a href="index.html" class="nav-link active">
-              <span class="nav-icon">🏠</span>
-              Home
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="dashboard.html" class="nav-link">
-              <span class="nav-icon">📊</span>
-              Dashboard
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="commissions.html" class="nav-link">
-              <span class="nav-icon">💰</span>
-              Commissions & Earnings
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="links.html" class="nav-link">
-              <span class="nav-icon">🔗</span>
-              Marketing Links
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="clients.html" class="nav-link">
-              <span class="nav-icon">👥</span>
-              Clients
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="reports.html" class="nav-link">
-              <span class="nav-icon">📈</span>
-              Reports & Analytics
-            </a>
-          </li>
-        </ul>
-      </div>
-      
-      <div class="nav-section">
-        <h3 class="nav-heading">Resources</h3>
-        <ul class="nav-items">
-          <li class="nav-item">
-            <a href="marketing-tools.html" class="nav-link">
-              <span class="nav-icon">🎯</span>
-              Marketing Resources
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="academy.html" class="nav-link">
-              <span class="nav-icon">🎓</span>
-              Partner Academy
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="tiers.html" class="nav-link">
-              <span class="nav-icon">🏆</span>
-              Partner Tiers
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="master.html" class="nav-link">
-              <span class="nav-icon">⭐</span>
-              Master Partner Program
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="../help-center-landing.html" class="nav-link">
-              <span class="nav-icon">❓</span>
-              Help Center
-            </a>
-          </li>
-        </ul>
-      </div>
-      
-      <div class="nav-section">
-        <h3 class="nav-heading">Account</h3>
-        <ul class="nav-items">
-          <li class="nav-item">
-            <a href="profile.html" class="nav-link">
-              <span class="nav-icon">👤</span>
-              Profile Settings
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="payments.html" class="nav-link">
-              <span class="nav-icon">💳</span>
-              Payment Methods
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <span class="nav-icon">🚪</span>
-              Log Out
-            </a>
-          </li>
-        </ul>
+      <div class="container-fluid">
+        <div class="row">
+          <nav class="sidebar">
+            <ul class="sidebar-menu">
+              <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
+              <li><a href="https://partners.deriv.com" target="_blank"><i class="fas fa-chart-line"></i> Dashboard (PRMS) <i class="fas fa-external-link-alt external-link-icon"></i></a></li>
+              <li><a href="reports.html"><i class="fas fa-file-alt"></i> Reports</a></li>
+              <li><a href="clients.html"><i class="fas fa-users"></i> My Clients</a></li>
+            </ul>
+            
+            <div class="sidebar-section">
+              <h5 class="sidebar-section-title">Marketing Tools</h5>
+              <ul class="sidebar-menu">
+                <li><a href="affiliate-links.html"><i class="fas fa-link"></i> Affiliate Links</a></li>
+                <li><a href="marketing-materials.html"><i class="fas fa-ad"></i> Marketing Materials</a></li>
+                <li><a href="banners.html"><i class="fas fa-image"></i> Banners</a></li>
+              </ul>
+            </div>
+            
+            <div class="sidebar-section">
+              <h5 class="sidebar-section-title">Resources</h5>
+              <ul class="sidebar-menu">
+                <li><a href="../help-center.html"><i class="fas fa-question-circle"></i> Help Centre</a></li>
+                <li><a href="https://academy.deriv.com" target="_blank"><i class="fas fa-graduation-cap"></i> Partner Academy <i class="fas fa-external-link-alt external-link-icon"></i></a></li>
+                <li><a href="payment-details.html"><i class="fas fa-credit-card"></i> Payment Details</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
       </div>
     </aside>
     
     <!-- Main Content Area -->
     <main class="main-content">
-      <!-- Page Header -->
-      <div class="page-header">
-        <h1 class="page-title">Welcome to Your Partner Hub</h1>
-        
-        <div class="page-actions">
-          <button class="btn btn-secondary" onclick="window.location.href='notifications.html'">
-            <span>🔔</span> Notifications
-          </button>
-          <button class="btn btn-primary" onclick="window.location.href='links.html'">
-            <span>🔗</span> Create New Link
-          </button>
-        </div>
-      </div>
-      
-      <!-- Tier Status Card -->
-      <div class="card tier-status">
-        <div class="tier-header">
-          <h2 class="card-title">Your Partner Tier: Bronze</h2>
-          <a href="tiers.html" class="card-action">View All Benefits</a>
-        </div>
-        
-        <div class="tier-badges">
-          <div class="tier-progress">
-            <div class="tier-progress-filled"></div>
+      <div class="welcome-section">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <h1>Welcome back, John!</h1>
+            <p class="text-muted">Here's an overview of your partner performance</p>
           </div>
-          
-          <div class="tier-badge active">
-            <span>🥉</span>
-            <span class="tier-badge-label">Bronze</span>
-          </div>
-          
-          <div class="tier-badge">
-            <span>🥈</span>
-            <span class="tier-badge-label">Silver</span>
-          </div>
-          
-          <div class="tier-badge">
-            <span>🥇</span>
-            <span class="tier-badge-label">Gold</span>
-          </div>
-          
-          <div class="tier-badge">
-            <span>💎</span>
-            <span class="tier-badge-label">Platinum</span>
-          </div>
-          
-          <div class="tier-badge">
-            <span>👑</span>
-            <span class="tier-badge-label">VIP</span>
-          </div>
-        </div>
-        
-        <div class="tier-details">
-          <div class="tier-stat">
-            <div class="tier-stat-value">100%</div>
-            <div class="tier-stat-label">Commission Multiplier</div>
-          </div>
-          
-          <div class="tier-stat">
-            <div class="tier-stat-value">3</div>
-            <div class="tier-stat-label">Active Clients Needed for Silver</div>
-          </div>
-          
-          <div class="tier-stat">
-            <div class="tier-stat-value">$1,500</div>
-            <div class="tier-stat-label">Volume Needed for Silver</div>
-          </div>
-          
-          <div class="tier-stat">
-            <div class="tier-stat-value">15 Days</div>
-            <div class="tier-stat-label">Estimated Time to Silver</div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Stats Grid -->
-      <div class="dashboard-grid">
-        <div class="card stat-card" onclick="window.location.href='commissions.html'">
-          <div class="stat-header">
-            <h3 class="stat-title">Total Earnings</h3>
-            <div class="stat-icon" style="background-color: #0cb383;">💰</div>
-          </div>
-          <div class="stat-value">$1,238.50</div>
-          <div class="stat-change positive">↑ 12.3% from last month</div>
-        </div>
-        
-        <div class="card stat-card" onclick="window.location.href='clients.html'">
-          <div class="stat-header">
-            <h3 class="stat-title">Active Clients</h3>
-            <div class="stat-icon" style="background-color: #4071ff;">👥</div>
-          </div>
-          <div class="stat-value">12</div>
-          <div class="stat-change positive">↑ 2 new this month</div>
-        </div>
-        
-        <div class="card stat-card" onclick="window.location.href='reports.html'">
-          <div class="stat-header">
-            <h3 class="stat-title">Trading Volume</h3>
-            <div class="stat-icon" style="background-color: #ff944f;">📊</div>
-          </div>
-          <div class="stat-value">$24,892</div>
-          <div class="stat-change positive">↑ 8.7% from last month</div>
-        </div>
-      </div>
-      
-      <!-- Commission Overview -->
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">Commission Overview</h2>
-          <a href="commissions.html" class="card-action">View Detailed Earnings</a>
-        </div>
-        
-        <div class="commission-overview">
-          <div class="commission-card">
-            <div class="commission-header">
-              CFD Trading Products
-              <div class="commission-model">Turnover Model</div>
-            </div>
-            <div class="commission-body">
-              <div class="commission-value">$834.25</div>
-              <div class="commission-status">
-                <div class="status-icon paid"></div>
-                <span>Paid daily, last payment: Today, 06:00 AM</span>
+          <div class="col-md-6 text-end">
+            <div class="tier-status">
+              <div class="tier-badge gold">
+                <i class="fas fa-award"></i>
+                <span>Gold Tier</span>
               </div>
-              <div class="commission-meta">
-                MT5, Deriv X, cTrader platforms
-              </div>
-              <div class="commission-note">
-                CFD commissions are calculated daily based on client trading volume using the Turnover model
-              </div>
-            </div>
-          </div>
-          
-          <div class="commission-card">
-            <div class="commission-header">
-              Options Trading Products
-              <div class="commission-model">Revenue Share</div>
-            </div>
-            <div class="commission-body">
-              <div class="commission-value">$404.25</div>
-              <div class="commission-status">
-                <div class="status-icon pending"></div>
-                <span>Paid monthly, next payment: 5 days</span>
-              </div>
-              <div class="commission-meta">
-                Deriv Trader, SmartTrader, Deriv Bot platforms
-              </div>
-              <div class="commission-note">
-                You're earning 40% revenue share on all options trading. <a href="../help-center-revenue-share.html">Compare with Turnover model</a>
-              </div>
+              <a href="../help-center-partner-tiers.html" class="tier-details-link">View tier benefits <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
         </div>
       </div>
-      
-      <!-- Events Section -->
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">Upcoming Events in Your Region</h2>
-          <a href="events.html" class="card-action">View All Events</a>
-        </div>
-        
-        <div class="events-list">
-          <div class="event-card">
-            <div class="event-image">Event Image Placeholder</div>
-            <div class="event-body">
-              <div class="event-date">May 15, 2025</div>
-              <div class="event-title">Partner Meetup: Cyprus</div>
-              <div class="event-location">📍 Limassol, Cyprus</div>
-              <div class="event-desc">Join us for an exclusive partner meetup to discuss trading strategies and network with other successful partners.</div>
-              <div class="event-actions">
-                <div class="event-tag">In-Person</div>
-                <a href="#" class="btn btn-secondary">Register</a>
-              </div>
+
+      <div class="row metrics-row">
+        <div class="col-md-3">
+          <div class="metric-card">
+            <div class="metric-icon bg-light-blue">
+              <i class="fas fa-users"></i>
             </div>
-          </div>
-          
-          <div class="event-card">
-            <div class="event-image">Event Image Placeholder</div>
-            <div class="event-body">
-              <div class="event-date">May 22, 2025</div>
-              <div class="event-title">Webinar: Maximizing CFD Commissions</div>
-              <div class="event-location">🌐 Online</div>
-              <div class="event-desc">Learn advanced techniques for promoting CFD products and increasing your commission earnings.</div>
-              <div class="event-actions">
-                <div class="event-tag">Virtual</div>
-                <a href="#" class="btn btn-secondary">Register</a>
-              </div>
+            <div class="metric-details">
+              <h3>142</h3>
+              <p>Active Clients</p>
+              <span class="trend positive">+12% <i class="fas fa-arrow-up"></i></span>
             </div>
           </div>
         </div>
-      </div>
-      
-      <!-- Quick Actions -->
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">Quick Actions</h2>
-        </div>
-        
-        <div class="quick-actions">
-          <a href="links.html" class="action-card">
-            <div class="action-icon" style="background-color: #4071ff;">🔗</div>
-            <div class="action-title">Create Marketing Link</div>
-            <div class="action-desc">Generate tracking links for your campaigns</div>
-          </a>
-          
-          <a href="marketing-tools.html" class="action-card">
-            <div class="action-icon" style="background-color: #ff944f;">🎯</div>
-            <div class="action-title">Marketing Materials</div>
-            <div class="action-desc">Access banners, logos, and promotional content</div>
-          </a>
-          
-          <a href="clients.html" class="action-card">
-            <div class="action-icon" style="background-color: #0cb383;">👥</div>
-            <div class="action-title">Client Activity</div>
-            <div class="action-desc">Monitor your clients and their trading</div>
-          </a>
-          
-          <a href="reports.html" class="action-card">
-            <div class="action-icon" style="background-color: #9747ff;">📈</div>
-            <div class="action-title">Performance Report</div>
-            <div class="action-desc">Download detailed reports and analytics</div>
-          </a>
-        </div>
-      </div>
-      
-      <!-- Partner Academy Section -->
-      <div class="card academy-section">
-        <div class="card-header">
-          <h2 class="card-title">Partner Academy</h2>
-          <a href="academy.html" class="card-action">View All Courses</a>
-        </div>
-        
-        <div class="academy-courses">
-          <div class="course-card">
-            <div class="course-image">Course Image Placeholder</div>
-            <div class="course-body">
-              <div class="course-tag">Beginner</div>
-              <div class="course-title">Partner Onboarding Essentials</div>
-              <div class="course-meta">
-                <span>📚 5 modules</span>
-                <span>⏱️ 30 min</span>
-              </div>
-              <div class="course-progress">
-                <div class="course-progress-bar" style="width: 60%;"></div>
-              </div>
-              <div class="course-completion">60% completed</div>
+        <div class="col-md-3">
+          <div class="metric-card">
+            <div class="metric-icon bg-light-green">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="metric-details">
+              <h3>$8,245</h3>
+              <p>Monthly Revenue</p>
+              <span class="trend positive">+8% <i class="fas fa-arrow-up"></i></span>
             </div>
           </div>
-          
-          <div class="course-card">
-            <div class="course-image">Course Image Placeholder</div>
-            <div class="course-body">
-              <div class="course-tag">Intermediate</div>
-              <div class="course-title">Digital Marketing for Partners</div>
-              <div class="course-meta">
-                <span>📚 8 modules</span>
-                <span>⏱️ 1 hour</span>
-              </div>
-              <div class="course-progress">
-                <div class="course-progress-bar" style="width: 25%;"></div>
-              </div>
-              <div class="course-completion">25% completed</div>
+        </div>
+        <div class="col-md-3">
+          <div class="metric-card">
+            <div class="metric-icon bg-light-purple">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="metric-details">
+              <h3>$2,473</h3>
+              <p>Commission (MTD)</p>
+              <span class="trend positive">+5% <i class="fas fa-arrow-up"></i></span>
             </div>
           </div>
-          
-          <div class="course-card">
-            <div class="course-image">Course Image Placeholder</div>
-            <div class="course-body">
-              <div class="course-tag">Advanced</div>
-              <div class="course-title">Commission Optimization Techniques</div>
-              <div class="course-meta">
-                <span>📚 6 modules</span>
-                <span>⏱️ 45 min</span>
-              </div>
-              <div class="course-progress">
-                <div class="course-progress-bar" style="width: 0%;"></div>
-              </div>
-              <div class="course-completion">Not started</div>
+        </div>
+        <div class="col-md-3">
+          <div class="metric-card">
+            <div class="metric-icon bg-light-orange">
+              <i class="fas fa-user-plus"></i>
+            </div>
+            <div class="metric-details">
+              <h3>23</h3>
+              <p>New Signups (MTD)</p>
+              <span class="trend negative">-3% <i class="fas fa-arrow-down"></i></span>
             </div>
           </div>
         </div>
       </div>
-      
-      <!-- Recent Activity -->
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">Recent Activity</h2>
-          <a href="activity.html" class="card-action">View All</a>
+
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <h5 class="mb-0">Performance Overview</h5>
+              <div class="dropdown">
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="timeRangeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  Last 30 Days
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="timeRangeDropdown">
+                  <li><a class="dropdown-item" href="#">Last 7 Days</a></li>
+                  <li><a class="dropdown-item active" href="#">Last 30 Days</a></li>
+                  <li><a class="dropdown-item" href="#">Last 90 Days</a></li>
+                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart-placeholder">
+                <img src="../assets/images/chart-example.png" alt="Performance Chart" class="img-fluid">
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card mb-4">
+                <div class="card-header">
+                  <h5 class="mb-0">Commission Breakdown</h5>
+                </div>
+                <div class="card-body">
+                  <div class="donut-chart-placeholder">
+                    <img src="../assets/images/donut-chart.png" alt="Commission Breakdown" class="img-fluid">
+                  </div>
+                  <div class="chart-legend">
+                    <div class="legend-item">
+                      <span class="legend-color" style="background-color: #ff444f;"></span>
+                      <span class="legend-label">CFD Trading: $1,485</span>
+                    </div>
+                    <div class="legend-item">
+                      <span class="legend-color" style="background-color: #85ACB0;"></span>
+                      <span class="legend-label">Options Trading: $988</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card mb-4">
+                <div class="card-header">
+                  <h5 class="mb-0">Client Activity</h5>
+                </div>
+                <div class="card-body p-0">
+                  <div class="activity-list">
+                    <div class="activity-item">
+                      <div class="activity-icon bg-light-blue">
+                        <i class="fas fa-user-plus"></i>
+                      </div>
+                      <div class="activity-details">
+                        <h6>New client signup</h6>
+                        <p class="text-muted">Client ID: 9571234</p>
+                        <small>2 hours ago</small>
+                      </div>
+                    </div>
+                    <div class="activity-item">
+                      <div class="activity-icon bg-light-green">
+                        <i class="fas fa-money-bill-wave"></i>
+                      </div>
+                      <div class="activity-details">
+                        <h6>First deposit made</h6>
+                        <p class="text-muted">Client ID: 9570892</p>
+                        <small>Yesterday</small>
+                      </div>
+                    </div>
+                    <div class="activity-item">
+                      <div class="activity-icon bg-light-purple">
+                        <i class="fas fa-chart-line"></i>
+                      </div>
+                      <div class="activity-details">
+                        <h6>High trading volume</h6>
+                        <p class="text-muted">Client ID: 9569754</p>
+                        <small>2 days ago</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center p-3">
+                    <a href="clients.html" class="btn btn-sm btn-outline-primary">View All Client Activity</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         
-        <ul class="activity-list">
-          <li class="activity-item">
-            <div class="activity-icon" style="background-color: #0cb383;">💰</div>
-            <div class="activity-content">
-              <div class="activity-title">Commission Payment Received</div>
-              <div class="activity-meta">
-                <span>$124.50</span>
-                <span class="activity-time">⏱️ 2 hours ago</span>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-header">
+              <h5 class="mb-0">Quick Links</h5>
+            </div>
+            <div class="card-body p-0">
+              <div class="quick-links">
+                <a href="affiliate-links.html" class="quick-link-item">
+                  <div class="quick-link-icon">
+                    <i class="fas fa-link"></i>
+                  </div>
+                  <div class="quick-link-details">
+                    <h6>Get Affiliate Links</h6>
+                    <p>Generate tracking links for CFD/Options</p>
+                  </div>
+                  <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="../help-center-master-partner.html" class="quick-link-item">
+                  <div class="quick-link-icon">
+                    <i class="fas fa-users"></i>
+                  </div>
+                  <div class="quick-link-details">
+                    <h6>Master Partner Program</h6>
+                    <p>Learn how to earn from sub-affiliates</p>
+                  </div>
+                  <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="marketing-materials.html" class="quick-link-item">
+                  <div class="quick-link-icon">
+                    <i class="fas fa-ad"></i>
+                  </div>
+                  <div class="quick-link-details">
+                    <h6>Marketing Materials</h6>
+                    <p>Access banners, landing pages & more</p>
+                  </div>
+                  <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="../help-center-commission-calculator.html" class="quick-link-item">
+                  <div class="quick-link-icon">
+                    <i class="fas fa-calculator"></i>
+                  </div>
+                  <div class="quick-link-details">
+                    <h6>Commission Calculator</h6>
+                    <p>Estimate your potential earnings</p>
+                  </div>
+                  <i class="fas fa-chevron-right"></i>
+                </a>
               </div>
             </div>
-          </li>
+          </div>
           
-          <li class="activity-item">
-            <div class="activity-icon" style="background-color: #4071ff;">👤</div>
-            <div class="activity-content">
-              <div class="activity-title">New Client Registered</div>
-              <div class="activity-meta">
-                <span>John D. from Germany</span>
-                <span class="activity-time">⏱️ Yesterday</span>
+          <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <h5 class="mb-0">Upcoming Events</h5>
+              <a href="#" class="btn btn-sm btn-link">View All</a>
+            </div>
+            <div class="card-body p-0">
+              <div class="events-list">
+                <div class="event-item">
+                  <div class="event-date">
+                    <span class="date">15</span>
+                    <span class="month">Jun</span>
+                  </div>
+                  <div class="event-details">
+                    <h6>Online Webinar: CFD Marketing Strategies</h6>
+                    <p class="event-meta">
+                      <i class="far fa-clock"></i> 14:00 GMT
+                      <i class="fas fa-globe-americas ml-2"></i> Online
+                    </p>
+                    <a href="#" class="btn btn-sm btn-outline-primary">Register</a>
+                  </div>
+                </div>
+                <div class="event-item">
+                  <div class="event-date">
+                    <span class="date">22</span>
+                    <span class="month">Jun</span>
+                  </div>
+                  <div class="event-details">
+                    <h6>Partner Meetup: Bangkok</h6>
+                    <p class="event-meta">
+                      <i class="far fa-clock"></i> 18:00 ICT
+                      <i class="fas fa-map-marker-alt ml-2"></i> Bangkok
+                    </p>
+                    <a href="#" class="btn btn-sm btn-outline-primary">RSVP</a>
+                  </div>
+                </div>
+                <div class="event-item">
+                  <div class="event-date">
+                    <span class="date">30</span>
+                    <span class="month">Jun</span>
+                  </div>
+                  <div class="event-details">
+                    <h6>Quarterly Partner Update</h6>
+                    <p class="event-meta">
+                      <i class="far fa-clock"></i> 11:00 GMT
+                      <i class="fas fa-globe-americas ml-2"></i> Online
+                    </p>
+                    <a href="#" class="btn btn-sm btn-outline-primary">Add to Calendar</a>
+                  </div>
+                </div>
               </div>
             </div>
-          </li>
+          </div>
           
-          <li class="activity-item">
-            <div class="activity-icon" style="background-color: #ff944f;">🔗</div>
-            <div class="activity-content">
-              <div class="activity-title">Marketing Link Created</div>
-              <div class="activity-meta">
-                <span>deriv.com/signup?ref=YOUR_ID</span>
-                <span class="activity-time">⏱️ 3 days ago</span>
+          <div class="card mb-4">
+            <div class="card-header">
+              <h5 class="mb-0">Resources</h5>
+            </div>
+            <div class="card-body">
+              <div class="resources-list">
+                <a href="https://academy.deriv.com" target="_blank" class="resource-item">
+                  <div class="resource-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                  </div>
+                  <div class="resource-details">
+                    <h6>Partner Academy</h6>
+                    <p>Free courses to boost your success</p>
+                  </div>
+                </a>
+                <a href="../help-center.html" class="resource-item">
+                  <div class="resource-icon">
+                    <i class="fas fa-question-circle"></i>
+                  </div>
+                  <div class="resource-details">
+                    <h6>Help Centre</h6>
+                    <p>Find answers to common questions</p>
+                  </div>
+                </a>
+                <a href="#" class="resource-item">
+                  <div class="resource-icon">
+                    <i class="fas fa-headset"></i>
+                  </div>
+                  <div class="resource-details">
+                    <h6>Contact Support</h6>
+                    <p>Get help from our partner managers</p>
+                  </div>
+                </a>
               </div>
             </div>
-          </li>
-          
-          <li class="activity-item">
-            <div class="activity-icon" style="background-color: #9747ff;">📊</div>
-            <div class="activity-content">
-              <div class="activity-title">Trading Volume Milestone</div>
-              <div class="activity-meta">
-                <span>Reached $20,000 monthly volume</span>
-                <span class="activity-time">⏱️ 1 week ago</span>
-              </div>
-            </div>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </main>
   </div>
@@ -1213,4 +1463,5 @@
     });
   </script>
 </body>
+</html> 
 </html> 
