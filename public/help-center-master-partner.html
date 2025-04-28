@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Partner Program - Deriv Partner Help Centre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+    
+    body {
+      color: #333;
+      line-height: 1.6;
+      background-color: #f5f7fa;
+    }
+    
+    a {
+      text-decoration: none;
+      color: #ff444f;
+      transition: color 0.3s;
+    }
+    
+    a:hover {
+      color: #d33a40;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header styles */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+      color: #333;
+    }
+    
+    .logo img {
+      height: 30px;
+    }
+    
+    /* Breadcrumb styles */
+    .breadcrumb {
+      background-color: white;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 30px;
+    }
+    
+    .breadcrumb ul {
+      list-style: none;
+      display: flex;
+    }
+    
+    .breadcrumb li {
+      margin-right: 10px;
+    }
+    
+    .breadcrumb li:after {
+      content: '›';
+      margin-left: 10px;
+      color: #999;
+    }
+    
+    .breadcrumb li:last-child:after {
+      content: '';
+    }
+    
+    .breadcrumb li:last-child a {
+      color: #666;
+      pointer-events: none;
+    }
+    
+    /* Main content styles */
+    .main-content {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 30px;
+    }
+    
+    /* Sidebar styles */
+    .sidebar {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding: 20px;
+      align-self: start;
+      position: sticky;
+      top: 90px;
+    }
+    
+    .sidebar h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    
+    .sidebar ul {
+      list-style: none;
+    }
+    
+    .sidebar li {
+      margin-bottom: 8px;
+    }
+    
+    .sidebar li a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .sidebar li a:hover {
+      background-color: #f5f7fa;
+    }
+    
+    .sidebar li a.active {
+      background-color: #ff444f;
+      color: white;
+    }
+    
+    /* Article styles */
+    .article {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding: 30px;
+    }
+    
+    .article h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    .article h2 {
+      font-size: 22px;
+      margin: 30px 0 15px;
+      color: #444;
+    }
+    
+    .article h3 {
+      font-size: 18px;
+      margin: 25px 0 10px;
+      color: #555;
+    }
+    
+    .article p {
+      margin-bottom: 15px;
+    }
+    
+    .article ul, .article ol {
+      margin: 15px 0;
+      padding-left: 20px;
+    }
+    
+    .article li {
+      margin-bottom: 8px;
+    }
+    
+    /* Callout boxes */
+    .callout {
+      border-left: 4px solid #ff444f;
+      background-color: #fff8f8;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .callout.tip {
+      border-left-color: #4caf50;
+      background-color: #f8fff8;
+    }
+    
+    .callout.note {
+      border-left-color: #2196f3;
+      background-color: #f8fbff;
+    }
+    
+    /* Button styles */
+    .btn {
+      display: inline-block;
+      background-color: #ff444f;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: #d33a40;
+      color: white;
+    }
+    
+    /* Feature cards */
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    
+    .feature-card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 25px;
+      border: 1px solid #eee;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .feature-card .icon {
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: #ff444f;
+    }
+    
+    .feature-card h3 {
+      font-size: 18px;
+      color: #0e2140;
+      margin-bottom: 10px;
+    }
+    
+    .feature-card p {
+      font-size: 14px;
+      color: #475569;
+    }
+
+    /* Master partner diagram */
+    .master-partner-diagram {
+      background-color: #f8fafc;
+      border-radius: 8px;
+      padding: 30px;
+      margin: 30px 0;
+      position: relative;
+    }
+    
+    .diagram-container {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+    }
+    
+    .diagram-tier {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 40px;
+      position: relative;
+      width: 100%;
+    }
+    
+    .diagram-tier:after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 40px;
+      background-color: #cbd5e1;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .diagram-tier:last-child:after {
+      display: none;
+    }
+    
+    .diagram-node {
+      background-color: white;
+      border: 2px solid #0e2140;
+      border-radius: 8px;
+      padding: 15px 25px;
+      text-align: center;
+      min-width: 200px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    
+    .master-node {
+      background-color: #0e2140;
+      color: white;
+      border-color: #0e2140;
+    }
+    
+    .sub-partners-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      position: relative;
+    }
+    
+    .sub-partners-container:before {
+      content: '';
+      position: absolute;
+      width: 80%;
+      height: 2px;
+      background-color: #cbd5e1;
+      top: -20px;
+      left: 10%;
+    }
+    
+    .diagram-node p {
+      margin: 0;
+      font-size: 14px;
+    }
+    
+    .diagram-node h4 {
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+    
+    .commission-flow {
+      position: absolute;
+      color: #4ade80;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    
+    .commission-arrow-1 {
+      right: 30%;
+      top: 45%;
+    }
+    
+    .commission-arrow-2 {
+      left: 30%;
+      top: 45%;
+    }
+    
+    /* Table styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    
+    table th, table td {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+    }
+    
+    table th {
+      background-color: #f5f7fa;
+      font-weight: 600;
+    }
+    
+    table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* FAQ styles */
+    .faq-section {
+      margin: 40px 0;
+    }
+    
+    .faq-item {
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    
+    .faq-item h3 {
+      color: #0e2140;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .faq-item h3:before {
+      content: 'Q';
+      width: 24px;
+      height: 24px;
+      background-color: #ff444f;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    /* Media queries */
+    @media (max-width: 768px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .sidebar {
+        position: static;
+        margin-bottom: 20px;
+      }
+      
+      .sub-partners-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+      }
+      
+      .sub-partners-container:before {
+        height: 80%;
+        width: 2px;
+        left: 50%;
+        top: -20%;
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="help-center-landing.html" class="logo">
+          <img src="images/deriv-logo.svg" alt="Deriv Logo" onclick="alert('This would load the logo image'); return false;">
+        </a>
+        <div>
+          <a href="#" onclick="alert('This would open login'); return false;" class="btn">Log in</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="breadcrumb">
+    <div class="container">
+      <ul>
+        <li><a href="help-center-landing.html" onclick="window.location.href='help-center-landing.html'; return false;">Home</a></li>
+        <li><a href="help-center-category-earning.html" onclick="window.location.href='help-center-category-earning.html'; return false;">Earnings</a></li>
+        <li><a href="#" onclick="return false;">Master Partner Program</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="main-content">
+      <div class="sidebar">
+        <h2>Earnings</h2>
+        <ul>
+          <li><a href="help-center-earnings.html" onclick="window.location.href='help-center-earnings.html'; return false;">Earnings Overview</a></li>
+          <li><a href="help-center-revenue-share.html" onclick="window.location.href='help-center-revenue-share.html'; return false;">Revenue Share</a></li>
+          <li><a href="help-center-turnover-commission.html" onclick="window.location.href='help-center-turnover-commission.html'; return false;">Turnover Commission</a></li>
+          <li><a href="help-center-cpa.html" onclick="window.location.href='help-center-cpa.html'; return false;">CPA Model</a></li>
+          <li><a href="#" class="active" onclick="return false;">Master Partner Program</a></li>
+          <li><a href="#" onclick="alert('This would navigate to partner tiers'); return false;">Partner Tiers</a></li>
+          <li><a href="help-center-commission-calculator.html" onclick="window.location.href='help-center-commission-calculator.html'; return false;">Commission Calculator</a></li>
+        </ul>
+      </div>
+
+      <div class="article">
+        <h1>Master Partner Program</h1>
+        
+        <p>The Master Partner Program offers an additional revenue stream by allowing you to build a network of sub-partners. This program enables you to expand your earnings potential beyond your direct client commissions.</p>
+        
+        <div class="callout note">
+          <strong>Open to all partners:</strong> The Master Partner Program is available to all partners, regardless of your current tier or commission model.
+        </div>
+
+        <h2>How the Master Partner Program Works</h2>
+        
+        <p>The Master Partner Program creates a multi-level income opportunity based on a simple concept:</p>
+        
+        <ul>
+          <li>You refer other partners to join the Deriv Partner Program</li>
+          <li>These become your "sub-partners" in the system</li>
+          <li>You earn 20% of the commissions generated by your sub-partners</li>
+          <li>These additional earnings are credited monthly to your account</li>
+        </ul>
+        
+        <div class="master-partner-diagram">
+          <div class="diagram-container">
+            <div class="diagram-tier">
+              <div class="diagram-node master-node">
+                <h4>You (Master Partner)</h4>
+                <p>Earn 20% of sub-partner commissions</p>
+              </div>
+            </div>
+            
+            <div class="diagram-tier">
+              <div class="sub-partners-container">
+                <div class="diagram-node">
+                  <h4>Sub-Partner A</h4>
+                  <p>Earns standard commissions</p>
+                </div>
+                
+                <div class="diagram-node">
+                  <h4>Sub-Partner B</h4>
+                  <p>Earns standard commissions</p>
+                </div>
+                
+                <div class="diagram-node">
+                  <h4>Sub-Partner C</h4>
+                  <p>Earns standard commissions</p>
+                </div>
+              </div>
+              <div class="commission-flow commission-arrow-1">20% Commission ↑</div>
+              <div class="commission-flow commission-arrow-2">20% Commission ↑</div>
+            </div>
+          </div>
+        </div>
+
+        <h2>Key Benefits of Becoming a Master Partner</h2>
+        
+        <div class="feature-cards">
+          <div class="feature-card">
+            <div class="icon">💰</div>
+            <h3>Additional Revenue Stream</h3>
+            <p>Create a new income source beyond your direct client commissions, increasing your earning potential.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="icon">📈</div>
+            <h3>Network Development</h3>
+            <p>Build and grow a network of sub-partners, leveraging their efforts to enhance your earnings.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="icon">🌍</div>
+            <h3>Market Expansion</h3>
+            <p>Access markets and regions through sub-partners that you might not reach directly.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="icon">🔄</div>
+            <h3>Recurring Revenue</h3>
+            <p>Generate ongoing passive income from the activities of your sub-partners.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="icon">👥</div>
+            <h3>Specialized Support</h3>
+            <p>Receive dedicated support for managing and growing your sub-partner network.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="icon">🚀</div>
+            <h3>Leadership Opportunity</h3>
+            <p>Develop leadership skills by mentoring and supporting your sub-partners to succeed.</p>
+          </div>
+        </div>
+
+        <h2>How to Get Started as a Master Partner</h2>
+        
+        <ol>
+          <li><strong>Register as a Deriv partner</strong> if you haven't already</li>
+          <li><strong>Access your Master Partner section</strong> in the dashboard</li>
+          <li><strong>Generate your Master Partner referral link</strong> to share with potential sub-partners</li>
+          <li><strong>Promote the Deriv Partner Program</strong> to potential sub-partners using your unique link</li>
+          <li><strong>Monitor your sub-partner network</strong> and commissions through your dashboard</li>
+        </ol>
+        
+        <div class="callout tip">
+          <strong>Pro Tip:</strong> The best sub-partners are often individuals or businesses already in your network who have an audience interested in trading or financial services.
+        </div>
+
+        <h2>Commission Structure</h2>
+        
+        <p>The Master Partner Program offers a straightforward commission structure:</p>
+        
+        <table>
+          <thead>
+            <tr>
+              <th>Your Role</th>
+              <th>Commission Earned</th>
+              <th>Payment Schedule</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Master Partner</td>
+              <td>20% of all commissions earned by your sub-partners</td>
+              <td>Monthly</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <p>For example, if your sub-partner earns $1,000 in commissions in a month, you would earn an additional $200 (20%) as the Master Partner.</p>
+        
+        <h3>Important Notes:</h3>
+        <ul>
+          <li>There is no limit to the number of sub-partners you can refer</li>
+          <li>Your sub-partners receive 100% of their regular commission rates - your 20% is paid by Deriv</li>
+          <li>Commissions are calculated based on the net commission earned by your sub-partners</li>
+          <li>Payment follows the same schedules and methods as your regular partner commissions</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-section">
+          <div class="faq-item">
+            <h3>Can I be both a regular partner and a Master Partner?</h3>
+            <p>Yes, you can earn commissions both from your direct clients and from your sub-partners simultaneously. This creates multiple revenue streams within the same partner account.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>Do I need to reach a certain tier before becoming a Master Partner?</h3>
+            <p>No, the Master Partner Program is open to all partners regardless of tier. You can start referring sub-partners immediately after your partner account is approved.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>How do I track the performance of my sub-partners?</h3>
+            <p>Your partner dashboard includes a dedicated section for monitoring your sub-partner network. Here, you can view the number of active sub-partners, their performance, and your earned commissions from each.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>What support do sub-partners receive?</h3>
+            <p>Sub-partners receive the same comprehensive support as all Deriv partners, including access to marketing materials, the Partner Academy, and our partner support team. As a Master Partner, you also have the opportunity to provide additional guidance and mentorship.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>Is there a limit to how much I can earn through the Master Partner Program?</h3>
+            <p>There is no cap on earnings through the Master Partner Program. Your earnings potential is directly related to the number and performance of your sub-partners.</p>
+          </div>
+        </div>
+
+        <h2>Next Steps</h2>
+        <p>Ready to expand your earning potential as a Master Partner?</p>
+        <ul>
+          <li><a href="#" onclick="alert('This would navigate to the dashboard'); return false;">Access your partner dashboard</a> and navigate to the Master Partner section</li>
+          <li>Learn more about <a href="#" onclick="alert('This would navigate to promotion strategies'); return false;">effective promotion strategies</a> to attract potential sub-partners</li>
+          <li>Explore our <a href="#" onclick="alert('This would navigate to marketing materials'); return false;">marketing materials</a> designed specifically for the Master Partner Program</li>
+        </ul>
+        
+        <div class="callout">
+          <strong>Need help?</strong> Contact our dedicated Partner Support team for personalized assistance with the Master Partner Program.
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 

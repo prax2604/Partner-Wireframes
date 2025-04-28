@@ -4,13 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Getting Started - Deriv Partner Help Centre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* Reset and base styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Arial', sans-serif;
+      font-family: 'IBM Plex Sans', sans-serif;
     }
     
     body {
@@ -252,270 +255,419 @@
       margin: 20px 0;
     }
     
-    th, td {
+    table th, table td {
       padding: 12px 15px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
+      border: 1px solid #ddd;
     }
     
-    th {
+    table th {
       background-color: #f5f7fa;
-      font-weight: bold;
+      font-weight: 600;
     }
     
-    tr:hover {
+    table tr:nth-child(even) {
       background-color: #f9f9f9;
     }
-    
-    /* Footer styles */
-    footer {
-      background-color: #333;
-      color: white;
-      padding: 40px 0;
-      margin-top: 60px;
+
+    /* Partner journey path styles */
+    .journey-path {
+      display: flex;
+      justify-content: space-between;
+      margin: 40px 0;
+      position: relative;
+      flex-wrap: wrap;
     }
     
-    .footer-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
+    .journey-path:before {
+      content: '';
+      position: absolute;
+      height: 4px;
+      background-color: #e2e8f0;
+      top: 40px;
+      left: 60px;
+      right: 60px;
+      z-index: 1;
     }
     
-    .footer-section h3 {
-      font-size: 18px;
-      margin-bottom: 15px;
-      color: #fff;
-    }
-    
-    .footer-section ul {
-      list-style: none;
-    }
-    
-    .footer-section li {
-      margin-bottom: 8px;
-    }
-    
-    .footer-section a {
-      color: #ccc;
-    }
-    
-    .footer-section a:hover {
-      color: white;
-    }
-    
-    .copyright {
-      text-align: center;
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid #444;
-      color: #aaa;
-      font-size: 14px;
-    }
-    
-    /* Helper classes */
-    .text-center {
-      text-align: center;
-    }
-    
-    .mt-10 {
-      margin-top: 10px;
-    }
-    
-    .mt-20 {
-      margin-top: 20px;
-    }
-    
-    .mb-20 {
+    .journey-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      min-width: 120px;
       margin-bottom: 20px;
     }
     
-    /* Responsive styles */
+    .stage-number {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: white;
+      border: 4px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .stage-number.active {
+      border-color: #ff444f;
+      background-color: #fff1f2;
+    }
+    
+    .stage-number.completed {
+      border-color: #10b981;
+      background-color: #f0fdf4;
+    }
+    
+    .stage-number:before {
+      content: attr(data-number);
+      font-size: 28px;
+      font-weight: bold;
+      color: #94a3b8;
+    }
+    
+    .stage-number.active:before {
+      color: #ff444f;
+    }
+    
+    .stage-number.completed:before {
+      content: '✓';
+      color: #10b981;
+    }
+    
+    .stage-label {
+      font-weight: 600;
+      color: #475569;
+      text-align: center;
+      font-size: 16px;
+    }
+    
+    .stage-description {
+      color: #64748b;
+      text-align: center;
+      font-size: 14px;
+      max-width: 150px;
+    }
+
+    /* Resource card styles */
+    .resource-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    
+    .resource-card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      border: 1px solid #eee;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .resource-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .resource-card h3 {
+      font-size: 18px;
+      color: #0e2140;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .resource-card h3 span {
+      background-color: #f1f5f9;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      color: #0e2140;
+      font-size: 16px;
+    }
+    
+    .resource-card p {
+      font-size: 14px;
+      color: #475569;
+      margin-bottom: 15px;
+    }
+    
+    .resource-card a {
+      font-weight: 500;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+    }
+    
+    .resource-card a:after {
+      content: '→';
+      margin-left: 5px;
+      transition: transform 0.2s;
+    }
+    
+    .resource-card a:hover:after {
+      transform: translateX(3px);
+    }
+
+    /* Media queries */
     @media (max-width: 768px) {
       .main-content {
         grid-template-columns: 1fr;
       }
       
       .sidebar {
-        position: relative;
-        top: 0;
+        position: static;
         margin-bottom: 20px;
+      }
+      
+      .journey-path:before {
+        left: 20px;
+        right: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="container">
       <div class="header-content">
-        <a href="/public/help-center-landing.html" class="logo" onclick="window.location.href='/public/help-center-landing.html'; return false;">
-          <img src="https://deriv.com/static/1677755bfe5931091c2e3ca0a1d6f68c/2bef9/logo.webp" alt="Deriv">
+        <a href="help-center-landing.html" class="logo">
+          <img src="images/deriv-logo.svg" alt="Deriv Logo" onclick="alert('This would load the logo image'); return false;">
         </a>
         <div>
-          <!-- Navigation could go here -->
+          <a href="#" onclick="alert('This would open login'); return false;" class="btn">Log in</a>
         </div>
       </div>
     </div>
   </header>
-  
-  <!-- Breadcrumb navigation -->
+
   <div class="breadcrumb">
     <div class="container">
       <ul>
-        <li><a href="/public/help-center-landing.html" onclick="window.location.href='/public/help-center-landing.html'; return false;">Help Centre</a></li>
-        <li><a href="#">Getting Started</a></li>
+        <li><a href="help-center-landing.html" onclick="window.location.href='help-center-landing.html'; return false;">Home</a></li>
+        <li><a href="help-center-category-getting-started.html" onclick="window.location.href='help-center-category-getting-started.html'; return false;">Getting Started</a></li>
+        <li><a href="#" onclick="return false;">The Partner Journey</a></li>
       </ul>
     </div>
   </div>
-  
-  <!-- Main content -->
+
   <div class="container">
     <div class="main-content">
-      <!-- Sidebar navigation -->
-      <aside class="sidebar">
-        <h2>Getting Started Topics</h2>
+      <div class="sidebar">
+        <h2>Getting Started</h2>
         <ul>
-          <li><a href="/public/help-center-getting-started.html" class="active" onclick="window.location.href='/public/help-center-getting-started.html'; return false;">Overview</a></li>
-          <li><a href="/public/help-center-partner-account.html" onclick="window.location.href='/public/help-center-partner-account.html'; return false;">Creating your partner account</a></li>
-          <li><a href="/public/help-center-partnership-types.html" onclick="window.location.href='/public/help-center-partnership-types.html'; return false;">Business Strategies</a></li>
-          <li><a href="/public/help-center-dashboard.html" onclick="window.location.href='/public/help-center-dashboard.html'; return false;">Navigating your dashboard</a></li>
-          <li><a href="/public/help-center-first-steps.html" onclick="window.location.href='/public/help-center-first-steps.html'; return false;">First steps after approval</a></li>
+          <li><a href="#" class="active" onclick="return false;">The Partner Journey</a></li>
+          <li><a href="#" onclick="alert('This would navigate to the registration guide'); return false;">Registration Guide</a></li>
+          <li><a href="#" onclick="alert('This would navigate to the account setup guide'); return false;">Account Setup</a></li>
+          <li><a href="#" onclick="alert('This would navigate to the first links guide'); return false;">Creating Your First Links</a></li>
+          <li><a href="help-center-partnership-types.html" onclick="window.location.href='help-center-partnership-types.html'; return false;">Partnership Strategies</a></li>
+          <li><a href="#" onclick="alert('This would navigate to the promotion guide'); return false;">Promotion Guide</a></li>
+          <li><a href="#" onclick="alert('This would navigate to compliance info'); return false;">Compliance Guidelines</a></li>
         </ul>
+      </div>
+
+      <div class="article">
+        <h1>Your Deriv Partner Journey</h1>
         
-        <h2 style="margin-top: 30px;">Related Topics</h2>
-        <ul>
-          <li><a href="/public/help-center-earnings.html" onclick="window.location.href='/public/help-center-earnings.html'; return false;">Commission models</a></li>
-          <li><a href="/public/help-center-marketing-tools.html" onclick="window.location.href='/public/help-center-marketing-tools.html'; return false;">Marketing tools</a></li>
-          <li><a href="/public/help-center-calculator.html" onclick="window.location.href='/public/help-center-calculator.html'; return false;">Commission calculator</a></li>
-        </ul>
-      </aside>
-      
-      <!-- Article content -->
-      <article class="article">
-        <h1>Getting Started with Deriv Partners</h1>
+        <p>Welcome to the Deriv Partner Program! We're excited to have you join our community of successful partners. This guide will walk you through your partner journey from the very beginning to mastery, helping you understand each stage and what to expect along the way.</p>
         
-        <p>Welcome to the Deriv Partners program! This guide will walk you through the essential steps to start your journey as a Deriv partner and help you maximize your earning potential.</p>
-        
-        <div class="callout">
-          <strong>New to Deriv Partners?</strong> Follow this step-by-step guide to get your partnership up and running quickly.
+        <div class="callout note">
+          <strong>Did you know?</strong> At Deriv, we view your partnership as a journey with clear stages. Each stage builds on the previous one, creating a path to sustainable success as a partner.
         </div>
+
+        <!-- Journey Path Visualization -->
+        <div class="journey-path">
+          <div class="journey-stage">
+            <div class="stage-number active" data-number="1"></div>
+            <div class="stage-label">Discovery</div>
+            <div class="stage-description">Learning about products and options</div>
+          </div>
+          
+          <div class="journey-stage">
+            <div class="stage-number" data-number="2"></div>
+            <div class="stage-label">Activation</div>
+            <div class="stage-description">Setting up your account and links</div>
+          </div>
+          
+          <div class="journey-stage">
+            <div class="stage-number" data-number="3"></div>
+            <div class="stage-label">First Success</div>
+            <div class="stage-description">Acquiring your first clients</div>
+          </div>
+          
+          <div class="journey-stage">
+            <div class="stage-number" data-number="4"></div>
+            <div class="stage-label">Growth</div>
+            <div class="stage-description">Expanding reach and optimizing</div>
+          </div>
+          
+          <div class="journey-stage">
+            <div class="stage-number" data-number="5"></div>
+            <div class="stage-label">Mastery</div>
+            <div class="stage-description">Advanced strategies and leadership</div>
+          </div>
+        </div>
+
+        <h2>Understanding the Partner Journey</h2>
+        <p>Your journey as a Deriv partner follows a clear progression, with each stage building on the previous one. Let's explore each stage in detail:</p>
+
+        <h3>Stage 1: Discovery</h3>
+        <p>The discovery stage is where you are now - learning about Deriv's products, partnership options, and exploring the potential opportunities. During this stage, you'll:</p>
+        <ul>
+          <li>Learn about Deriv's trading products and platforms</li>
+          <li>Understand our commission structures and partnership models</li>
+          <li>Explore the Partner Academy resources</li>
+          <li>Identify which partnership approach aligns with your goals</li>
+        </ul>
         
-        <h2>Your Partnership Journey</h2>
-        
+        <h3>Stage 2: Activation</h3>
+        <p>During the activation stage, you'll complete your registration and set up your partner account. Key activities include:</p>
+        <ul>
+          <li>Completing the one-step registration process</li>
+          <li>Selecting your preferred commission model for Options products</li>
+          <li>Setting up your payment details</li>
+          <li>Creating your first tracking links for promotion</li>
+          <li>Exploring the partner dashboard and its features</li>
+        </ul>
+
         <div class="step">
           <div class="step-number">1</div>
           <div class="step-content">
-            <h3>Sign up for a Deriv partner account</h3>
-            <p>Create your free partner account by completing the registration form. You'll need to provide basic information about yourself or your business.</p>
-            <a href="#" class="btn" onclick="alert('Would link to registration page'); return false;">Register now</a>
+            <h3>Complete Your Registration</h3>
+            <p>The first practical step is to complete our simplified registration process:</p>
+            <ol>
+              <li>Visit <a href="#" onclick="alert('This would navigate to the partner registration page'); return false;">deriv.com/partners</a> and click "Sign up"</li>
+              <li>Fill in your personal and business information</li>
+              <li>Select your preferred commission model for Options products (Revenue Share or Turnover)</li>
+              <li>Submit your application for approval</li>
+            </ol>
+            <p>Your account will typically be approved within 1-2 business days.</p>
           </div>
         </div>
-        
+
         <div class="step">
           <div class="step-number">2</div>
           <div class="step-content">
-            <h3>Choose your partnership type</h3>
-            <p>Select the partnership model that best fits your business needs:</p>
+            <h3>Access Your Partner Dashboard</h3>
+            <p>Once approved, you'll gain access to your unified partner dashboard where you can:</p>
             <ul>
-              <li><strong>Affiliate:</strong> Promote Deriv products and earn commissions for client referrals</li>
-              <li><strong>IB (Introducing Broker):</strong> Introduce clients to trade on Deriv and earn from their trading activity</li>
-              <li><strong>API partner:</strong> Build trading applications using our API and earn from client trading</li>
+              <li>Find tracking links for both CFD and Options products in one place</li>
+              <li>Access marketing materials for all Deriv products</li>
+              <li>Set up your payment details for commission payouts</li>
+              <li>Review performance tracking tools that monitor all your client activity</li>
             </ul>
+            <p><a href="#" onclick="alert('This would show a dashboard tutorial'); return false;">Watch a video tutorial of the dashboard</a></p>
           </div>
         </div>
-        
+
         <div class="step">
           <div class="step-number">3</div>
           <div class="step-content">
-            <h3>Complete verification</h3>
-            <p>Submit the required documentation to verify your account. This typically includes:</p>
-            <ul>
-              <li>Proof of identity</li>
-              <li>Proof of address</li>
-              <li>Business documentation (for company accounts)</li>
-            </ul>
-            <p>Our team will review your application within 1-3 business days.</p>
+            <h3>Create Your First Tracking Links</h3>
+            <p>Generate your first set of tracking links to begin promoting Deriv:</p>
+            <ol>
+              <li>Log in to your partner dashboard</li>
+              <li>Navigate to the "Marketing Tools" section</li>
+              <li>Select "Tracking Links" from the menu</li>
+              <li>Choose to create links for all Deriv products or specific platforms</li>
+              <li>Customize parameters for better tracking (optional)</li>
+              <li>Generate and copy your unique tracking links</li>
+            </ol>
+            <p>Remember: You don't need to create separate campaigns for CFD and Options - you can promote all products together with a single link.</p>
           </div>
         </div>
-        
-        <div class="step">
-          <div class="step-number">4</div>
-          <div class="step-content">
-            <h3>Access your partner dashboard</h3>
-            <p>Once approved, you'll gain access to your personalized dashboard where you can:</p>
-            <ul>
-              <li>Generate tracking links and marketing materials</li>
-              <li>Monitor client activity and commissions</li>
-              <li>Access detailed performance reports</li>
-              <li>Manage your payment details</li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="step">
-          <div class="step-number">5</div>
-          <div class="step-content">
-            <h3>Start promoting Deriv</h3>
-            <p>Use our marketing tools and resources to start promoting Deriv products to your audience:</p>
-            <ul>
-              <li>Implement your tracking links on your website, blog, or social media</li>
-              <li>Utilize our banners, landing pages, and other marketing materials</li>
-              <li>Share your unique referral link with potential clients</li>
-            </ul>
-          </div>
-        </div>
-        
-        <h2>Commission Models</h2>
-        
-        <p>As a Deriv partner, understanding the available commission models is essential for maximizing your earnings. Visit our <a href="/public/help-center-earnings.html" onclick="window.location.href='/public/help-center-earnings.html'; return false;">Commission Models</a> page for detailed information.</p>
-        
-        <p>We offer three main commission models:</p>
-        
-        <table>
-          <thead>
-            <tr>
-              <th>Commission Model</th>
-              <th>How It Works</th>
-              <th>Best For</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Turnover Commission</td>
-              <td>Earn based on the trading volume of your clients on both CFD and derivatives products</td>
-              <td>Partners with CFD traders or high-volume traders</td>
-            </tr>
-            <tr>
-              <td>Revenue Share</td>
-              <td>Earn a percentage of the revenue generated by your referred clients on derivatives products</td>
-              <td>Partners with clients who frequently trade derivatives</td>
-            </tr>
-            <tr>
-              <td>CPA (EU Only)</td>
-              <td>Receive a one-time payment for each qualified client you refer from EU countries</td>
-              <td>Partners focusing on EU markets</td>
-            </tr>
-          </tbody>
-        </table>
-        
-        <div class="callout tip">
-          <strong>Pro Tip:</strong> You can use our <a href="/public/help-center-calculator.html" onclick="window.location.href='/public/help-center-calculator.html'; return false;">Commission Calculator</a> to estimate your potential earnings under different models.
-        </div>
-        
-        <h2>Next Steps</h2>
-        
-        <p>Now that you understand the basics, explore these resources to enhance your partnership:</p>
-        
+
+        <h3>Stage 3: First Success</h3>
+        <p>This critical stage focuses on acquiring your first clients and earning your initial commissions. During this stage, you'll:</p>
         <ul>
-          <li><a href="/public/help-center-marketing-tools.html" onclick="window.location.href='/public/help-center-marketing-tools.html'; return false;">Marketing Tools and Resources</a> - Learn about the promotional materials available to you</li>
-          <li><a href="/public/help-center-best-practices.html" onclick="window.location.href='/public/help-center-best-practices.html'; return false;">Partnership Best Practices</a> - Discover strategies to maximize your commissions</li>
-          <li><a href="/public/help-center-payment-options.html" onclick="window.location.href='/public/help-center-payment-options.html'; return false;">Payment Options</a> - Understand how and when you'll receive your earnings</li>
+          <li>Begin sharing your tracking links through your preferred channels</li>
+          <li>Implement basic promotional strategies</li>
+          <li>Track your first client registrations and deposits</li>
+          <li>Receive your first commission payments</li>
+          <li>Learn from initial results to improve your approach</li>
+        </ul>
+
+        <h3>Stage 4: Growth</h3>
+        <p>With your first success achieved, the growth stage is about scaling your partner business. Key activities include:</p>
+        <ul>
+          <li>Expanding your promotional channels and reach</li>
+          <li>Optimizing conversion rates through A/B testing</li>
+          <li>Building a more substantial client base</li>
+          <li>Moving up through partner tiers to earn bonus commissions</li>
+          <li>Exploring additional revenue streams (like the Master Partner program)</li>
+        </ul>
+
+        <h3>Stage 5: Mastery</h3>
+        <p>The final stage represents mastery of the partner business model. At this stage, you'll:</p>
+        <ul>
+          <li>Implement advanced marketing and acquisition strategies</li>
+          <li>Potentially develop a network of sub-partners</li>
+          <li>Create systematic approaches to client acquisition and retention</li>
+          <li>Reach higher partner tiers with premium benefits</li>
+          <li>Possibly mentor newer partners through your expertise</li>
+        </ul>
+
+        <div class="callout tip">
+          <strong>Partner Tip:</strong> While the journey is presented as sequential stages, many partners find themselves working on elements from multiple stages simultaneously. Focus on mastering the basics before moving to more advanced strategies.
+        </div>
+
+        <h2>Resources to Support Your Journey</h2>
+        <p>Deriv provides comprehensive resources to support you at each stage of your partner journey:</p>
+
+        <div class="resource-cards">
+          <div class="resource-card">
+            <h3><span>📚</span> Partner Academy</h3>
+            <p>Access structured learning paths, tutorials, and guides designed to help you succeed at each stage of your journey.</p>
+            <a href="#" onclick="alert('This would navigate to Partner Academy'); return false;">Explore the Academy</a>
+          </div>
+          
+          <div class="resource-card">
+            <h3><span>👥</span> Partner Support Team</h3>
+            <p>Get dedicated assistance from our specialized support team ready to answer your questions and provide guidance.</p>
+            <a href="#" onclick="alert('This would open contact options'); return false;">Contact Support</a>
+          </div>
+          
+          <div class="resource-card">
+            <h3><span>🌐</span> Partner Community</h3>
+            <p>Connect with other successful partners to share strategies, insights, and learn from their experiences.</p>
+            <a href="#" onclick="alert('This would navigate to community page'); return false;">Join the Community</a>
+          </div>
+          
+          <div class="resource-card">
+            <h3><span>🌍</span> Country Managers</h3>
+            <p>Access regional expertise and personalized guidance from our network of country managers with local market insights.</p>
+            <a href="#" onclick="alert('This would show country manager contacts'); return false;">Find Your Manager</a>
+          </div>
+        </div>
+
+        <h2>Your Next Steps</h2>
+        <p>Based on where you are in your partner journey, here are the recommended next steps:</p>
+        
+        <div class="callout">
+          <strong>Just started?</strong> Complete your <a href="#" onclick="alert('This would navigate to registration page'); return false;">partner registration</a> and set up your account to begin.
+        </div>
+        
+        <p>Or explore these key resources:</p>
+        <ul>
+          <li><a href="help-center-partnership-types.html" onclick="window.location.href='help-center-partnership-types.html'; return false;">Learn about different partnership strategies</a></li>
+          <li><a href="help-center-earnings.html" onclick="window.location.href='help-center-earnings.html'; return false;">Understand commission structures and earnings potential</a></li>
+          <li><a href="#" onclick="alert('This would navigate to promotion strategies'); return false;">Explore proven promotion strategies</a></li>
+          <li><a href="#" onclick="alert('This would navigate to compliance guidelines'); return false;">Review our compliance guidelines</a></li>
         </ul>
         
-        <div class="callout note">
-          <strong>Need help?</strong> Our dedicated partner support team is available to assist you. Contact us at <a href="mailto:partners@deriv.com">partners@deriv.com</a> or through the live chat on your dashboard.
-        </div>
-      </article>
+        <p>Remember, your success as a Deriv partner is our priority. Don't hesitate to <a href="#" onclick="alert('This would open contact form'); return false;">reach out</a> if you have any questions or need assistance at any stage of your journey.</p>
+      </div>
     </div>
   </div>
 </body>

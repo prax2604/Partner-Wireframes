@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Tiers - Deriv Partner Help Centre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+    
+    body {
+      color: #333;
+      line-height: 1.6;
+      background-color: #f5f7fa;
+    }
+    
+    a {
+      text-decoration: none;
+      color: #ff444f;
+      transition: color 0.3s;
+    }
+    
+    a:hover {
+      color: #d33a40;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header styles */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+      color: #333;
+    }
+    
+    .logo img {
+      height: 30px;
+    }
+    
+    /* Breadcrumb styles */
+    .breadcrumb {
+      background-color: white;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 30px;
+    }
+    
+    .breadcrumb ul {
+      list-style: none;
+      display: flex;
+    }
+    
+    .breadcrumb li {
+      margin-right: 10px;
+    }
+    
+    .breadcrumb li:after {
+      content: '›';
+      margin-left: 10px;
+      color: #999;
+    }
+    
+    .breadcrumb li:last-child:after {
+      content: '';
+    }
+    
+    .breadcrumb li:last-child a {
+      color: #666;
+      pointer-events: none;
+    }
+    
+    /* Main content styles */
+    .main-content {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 30px;
+    }
+    
+    /* Sidebar styles */
+    .sidebar {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding: 20px;
+      align-self: start;
+      position: sticky;
+      top: 90px;
+    }
+    
+    .sidebar h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    
+    .sidebar ul {
+      list-style: none;
+    }
+    
+    .sidebar li {
+      margin-bottom: 8px;
+    }
+    
+    .sidebar li a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .sidebar li a:hover {
+      background-color: #f5f7fa;
+    }
+    
+    .sidebar li a.active {
+      background-color: #ff444f;
+      color: white;
+    }
+    
+    /* Article styles */
+    .article {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding: 30px;
+    }
+    
+    .article h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    .article h2 {
+      font-size: 22px;
+      margin: 30px 0 15px;
+      color: #444;
+    }
+    
+    .article h3 {
+      font-size: 18px;
+      margin: 25px 0 10px;
+      color: #555;
+    }
+    
+    .article p {
+      margin-bottom: 15px;
+    }
+    
+    .article ul, .article ol {
+      margin: 15px 0;
+      padding-left: 20px;
+    }
+    
+    .article li {
+      margin-bottom: 8px;
+    }
+    
+    /* Callout boxes */
+    .callout {
+      border-left: 4px solid #ff444f;
+      background-color: #fff8f8;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .callout.tip {
+      border-left-color: #4caf50;
+      background-color: #f8fff8;
+    }
+    
+    .callout.note {
+      border-left-color: #2196f3;
+      background-color: #f8fbff;
+    }
+    
+    /* Button styles */
+    .btn {
+      display: inline-block;
+      background-color: #ff444f;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: #d33a40;
+      color: white;
+    }
+    
+    /* Partner tier cards */
+    .tier-cards {
+      margin: 30px 0;
+    }
+    
+    .tier-card {
+      background-color: white;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .tier-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .tier-header {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .tier-name {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .tier-badge {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    
+    .bronze-badge {
+      background: linear-gradient(145deg, #CD7F32, #8B4513);
+    }
+    
+    .silver-badge {
+      background: linear-gradient(145deg, #C0C0C0, #A9A9A9);
+    }
+    
+    .gold-badge {
+      background: linear-gradient(145deg, #FFD700, #DAA520);
+    }
+    
+    .platinum-badge {
+      background: linear-gradient(145deg, #E5E4E2, #B9B8B6);
+    }
+    
+    .vip-badge {
+      background: linear-gradient(145deg, #5d1e8c, #3c1259);
+    }
+    
+    .tier-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .tier-subtitle {
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .tier-multiplier {
+      background-color: #f1f5f9;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #0f172a;
+    }
+    
+    .tier-content {
+      padding: 0 20px 20px;
+    }
+    
+    .tier-requirements {
+      padding: 10px 0;
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: #64748b;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .requirements-label {
+      color: #334155;
+      font-weight: 500;
+    }
+    
+    .tier-benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: #334155;
+    }
+    
+    .benefit-icon {
+      color: #22c55e;
+      font-size: 18px;
+    }
+
+    /* Tier comparison table */
+    .tier-comparison {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      overflow-x: auto;
+      display: block;
+    }
+    
+    .tier-comparison th, .tier-comparison td {
+      padding: 12px 15px;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+    }
+    
+    .tier-comparison th {
+      background-color: #f8fafc;
+      color: #334155;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+    }
+    
+    .tier-comparison tr:nth-child(even) {
+      background-color: #f9fafb;
+    }
+    
+    .tier-comparison td:first-child {
+      text-align: left;
+      font-weight: 500;
+      color: #334155;
+    }
+    
+    .check-icon {
+      color: #22c55e;
+      font-size: 16px;
+    }
+    
+    .exclusive-label {
+      background-color: #fee2e2;
+      color: #b91c1c;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* Progress visualization */
+    .tier-progress-container {
+      padding: 30px 0;
+    }
+    
+    .tier-progress {
+      position: relative;
+      height: 8px;
+      background-color: #e2e8f0;
+      border-radius: 4px;
+      margin: 20px 0 35px;
+    }
+    
+    .tier-markers {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+    }
+    
+    .tier-marker {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #e2e8f0;
+      border: 3px solid white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      top: -6px;
+      transform: translateX(-50%);
+    }
+    
+    .tier-marker-bronze { left: 0%; background-color: #CD7F32; }
+    .tier-marker-silver { left: 25%; background-color: #C0C0C0; }
+    .tier-marker-gold { left: 50%; background-color: #FFD700; }
+    .tier-marker-platinum { left: 75%; background-color: #E5E4E2; }
+    .tier-marker-vip { left: 100%; background-color: #5d1e8c; }
+    
+    .tier-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+    
+    .tier-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #475569;
+    }
+    
+    .tier-value {
+      position: absolute;
+      font-size: 12px;
+      color: #64748b;
+      top: 20px;
+      transform: translateX(-50%);
+    }
+    
+    .bronze-value { left: 0%; }
+    .silver-value { left: 25%; }
+    .gold-value { left: 50%; }
+    .platinum-value { left: 75%; }
+    .vip-value { left: 100%; }
+
+    /* FAQ section */
+    .faq-section {
+      margin-top: 40px;
+    }
+    
+    .faq-item {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .faq-question {
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 10px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .faq-answer {
+      color: #475569;
+      font-size: 15px;
+    }
+
+    /* Media queries */
+    @media (max-width: 768px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .sidebar {
+        position: static;
+        margin-bottom: 20px;
+      }
+      
+      .tier-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      
+      .tier-multiplier {
+        align-self: flex-start;
+      }
+      
+      .tier-benefits {
+        grid-template-columns: 1fr;
+      }
+      
+      .tier-labels {
+        display: none;
+      }
+      
+      .tier-progress {
+        margin-bottom: 60px;
+      }
+      
+      .tier-value {
+        top: 15px;
+        font-size: 10px;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="help-center-landing.html" class="logo">
+          <img src="images/deriv-logo.svg" alt="Deriv Logo" onclick="alert('This would load the logo image'); return false;">
+        </a>
+        <div>
+          <a href="#" onclick="alert('This would open login'); return false;" class="btn">Log in</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="breadcrumb">
+    <div class="container">
+      <ul>
+        <li><a href="help-center-landing.html" onclick="window.location.href='help-center-landing.html'; return false;">Home</a></li>
+        <li><a href="help-center-category-earning.html" onclick="window.location.href='help-center-category-earning.html'; return false;">Earnings</a></li>
+        <li><a href="#" onclick="return false;">Partner Tiers</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="main-content">
+      <div class="sidebar">
+        <h2>Earnings</h2>
+        <ul>
+          <li><a href="help-center-earnings.html" onclick="window.location.href='help-center-earnings.html'; return false;">Earnings Overview</a></li>
+          <li><a href="help-center-revenue-share.html" onclick="window.location.href='help-center-revenue-share.html'; return false;">Revenue Share</a></li>
+          <li><a href="help-center-turnover-commission.html" onclick="window.location.href='help-center-turnover-commission.html'; return false;">Turnover Commission</a></li>
+          <li><a href="help-center-cpa.html" onclick="window.location.href='help-center-cpa.html'; return false;">CPA Model</a></li>
+          <li><a href="help-center-master-partner.html" onclick="window.location.href='help-center-master-partner.html'; return false;">Master Partner Program</a></li>
+          <li><a href="#" class="active" onclick="return false;">Partner Tiers</a></li>
+          <li><a href="help-center-commission-calculator.html" onclick="window.location.href='help-center-commission-calculator.html'; return false;">Commission Calculator</a></li>
+        </ul>
+      </div>
+
+      <div class="article">
+        <h1>Partner Tiers and Benefits</h1>
+        
+        <p>As you grow your partner business with Deriv, you'll progress through our tier structure, which rewards your success with increased commission rates and additional benefits. Each tier offers progressively more valuable advantages designed to support your growth and maximize your earnings.</p>
+        
+        <div class="callout note">
+          <strong>Tier progression is automatic!</strong> Your tier is calculated based on your commission earnings, and you'll automatically be upgraded as you meet each threshold.
+        </div>
+
+        <div class="tier-progress-container">
+          <h2>Partner Tier Progression</h2>
+          <p>Your tier is determined by your monthly commission amount. As your earnings increase, you'll unlock higher tiers with greater benefits.</p>
+          
+          <div class="tier-progress">
+            <div class="tier-marker tier-marker-bronze"></div>
+            <div class="tier-marker tier-marker-silver"></div>
+            <div class="tier-marker tier-marker-gold"></div>
+            <div class="tier-marker tier-marker-platinum"></div>
+            <div class="tier-marker tier-marker-vip"></div>
+            
+            <div class="tier-value bronze-value">Start</div>
+            <div class="tier-value silver-value">$500+</div>
+            <div class="tier-value gold-value">$1,000+</div>
+            <div class="tier-value platinum-value">$5,000+</div>
+            <div class="tier-value vip-value">Invitation</div>
+          </div>
+          
+          <div class="tier-labels">
+            <div class="tier-label">Bronze</div>
+            <div class="tier-label">Silver</div>
+            <div class="tier-label">Gold</div>
+            <div class="tier-label">Platinum</div>
+            <div class="tier-label">VIP</div>
+          </div>
+        </div>
+
+        <h2>Partner Tier Benefits</h2>
+        <p>Each tier offers a unique set of benefits designed to support your growth and success as a Deriv partner.</p>
+        
+        <div class="tier-cards">
+          <!-- Bronze Tier -->
+          <div class="tier-card">
+            <div class="tier-header">
+              <div class="tier-name">
+                <div class="tier-badge bronze-badge">B</div>
+                <div>
+                  <div class="tier-title">Bronze Partner</div>
+                  <div class="tier-subtitle">Starting tier for all partners</div>
+                </div>
+              </div>
+              <div class="tier-multiplier">Standard Rates (100%)</div>
+            </div>
+            <div class="tier-content">
+              <div class="tier-requirements">
+                <span class="requirements-label">Requirement:</span> Starting tier (no minimum)
+              </div>
+              <div class="tier-benefits">
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>Standard commission rates</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>Basic marketing materials</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>Standard support services</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>Partner Academy access</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Silver Tier -->
+          <div class="tier-card">
+            <div class="tier-header">
+              <div class="tier-name">
+                <div class="tier-badge silver-badge">S</div>
+                <div>
+                  <div class="tier-title">Silver Partner</div>
+                  <div class="tier-subtitle">Enhanced commission rates and support</div>
+                </div>
+              </div>
+              <div class="tier-multiplier">105% of standard rates</div>
+            </div>
+            <div class="tier-content">
+              <div class="tier-requirements">
+                <span class="requirements-label">Requirement:</span> $500+ monthly commission
+              </div>
+              <div class="tier-benefits">
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>5% commission multiplier</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>Enhanced support</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>Priority service</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>Additional marketing resources</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Gold Tier -->
+          <div class="tier-card">
+            <div class="tier-header">
+              <div class="tier-name">
+                <div class="tier-badge gold-badge">G</div>
+                <div>
+                  <div class="tier-title">Gold Partner</div>
+                  <div class="tier-subtitle">Premium commission rates and management</div>
+                </div>
+              </div>
+              <div class="tier-multiplier">110% of standard rates</div>
+            </div>
+            <div class="tier-content">
+              <div class="tier-requirements">
+                <span class="requirements-label">Requirement:</span> $1,000+ monthly commission
+              </div>
+              <div class="tier-benefits">
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>10% commission multiplier</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>Dedicated account management</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>Advanced performance reporting</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>Customized marketing support</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Platinum Tier -->
+          <div class="tier-card">
+            <div class="tier-header">
+              <div class="tier-name">
+                <div class="tier-badge platinum-badge">P</div>
+                <div>
+                  <div class="tier-title">Platinum Partner</div>
+                  <div class="tier-subtitle">Elite commission rates and opportunities</div>
+                </div>
+              </div>
+              <div class="tier-multiplier">115% of standard rates</div>
+            </div>
+            <div class="tier-content">
+              <div class="tier-requirements">
+                <span class="requirements-label">Requirement:</span> $5,000+ monthly commission
+              </div>
+              <div class="tier-benefits">
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>15% commission multiplier</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>Strategic business reviews</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>Exclusive marketing opportunities</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>Priority feature access</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- VIP Tier -->
+          <div class="tier-card">
+            <div class="tier-header">
+              <div class="tier-name">
+                <div class="tier-badge vip-badge">VIP</div>
+                <div>
+                  <div class="tier-title">VIP Partner</div>
+                  <div class="tier-subtitle">Invitation-only elite partner status</div>
+                </div>
+              </div>
+              <div class="tier-multiplier">120% of standard rates</div>
+            </div>
+            <div class="tier-content">
+              <div class="tier-requirements">
+                <span class="requirements-label">Requirement:</span> Invitation only
+              </div>
+              <div class="tier-benefits">
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>20% commission multiplier</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>Comprehensive VIP benefits</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>Partner 121 program access</span>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">✓</span>
+                  <span>Custom partnership solutions</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2>Detailed Benefits Comparison</h2>
+        
+        <div style="overflow-x: auto;">
+          <table class="tier-comparison">
+            <thead>
+              <tr>
+                <th>Benefits</th>
+                <th>Bronze</th>
+                <th>Silver</th>
+                <th>Gold</th>
+                <th>Platinum</th>
+                <th>VIP</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Commission Multiplier</td>
+                <td>100%</td>
+                <td>105%</td>
+                <td>110%</td>
+                <td>115%</td>
+                <td>120%</td>
+              </tr>
+              <tr>
+                <td>Support Level</td>
+                <td>Standard</td>
+                <td>Enhanced</td>
+                <td>Premium</td>
+                <td>Priority</td>
+                <td>VIP</td>
+              </tr>
+              <tr>
+                <td>Account Management</td>
+                <td>—</td>
+                <td>—</td>
+                <td><span class="check-icon">✓</span></td>
+                <td><span class="check-icon">✓</span></td>
+                <td><span class="check-icon">✓</span></td>
+              </tr>
+              <tr>
+                <td>Performance Reporting</td>
+                <td>Basic</td>
+                <td>Standard</td>
+                <td>Advanced</td>
+                <td>Comprehensive</td>
+                <td>Custom</td>
+              </tr>
+              <tr>
+                <td>Marketing Resources</td>
+                <td>Basic</td>
+                <td>Enhanced</td>
+                <td>Premium</td>
+                <td>Strategic</td>
+                <td>Custom</td>
+              </tr>
+              <tr>
+                <td>Business Reviews</td>
+                <td>—</td>
+                <td>—</td>
+                <td>Quarterly</td>
+                <td>Monthly</td>
+                <td>On-demand</td>
+              </tr>
+              <tr>
+                <td>Partner Events</td>
+                <td>—</td>
+                <td>Selected</td>
+                <td>All</td>
+                <td>All + VIP</td>
+                <td>All + Exclusive</td>
+              </tr>
+              <tr>
+                <td>Custom Partnership Solutions</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>Limited</td>
+                <td><span class="check-icon">✓</span></td>
+              </tr>
+              <tr>
+                <td>Partner 121 Program</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td><span class="exclusive-label">Exclusive</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-section">
+          <div class="faq-item">
+            <div class="faq-question">How is my tier calculated?</div>
+            <div class="faq-answer">
+              <p>Your tier is calculated based on your monthly commission earnings across all commission models (Revenue Share, Turnover, and CPA). Once you reach a threshold, you'll be automatically upgraded to the corresponding tier.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">Can I be downgraded to a lower tier?</div>
+            <div class="faq-answer">
+              <p>Yes, if your commission earnings fall below the threshold for your current tier for three consecutive months, your tier may be adjusted accordingly. However, we provide a grace period and notification before any downgrades occur.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">How do commission multipliers work?</div>
+            <div class="faq-answer">
+              <p>Commission multipliers increase your base commission rates by a percentage. For example, as a Gold Partner with a 110% multiplier, if the standard commission for a specific trading product is $10, you would earn $11 (10% more) for the same client activity.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">What is the Partner 121 program?</div>
+            <div class="faq-answer">
+              <p>The Partner 121 program is an exclusive mentorship opportunity available only to VIP partners. It pairs you with a senior partner manager who provides personalized guidance, strategy development, and business planning to maximize your success as a partner.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">How can I reach the VIP tier?</div>
+            <div class="faq-answer">
+              <p>The VIP tier is by invitation only and considers factors beyond just commission levels, including long-term partnership commitment, business alignment, and strategic growth potential. Consistently high performance at the Platinum tier is typically a prerequisite for VIP consideration.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2>Tips for Advancing Through Tiers</h2>
+        
+        <ol>
+          <li><strong>Focus on client quality</strong> - Clients who are active traders generate more commissions than inactive ones</li>
+          <li><strong>Diversify your marketing channels</strong> - Utilize multiple platforms to reach potential clients</li>
+          <li><strong>Leverage the Partner Academy</strong> - Learn advanced strategies to optimize your conversions</li>
+          <li><strong>Utilize all available marketing materials</strong> - Take advantage of the resources provided for each tier</li>
+          <li><strong>Consider the Master Partner Program</strong> - Earning from sub-partners can help boost your commission totals</li>
+        </ol>
+        
+        <div class="callout tip">
+          <strong>Pro Tip:</strong> Use our <a href="help-center-commission-calculator.html" onclick="window.location.href='help-center-commission-calculator.html'; return false;">Commission Calculator</a> to estimate how many clients you need to reach your desired tier.
+        </div>
+
+        <div class="callout">
+          <strong>Have questions about tiers?</strong> Contact our partner support team for personalized assistance and guidance on advancing to higher tiers.
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 
