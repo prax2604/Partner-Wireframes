@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Management | Partner Help Centre | Deriv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f7fa;
+    }
+    a {
+      color: #ff444f;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    /* Header styles */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 0;
+    }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0e2140;
+    }
+    .logo span {
+      color: #ff444f;
+    }
+    .right-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    .language-selector::before {
+      content: "🌐";
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+    }
+    .primary-button {
+      background-color: #ff444f;
+      color: white;
+    }
+    .primary-button:hover {
+      background-color: #e03e47;
+    }
+    .secondary-button {
+      background-color: transparent;
+      color: #0e2140;
+      border: 1px solid #0e2140;
+    }
+    .secondary-button:hover {
+      background-color: #f0f0f0;
+    }
+    
+    /* Breadcrumb styles */
+    .breadcrumb {
+      padding: 1rem 0;
+      font-size: 0.875rem;
+      color: #666;
+    }
+    .breadcrumb a {
+      color: #666;
+    }
+    .breadcrumb a:hover {
+      color: #ff444f;
+    }
+    
+    /* Main content styles */
+    .category-container {
+      padding: 2rem 0 4rem;
+    }
+    .category-header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .category-header h1 {
+      font-size: 2.5rem;
+      color: #0e2140;
+      margin-bottom: 1rem;
+    }
+    .category-header p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #666;
+    }
+    
+    /* Cards grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    .article-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .article-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .card-image {
+      height: 160px;
+      background-color: #f0f7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-image span {
+      font-size: 2.5rem;
+    }
+    .card-content {
+      padding: 1.5rem;
+    }
+    .card-content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.75rem;
+    }
+    .card-content p {
+      color: #666;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .card-action-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .card-action-link::after {
+      content: "→";
+    }
+    
+    /* Quick actions section */
+    .quick-actions {
+      margin-top: 4rem;
+    }
+    .quick-actions h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #0e2140;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .action-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .action-card:hover {
+      transform: translateY(-5px);
+    }
+    .action-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #f0f7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .action-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .action-card p {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    
+    /* FAQ section */
+    .faq-section {
+      margin-top: 4rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 2rem;
+    }
+    .faq-section h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #0e2140;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid #eee;
+      padding: 1.5rem 0;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-question {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-question::after {
+      content: "+";
+      font-size: 1.5rem;
+      color: #ff444f;
+    }
+    .faq-question.active::after {
+      content: "-";
+    }
+    .faq-answer {
+      display: none;
+      color: #666;
+      font-size: 0.95rem;
+      padding-bottom: 0.5rem;
+    }
+    .faq-answer p {
+      margin-bottom: 1rem;
+    }
+    .faq-answer p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* Contact section */
+    .contact-section {
+      margin-top: 4rem;
+      background-color: #0e2140;
+      color: white;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .contact-section h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .contact-section p {
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      opacity: 0.9;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .actions-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+      .category-header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="help-center-landing.html" class="logo" onclick="window.location.href='help-center-landing.html'; return false;"><span>deriv</span>Partners</a>
+      <div class="right-nav">
+        <div class="language-selector">EN</div>
+        <button class="btn secondary-button" onclick="alert('Login functionality would be implemented here'); return false;">Log in</button>
+        <button class="btn primary-button" onclick="alert('Signup functionality would be implemented here'); return false;">Sign up</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="help-center-landing.html" onclick="window.location.href='help-center-landing.html'; return false;">Home</a> > Account Management
+    </div>
+  </div>
+
+  <main class="container category-container">
+    <div class="category-header">
+      <h1>Account Management</h1>
+      <p>Manage your partner account settings, security options, and profile information to ensure your partnership runs smoothly.</p>
+    </div>
+
+    <div class="cards-grid">
+      <article class="article-card">
+        <div class="card-image">
+          <span>⚙️</span>
+        </div>
+        <div class="card-content">
+          <h3>Account Settings</h3>
+          <p>Manage your account preferences, notification settings, and communication preferences for your partner dashboard.</p>
+          <div class="card-actions">
+            <a href="#" class="card-action-link" onclick="alert('Account preferences article would be displayed here'); return false;">Update account preferences</a>
+            <a href="#" class="card-action-link" onclick="alert('Notification settings article would be displayed here'); return false;">Manage notifications</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <div class="card-image">
+          <span>🛡️</span>
+        </div>
+        <div class="card-content">
+          <h3>Security Center</h3>
+          <p>Protect your partner account with two-factor authentication, secure password management, and login activity monitoring.</p>
+          <div class="card-actions">
+            <a href="#" class="card-action-link" onclick="alert('Two-factor authentication article would be displayed here'); return false;">Set up 2FA</a>
+            <a href="#" class="card-action-link" onclick="alert('Password security article would be displayed here'); return false;">Password security</a>
+            <a href="#" class="card-action-link" onclick="alert('Login activity article would be displayed here'); return false;">View login activity</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <div class="card-image">
+          <span>👤</span>
+        </div>
+        <div class="card-content">
+          <h3>Profile Information</h3>
+          <p>Manage your personal and business details, contact information, and profile visibility settings.</p>
+          <div class="card-actions">
+            <a href="#" class="card-action-link" onclick="alert('Update personal information article would be displayed here'); return false;">Update personal info</a>
+            <a href="#" class="card-action-link" onclick="alert('Business details article would be displayed here'); return false;">Manage business details</a>
+            <a href="#" class="card-action-link" onclick="alert('Profile visibility article would be displayed here'); return false;">Profile visibility</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <div class="card-image">
+          <span>💳</span>
+        </div>
+        <div class="card-content">
+          <h3>Payment Information</h3>
+          <p>Set up and manage your payment methods, withdrawal preferences, and tax information for commission payouts.</p>
+          <div class="card-actions">
+            <a href="#" class="card-action-link" onclick="alert('Payment methods article would be displayed here'); return false;">Manage payment methods</a>
+            <a href="#" class="card-action-link" onclick="alert('Tax information article would be displayed here'); return false;">Update tax info</a>
+            <a href="#" class="card-action-link" onclick="alert('Commission thresholds article would be displayed here'); return false;">Commission thresholds</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <div class="card-image">
+          <span>📝</span>
+        </div>
+        <div class="card-content">
+          <h3>Partner Agreement</h3>
+          <p>Review your partnership agreement, commission terms, and related legal documents.</p>
+          <div class="card-actions">
+            <a href="#" class="card-action-link" onclick="alert('Partner agreement article would be displayed here'); return false;">View agreement</a>
+            <a href="#" class="card-action-link" onclick="alert('Commission terms article would be displayed here'); return false;">Commission terms</a>
+            <a href="#" class="card-action-link" onclick="alert('Legal updates article would be displayed here'); return false;">Legal updates</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <div class="card-image">
+          <span>📊</span>
+        </div>
+        <div class="card-content">
+          <h3>Account Performance</h3>
+          <p>Access your partnership performance metrics, tier status, and program benefits.</p>
+          <div class="card-actions">
+            <a href="#" class="card-action-link" onclick="alert('Performance metrics article would be displayed here'); return false;">View performance metrics</a>
+            <a href="#" class="card-action-link" onclick="alert('Tier status article would be displayed here'); return false;">Check tier status</a>
+            <a href="#" class="card-action-link" onclick="alert('Program benefits article would be displayed here'); return false;">Program benefits</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <section class="quick-actions">
+      <h2>Quick Actions</h2>
+      <div class="actions-grid">
+        <div class="action-card">
+          <div class="action-icon">🔐</div>
+          <h3>Change Password</h3>
+          <p>Update your account password for enhanced security.</p>
+          <a href="#" class="btn primary-button" onclick="alert('Change password functionality would be displayed here'); return false;">Change Password</a>
+        </div>
+
+        <div class="action-card">
+          <div class="action-icon">📱</div>
+          <h3>Enable 2FA</h3>
+          <p>Add an extra layer of security to protect your account.</p>
+          <a href="#" class="btn primary-button" onclick="alert('Enable 2FA functionality would be displayed here'); return false;">Set Up 2FA</a>
+        </div>
+
+        <div class="action-card">
+          <div class="action-icon">💰</div>
+          <h3>Update Payment Info</h3>
+          <p>Update your payment details for commission payouts.</p>
+          <a href="#" class="btn primary-button" onclick="alert('Update payment info functionality would be displayed here'); return false;">Update Payment</a>
+        </div>
+
+        <div class="action-card">
+          <div class="action-icon">✉️</div>
+          <h3>Communication Preferences</h3>
+          <p>Manage your email and notification preferences.</p>
+          <a href="#" class="btn primary-button" onclick="alert('Communication preferences functionality would be displayed here'); return false;">Manage Preferences</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">How do I update my contact information?</div>
+          <div class="faq-answer">
+            <p>To update your contact information:</p>
+            <p>1. Log in to your Deriv Partners dashboard<br>
+              2. Click on your profile picture in the top-right corner<br>
+              3. Select "Profile Settings" from the dropdown menu<br>
+              4. Navigate to the "Contact Information" section<br>
+              5. Update your email, phone number, or address as needed<br>
+              6. Click "Save Changes" to apply your updates</p>
+            <p>Note: Changing your email address will require verification of the new email.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What should I do if I forget my password?</div>
+          <div class="faq-answer">
+            <p>If you forget your password, you can easily reset it by following these steps:</p>
+            <p>1. Go to the Deriv Partners login page<br>
+              2. Click on the "Forgot password?" link below the login button<br>
+              3. Enter the email address associated with your account<br>
+              4. Check your email for a password reset link<br>
+              5. Click the link and follow the instructions to create a new password</p>
+            <p>For security reasons, password reset links expire after 24 hours. If you don't receive the email, check your spam folder or contact partner support for assistance.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do I set up two-factor authentication (2FA)?</div>
+          <div class="faq-answer">
+            <p>Setting up 2FA adds an extra layer of security to your account. Here's how to enable it:</p>
+            <p>1. Log in to your Deriv Partners dashboard<br>
+              2. Go to "Account Settings" > "Security"<br>
+              3. Click "Enable" next to Two-Factor Authentication<br>
+              4. Download an authenticator app (like Google Authenticator or Authy) if you don't have one<br>
+              5. Scan the QR code displayed on the screen with your authenticator app<br>
+              6. Enter the 6-digit code from your authenticator app to verify setup<br>
+              7. Save your backup codes in a secure location</p>
+            <p>Once enabled, you'll need to enter a code from your authenticator app each time you log in, in addition to your password.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How can I change my commission payment method?</div>
+          <div class="faq-answer">
+            <p>To update your commission payment method:</p>
+            <p>1. Log in to your Deriv Partners dashboard<br>
+              2. Navigate to "Account Settings" > "Payment Information"<br>
+              3. Click "Edit Payment Method"<br>
+              4. Select your preferred payment method from the available options<br>
+              5. Enter the required payment details<br>
+              6. Click "Save Changes"</p>
+            <p>Note: Changes to payment methods may take up to 24 hours to be processed. If you're updating your payment method close to a payment date, the change might only apply to future payments.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Can I have multiple users on my partner account?</div>
+          <div class="faq-answer">
+            <p>Yes, if you have a business partner account, you can add multiple users with different permission levels. To add users:</p>
+            <p>1. Log in to your Deriv Partners dashboard<br>
+              2. Go to "Account Settings" > "User Management"<br>
+              3. Click "Add New User"<br>
+              4. Enter the user's email address and set their permission level<br>
+              5. Click "Send Invitation"</p>
+            <p>The invited user will receive an email with instructions to create their own login credentials. As the account owner, you can modify or revoke access for any user at any time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <h2>Need Additional Help?</h2>
+      <p>Our partner support team is available to assist you with any account management questions or concerns.</p>
+      <a href="#" class="btn primary-button" onclick="alert('Contact form would be displayed here'); return false;">Contact Partner Support</a>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // FAQ accordion functionality
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+          this.classList.toggle('active');
+          const answer = this.nextElementSibling;
+          if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+          } else {
+            answer.style.display = 'block';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html> 

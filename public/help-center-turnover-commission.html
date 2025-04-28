@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turnover Commission - Deriv Partner Help Centre</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f5f7fa;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #ff444f;
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: #d33a40;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .logo img {
+            height: 30px;
+        }
+        
+        /* Breadcrumb styles */
+        .breadcrumb {
+            background-color: white;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+        
+        .breadcrumb ul {
+            list-style: none;
+            display: flex;
+        }
+        
+        .breadcrumb li {
+            margin-right: 10px;
+        }
+        
+        .breadcrumb li:after {
+            content: '›';
+            margin-left: 10px;
+            color: #999;
+        }
+        
+        .breadcrumb li:last-child:after {
+            content: '';
+        }
+        
+        .breadcrumb li:last-child a {
+            color: #666;
+            pointer-events: none;
+        }
+        
+        /* Main content styles */
+        .main-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+        
+        /* Sidebar styles */
+        .sidebar {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 20px;
+            align-self: start;
+            position: sticky;
+            top: 90px;
+        }
+        
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin-bottom: 8px;
+        }
+        
+        .sidebar li a {
+            display: block;
+            padding: 8px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .sidebar li a:hover {
+            background-color: #f5f7fa;
+        }
+        
+        .sidebar li a.active {
+            background-color: #ff444f;
+            color: white;
+        }
+        
+        /* Article styles */
+        .article {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+        
+        .article h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .article h2 {
+            font-size: 22px;
+            margin: 30px 0 15px;
+            color: #444;
+        }
+        
+        .article h3 {
+            font-size: 18px;
+            margin: 25px 0 10px;
+            color: #555;
+        }
+        
+        .article p {
+            margin-bottom: 15px;
+        }
+        
+        .article ul, .article ol {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .article li {
+            margin-bottom: 8px;
+        }
+        
+        /* Callout boxes */
+        .callout {
+            border-left: 4px solid #ff444f;
+            background-color: #fff8f8;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .callout.tip {
+            border-left-color: #4caf50;
+            background-color: #f8fff8;
+        }
+        
+        .callout.note {
+            border-left-color: #2196f3;
+            background-color: #f8fbff;
+        }
+        
+        /* Feature cards */
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .feature-card p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        th {
+            background-color: #f5f7fa;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+        
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        /* Example box */
+        .example {
+            background-color: #f8f8f8;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .example h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        /* Commission rate tables */
+        .rate-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        .rate-table th {
+            background-color: #f5f7fa;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .rate-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .rate-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        /* Next steps box */
+        .next-steps {
+            background-color: #f5f7fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .next-steps h4 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ff444f;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #d33a40;
+            color: white;
+        }
+        
+        .primary-button {
+            background-color: #ff444f;
+            color: white;
+        }
+        
+        .secondary-button {
+            background-color: #f5f7fa;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: relative;
+                top: 0;
+                margin-bottom: 20px;
+            }
+            
+            .feature-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="help-center-landing.html" class="logo" onclick="window.location.href='help-center-landing.html'; return false;">
+                    <img src="https://deriv.com/static/1677755bfe5931091c2e3ca0a1d6f68c/2bef9/logo.webp" alt="Deriv">
+                </a>
+                <div>
+                    <!-- Navigation could go here -->
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Breadcrumb navigation -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="help-center-landing.html" onclick="window.location.href='help-center-landing.html'; return false;">Help Centre</a></li>
+                <li><a href="help-center-category-earning.html" onclick="window.location.href='help-center-category-earning.html'; return false;">Earning Models</a></li>
+                <li><a href="#">Turnover Commission</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Main content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Sidebar navigation -->
+            <aside class="sidebar">
+                <h2>Earnings Topics</h2>
+                <ul>
+                    <li><a href="help-center-earnings.html" onclick="window.location.href='help-center-earnings.html'; return false;">Commission Models Overview</a></li>
+                    <li><a href="help-center-turnover-commission.html" onclick="window.location.href='help-center-turnover-commission.html'; return false;" class="active">Turnover Commission</a></li>
+                    <li><a href="help-center-revenue-share.html" onclick="window.location.href='help-center-revenue-share.html'; return false;">Revenue Share</a></li>
+                    <li><a href="help-center-cpa.html" onclick="window.location.href='help-center-cpa.html'; return false;">CPA Model</a></li>
+                    <li><a href="help-center-calculator.html" onclick="window.location.href='help-center-calculator.html'; return false;">Commission Calculator</a></li>
+                    <li><a href="help-center-payment-schedule.html" onclick="window.location.href='help-center-payment-schedule.html'; return false;">Payment Schedule</a></li>
+                </ul>
+                
+                <h2 style="margin-top: 30px;">Related Topics</h2>
+                <ul>
+                    <li><a href="help-center-partnership-types.html" onclick="window.location.href='help-center-partnership-types.html'; return false;">Business Strategies</a></li>
+                    <li><a href="help-center-tier-system.html" onclick="window.location.href='help-center-tier-system.html'; return false;">Partner Tier System</a></li>
+                    <li><a href="help-center-reporting.html" onclick="window.location.href='help-center-reporting.html'; return false;">Earnings Reports</a></li>
+                </ul>
+            </aside>
+            
+            <!-- Article content -->
+            <article class="article">
+                <h1>Turnover Commission Model</h1>
+                
+                <p>The Turnover Commission model is a popular commission structure that rewards you based on the volume (turnover) of trades placed by your clients, rather than on Deriv's revenue from those trades. This model offers consistent and predictable earnings, making it ideal for partners who bring high trading volumes.</p>
+                
+                <div class="callout">
+                    <strong>Important:</strong> Turnover Commission applies to both CFD and derivatives products, giving you broader earning potential across the full range of Deriv's trading offerings.
+                </div>
+                
+                <h2>Key Benefits of Turnover Commission</h2>
+                
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <h3>Predictable Earnings</h3>
+                        <p>Earn a fixed percentage of all trading volume from your referred clients, regardless of whether those trades result in profits or losses for Deriv.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>Wide Product Coverage</h3>
+                        <p>Earn commissions on both CFD trading (MT5, Deriv X, cTrader) and derivatives trading (DTrader, Deriv GO, SmartTrader).</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>Volume-Based Rewards</h3>
+                        <p>The more your clients trade, the more you earn, making this model ideal for partners who focus on high-volume traders.</p>
+                    </div>
+                </div>
+                
+                <h2>How Turnover Commission Works</h2>
+                
+                <p>With the Turnover Commission model, you earn a fixed percentage of the total volume traded by your referred clients. Here's a simplified overview of how it works:</p>
+                
+                <ol>
+                    <li>You refer clients to Deriv through your affiliate links</li>
+                    <li>Clients register and start trading on Deriv platforms</li>
+                    <li>You earn a commission based on the total volume traded by your clients</li>
+                    <li>Commission rates vary based on your partner tier and the product type</li>
+                </ol>
+                
+                <div class="callout note">
+                    <strong>Note:</strong> Turnover Commission is calculated on the volume of trades, not on the deposits or withdrawals made by clients.
+                </div>
+                
+                <h2>Commission Rates</h2>
+                
+                <p>Commission rates vary by product type and are structured to reflect the typical spreads and trading patterns for each instrument. Below are the standard rates for different product categories:</p>
+                
+                <h3>CFD Products</h3>
+                
+                <table class="rate-table">
+                    <tr>
+                        <th>Product Type</th>
+                        <th>Standard Rate</th>
+                        <th>Silver Tier</th>
+                        <th>Gold Tier</th>
+                        <th>Diamond Tier</th>
+                    </tr>
+                    <tr>
+                        <td>Forex (Major pairs)</td>
+                        <td>0.5 pips</td>
+                        <td>0.7 pips</td>
+                        <td>0.9 pips</td>
+                        <td>1.2 pips</td>
+                    </tr>
+                    <tr>
+                        <td>Forex (Minor pairs)</td>
+                        <td>0.7 pips</td>
+                        <td>0.9 pips</td>
+                        <td>1.1 pips</td>
+                        <td>1.4 pips</td>
+                    </tr>
+                    <tr>
+                        <td>Cryptocurrencies</td>
+                        <td>0.3%</td>
+                        <td>0.4%</td>
+                        <td>0.5%</td>
+                        <td>0.6%</td>
+                    </tr>
+                    <tr>
+                        <td>Commodities</td>
+                        <td>0.3 pips</td>
+                        <td>0.4 pips</td>
+                        <td>0.5 pips</td>
+                        <td>0.6 pips</td>
+                    </tr>
+                    <tr>
+                        <td>Stock Indices</td>
+                        <td>0.2 pips</td>
+                        <td>0.3 pips</td>
+                        <td>0.4 pips</td>
+                        <td>0.5 pips</td>
+                    </tr>
+                </table>
+                
+                <h3>Derivatives Products</h3>
+                
+                <table class="rate-table">
+                    <tr>
+                        <th>Product Type</th>
+                        <th>Standard Rate</th>
+                        <th>Silver Tier</th>
+                        <th>Gold Tier</th>
+                        <th>Diamond Tier</th>
+                    </tr>
+                    <tr>
+                        <td>Up/Down</td>
+                        <td>0.4%</td>
+                        <td>0.5%</td>
+                        <td>0.6%</td>
+                        <td>0.7%</td>
+                    </tr>
+                    <tr>
+                        <td>Touch/No Touch</td>
+                        <td>0.4%</td>
+                        <td>0.5%</td>
+                        <td>0.6%</td>
+                        <td>0.7%</td>
+                    </tr>
+                    <tr>
+                        <td>In/Out</td>
+                        <td>0.4%</td>
+                        <td>0.5%</td>
+                        <td>0.6%</td>
+                        <td>0.7%</td>
+                    </tr>
+                    <tr>
+                        <td>Multipliers</td>
+                        <td>0.6%</td>
+                        <td>0.7%</td>
+                        <td>0.8%</td>
+                        <td>0.9%</td>
+                    </tr>
+                </table>
+                
+                <div class="callout tip">
+                    <strong>Pro Tip:</strong> To maximize your earnings, focus on promoting products with higher commission rates to traders who are likely to maintain higher trading volumes.
+                </div>
+                
+                <h2>Calculation Examples</h2>
+                
+                <div class="example">
+                    <h3>Example 1: Forex Trading</h3>
+                    <p><strong>Scenario:</strong> Your clients trade 300 lots of EUR/USD (a major forex pair) in a month, and you're on the Gold tier with a rate of 0.9 pips.</p>
+                    <p><strong>Calculation:</strong></p>
+                    <ul>
+                        <li>300 lots × 100,000 units = $30,000,000 volume</li>
+                        <li>$30,000,000 × 0.9 pips (0.00009) = $2,700</li>
+                    </ul>
+                    <p>Your commission for that month would be $2,700.</p>
+                </div>
+                
+                <div class="example">
+                    <h3>Example 2: Cryptocurrency Trading</h3>
+                    <p><strong>Scenario:</strong> Your clients trade $500,000 volume of Bitcoin CFDs in a month, and you're on the Standard tier with a rate of 0.3%.</p>
+                    <p><strong>Calculation:</strong></p>
+                    <ul>
+                        <li>$500,000 × 0.3% = $1,500</li>
+                    </ul>
+                    <p>Your commission for that month would be $1,500.</p>
+                </div>
+                
+                <div class="example">
+                    <h3>Example 3: Derivatives Trading</h3>
+                    <p><strong>Scenario:</strong> Your clients place $200,000 in multiplier trades in a month, and you're on the Silver tier with a rate of 0.7%.</p>
+                    <p><strong>Calculation:</strong></p>
+                    <ul>
+                        <li>$200,000 × 0.7% = $1,400</li>
+                    </ul>
+                    <p>Your commission for that month would be $1,400.</p>
+                </div>
+                
+                <h2>Partner Tier System</h2>
+                
+                <p>Our partner tier system rewards your success with higher commission rates as you grow. Tiers are determined by the combined trading volume of all your referred clients:</p>
+                
+                <table class="rate-table">
+                    <tr>
+                        <th>Tier</th>
+                        <th>Monthly Volume Requirement</th>
+                        <th>Rate Multiplier</th>
+                    </tr>
+                    <tr>
+                        <td>Standard</td>
+                        <td>No minimum</td>
+                        <td>Base rates</td>
+                    </tr>
+                    <tr>
+                        <td>Silver</td>
+                        <td>$500,000+</td>
+                        <td>20-30% higher than Standard</td>
+                    </tr>
+                    <tr>
+                        <td>Gold</td>
+                        <td>$2,000,000+</td>
+                        <td>40-50% higher than Standard</td>
+                    </tr>
+                    <tr>
+                        <td>Diamond</td>
+                        <td>$5,000,000+</td>
+                        <td>60-80% higher than Standard</td>
+                    </tr>
+                </table>
+                
+                <p>For more details about our tier system, visit our <a href="help-center-tier-system.html" onclick="window.location.href='help-center-tier-system.html'; return false;">Partner Tier System</a> page.</p>
+                
+                <h2>Comparison with Other Models</h2>
+                
+                <p>Different commission models suit different partner strategies and client types:</p>
+                
+                <h3>Turnover vs. Revenue Share</h3>
+                <ul>
+                    <li><strong>Turnover:</strong> Based on trading volume regardless of outcomes; more stable earnings.</li>
+                    <li><strong>Revenue Share:</strong> Based on company revenue; potentially higher earnings with derivatives traders.</li>
+                </ul>
+                
+                <h3>Turnover vs. CPA</h3>
+                <ul>
+                    <li><strong>Turnover:</strong> Ongoing commissions based on trading volume; unlimited earning potential.</li>
+                    <li><strong>CPA:</strong> One-time payment for client acquisition; simpler but limited earning potential.</li>
+                </ul>
+                
+                <div class="next-steps">
+                    <h4>Ready to maximize your earnings?</h4>
+                    <p>Use our commission calculator to estimate your potential earnings under different commission models based on your client profile.</p>
+                    <div class="buttons">
+                        <a href="help-center-calculator.html" class="btn primary-button" onclick="window.location.href='help-center-calculator.html'; return false;">Try the commission calculator</a>
+                        <a href="help-center-earnings.html" class="btn secondary-button" onclick="window.location.href='help-center-earnings.html'; return false;">Compare all models</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</body>
+</html> 

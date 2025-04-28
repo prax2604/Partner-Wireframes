@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Help Centre | Deriv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f7fa;
+    }
+    a {
+      color: #ff444f;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .center-align {
+      text-align: center;
+    }
+    
+    /* Header styles */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 0;
+    }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0e2140;
+    }
+    .logo span {
+      color: #ff444f;
+    }
+    .right-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    .language-selector::before {
+      content: "🌐";
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+    }
+    .primary-button {
+      background-color: #ff444f;
+      color: white;
+    }
+    .primary-button:hover {
+      background-color: #e03e47;
+    }
+    .secondary-button {
+      background-color: transparent;
+      color: #0e2140;
+      border: 1px solid #0e2140;
+    }
+    .secondary-button:hover {
+      background-color: #f0f0f0;
+    }
+    
+    /* Breadcrumb styles */
+    .breadcrumb {
+      padding: 1rem 0;
+      font-size: 0.875rem;
+      color: #666;
+    }
+    .breadcrumb a {
+      color: #666;
+    }
+    .breadcrumb a:hover {
+      color: #ff444f;
+    }
+    
+    /* Main content styles */
+    .help-center-container {
+      padding: 2rem 0 4rem;
+    }
+    .help-center-container h1 {
+      font-size: 2.5rem;
+      color: #0e2140;
+      margin-bottom: 2rem;
+    }
+    
+    /* Search container styles */
+    .search-container {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: #ff444f;
+      box-shadow: 0 0 0 3px rgba(255,68,79,0.1);
+    }
+    .search-button {
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #ff444f;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+    
+    /* Quick links styles */
+    .quick-links {
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+    .quick-links h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .pill-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .pill {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: white;
+      border-radius: 50px;
+      font-size: 0.875rem;
+      color: #333;
+      border: 1px solid #ddd;
+      transition: all 0.3s ease;
+    }
+    .pill:hover {
+      background-color: #f0f0f0;
+      text-decoration: none;
+      border-color: #bbb;
+      transform: translateY(-2px);
+    }
+    
+    /* Categories grid styles */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .category-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: #333;
+      position: relative;
+      overflow: hidden;
+    }
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      text-decoration: none;
+    }
+    .category-card .icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: #f0f7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+    .category-card:hover .icon {
+      transform: scale(1.1);
+    }
+    .category-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .category-card p {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .coming-soon-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ffd166;
+      color: #805b00;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .view-all-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      color: #ff444f;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    .view-all-icon {
+      font-size: 1rem;
+    }
+    
+    /* Contact support styles */
+    .contact-support {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 2rem;
+    }
+    .contact-support h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 1rem;
+    }
+    .contact-support p {
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+    .support-options {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    /* Search results dropdown */
+    .search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: white;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      z-index: 10;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .search-results.active {
+      max-height: 400px;
+      border: 1px solid #ddd;
+      border-top: none;
+    }
+    .search-results ul {
+      list-style: none;
+      padding: 0;
+    }
+    .search-results li {
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    .search-results li:last-child {
+      border-bottom: none;
+    }
+    .search-results a {
+      display: block;
+      color: #333;
+    }
+    .search-results a:hover {
+      color: #ff444f;
+    }
+    .search-results .result-category {
+      font-size: 0.8rem;
+      color: #666;
+    }
+    
+    /* Footer styles */
+    footer {
+      background-color: #0e2140;
+      color: white;
+      padding: 3rem 0 1rem;
+    }
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer-column h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    .footer-column ul {
+      list-style: none;
+    }
+    .footer-column li {
+      margin-bottom: 0.5rem;
+    }
+    .footer-column a {
+      color: #ddd;
+      font-size: 0.9rem;
+    }
+    .footer-column a:hover {
+      color: #fff;
+    }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .categories-grid {
+        grid-template-columns: 1fr;
+      }
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .right-nav {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .help-center-container h1 {
+        font-size: 2rem;
+      }
+      .support-options {
+        flex-direction: column;
+      }
+    }
+    
+    /* Enhanced clickability styles */
+    .pill {
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .pill::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #ff444f;
+      transition: width 0.3s ease;
+    }
+    .pill:hover::after {
+      width: 100%;
+    }
+    
+    .category-card {
+      cursor: pointer;
+    }
+    .category-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
+      pointer-events: none;
+    }
+    .category-card:hover::before {
+      border-color: #ff444f;
+    }
+    
+    .search-button:hover {
+      background-color: #e03e47;
+      transform: translateY(-2px);
+    }
+    
+    .btn {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.3);
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
+    .btn:hover::after {
+      animation: ripple 1s ease-out;
+    }
+    @keyframes ripple {
+      0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(20, 20);
+        opacity: 0;
+      }
+    }
+    
+    .view-all-link {
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .view-all-link::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: #ff444f;
+      transition: width 0.3s ease;
+    }
+    .view-all-link:hover::after {
+      width: 100%;
+    }
+    .view-all-icon {
+      transition: transform 0.3s ease;
+    }
+    .category-card:hover .view-all-icon {
+      transform: translateX(5px);
+    }
+    
+    /* Click indicators */
+    .click-indicator {
+      display: inline-block;
+      background-color: #ffeaea;
+      color: #ff444f;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="/public/help-center-landing.html" class="logo" onclick="window.location.href='/public/help-center-landing.html'; return false;"><span>deriv</span>Partners</a>
+      <div class="right-nav">
+        <div class="language-selector">EN</div>
+        <button class="btn secondary-button" onclick="alert('Login functionality would be implemented here'); return false;">Log in</button>
+        <button class="btn primary-button" onclick="alert('Signup functionality would be implemented here'); return false;">Sign up</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/public/help-center-landing.html" onclick="window.location.href='/public/help-center-landing.html'; return false;">Home</a> > Partner Help Centre
+    </div>
+  </div>
+
+  <main class="container help-center-container">
+    <h1 class="center-align">How can we help you succeed?</h1>
+    
+    <div class="search-container">
+      <input type="search" placeholder="Search for answers..." class="search-input" id="searchInput" />
+      <button class="search-button" id="searchButton" onclick="showSearchResults(); return false;">Search ↓</button>
+      
+      <!-- Search results dropdown (initially hidden) -->
+      <div class="search-results" id="searchResults">
+        <ul>
+          <li>
+            <a href="/public/help-center-earnings.html" onclick="window.location.href='/public/help-center-earnings.html'; return false;">
+              <strong>Understanding Commission Models</strong>
+              <div class="result-category">Earning Models</div>
+            </a>
+          </li>
+          <li>
+            <a href="/public/help-center-calculator.html" onclick="window.location.href='/public/help-center-calculator.html'; return false;">
+              <strong>Commission Calculator</strong>
+              <div class="result-category">Earning Models</div>
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="alert('Creating and Managing Referral Links article would be displayed here'); return false;">
+              <strong>Creating and Managing Referral Links</strong>
+              <div class="result-category">Marketing Resources</div>
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="alert('Payment Methods and Withdrawal Options article would be displayed here'); return false;">
+              <strong>Payment Methods and Withdrawal Options</strong>
+              <div class="result-category">Payments</div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="quick-links">
+      <h3>Common searches:</h3>
+      <div class="pill-container">
+        <a href="/public/help-center-earnings.html" class="pill" onclick="window.location.href='/public/help-center-earnings.html'; return false;">Commission models <span class="click-indicator">Click</span></a>
+        <a href="/public/help-center-calculator.html" class="pill" onclick="window.location.href='/public/help-center-calculator.html'; return false;">Commission calculator <span class="click-indicator">Click</span></a>
+        <a href="#" class="pill" onclick="alert('Creating referral links article would be displayed here'); return false;">Creating referral links</a>
+        <a href="#" class="pill" onclick="alert('Payment methods article would be displayed here'); return false;">Payment methods</a>
+        <a href="#" class="pill" onclick="alert('Dashboard guide would be displayed here'); return false;">Using your dashboard</a>
+      </div>
+    </div>
+    
+    <div class="categories-grid">
+      <!-- Each category card has an icon, title, and description -->
+      <a href="/public/help-center-getting-started.html" class="category-card" onclick="window.location.href='/public/help-center-getting-started.html'; return false;">
+        <div class="icon">🚀</div>
+        <h3>Getting started <span class="click-indicator">Click</span></h3>
+        <p>Account setup, verification, and first steps</p>
+        <div class="view-all-link">View guide <span class="view-all-icon">→</span></div>
+      </a>
+      
+      <a href="/public/help-center-earnings.html" class="category-card" onclick="window.location.href='/public/help-center-earnings.html'; return false;">
+        <div class="icon">💰</div>
+        <h3>Earning models <span class="click-indicator">Click</span></h3>
+        <p>Revenue share, turnover, and CPA plans explained</p>
+        <div class="view-all-link">View articles <span class="view-all-icon">→</span></div>
+      </a>
+      
+      <a href="/public/help-center-account-management.html" class="category-card" onclick="window.location.href='/public/help-center-account-management.html'; return false;">
+        <div class="icon">👤</div>
+        <h3>Account management <span class="click-indicator">Click</span></h3>
+        <p>Settings, security, and profile information</p>
+        <div class="view-all-link">View articles <span class="view-all-icon">→</span></div>
+      </a>
+      
+      <a href="/public/help-center-client-management.html" class="category-card" onclick="window.location.href='/public/help-center-client-management.html'; return false;">
+        <div class="icon">👥</div>
+        <h3>Client management <span class="click-indicator">Click</span></h3>
+        <p>Tracking referrals and monitoring performance</p>
+        <div class="view-all-link">View articles <span class="view-all-icon">→</span></div>
+      </a>
+      
+      <a href="/public/help-center-marketing-tools.html" class="category-card" onclick="window.location.href='/public/help-center-marketing-tools.html'; return false;">
+        <div class="icon">📈</div>
+        <h3>Marketing resources <span class="click-indicator">Click</span></h3>
+        <p>Tools, assets, and promotional materials</p>
+        <div class="view-all-link">View resources <span class="view-all-icon">→</span></div>
+      </a>
+      
+      <a href="#" class="category-card" onclick="alert('Payments section would be displayed here'); return false;">
+        <div class="coming-soon-badge">Coming Soon</div>
+        <div class="icon">💸</div>
+        <h3>Payments</h3>
+        <p>Withdrawals, payment methods, and schedules</p>
+        <div class="view-all-link">View guides <span class="view-all-icon">→</span></div>
+      </a>
+      
+      <a href="#" class="category-card" onclick="alert('Technical Integration section would be displayed here'); return false;">
+        <div class="coming-soon-badge">Coming Soon</div>
+        <div class="icon">⚙️</div>
+        <h3>Technical integration</h3>
+        <p>API documentation, tools, and development guides</p>
+        <div class="view-all-link">View documentation <span class="view-all-icon">→</span></div>
+      </a>
+      
+      <a href="#" class="category-card" onclick="alert('Compliance & Guidelines section would be displayed here'); return false;">
+        <div class="coming-soon-badge">Coming Soon</div>
+        <div class="icon">📋</div>
+        <h3>Compliance & guidelines</h3>
+        <p>Regulatory requirements and marketing rules</p>
+        <div class="view-all-link">View guidelines <span class="view-all-icon">→</span></div>
+      </a>
+    </div>
+    
+    <div class="contact-support">
+      <h3>Can't find what you're looking for?</h3>
+      <p>Our partner success team is here to help you grow your business.</p>
+      <div class="support-options">
+        <button class="btn primary-button" onclick="alert('Contact form would be displayed here')">Contact support</button>
+        <button class="btn secondary-button" onclick="alert('Live chat would be initiated here')">Start live chat</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-column">
+          <h4>Partners</h4>
+          <ul>
+            <li><a href="#">Partner programs</a></li>
+            <li><a href="#">Success stories</a></li>
+            <li><a href="#">Affiliate vs IB</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Marketing tools</a></li>
+            <li><a href="#">API documentation</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Webinars</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Terms & conditions</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2023 Deriv | All rights reserved</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Enhanced interactivity for search functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById('searchInput');
+      const searchButton = document.getElementById('searchButton');
+      const searchResults = document.getElementById('searchResults');
+      
+      // Function to show search results
+      function showResults() {
+        const query = searchInput.value.trim().toLowerCase();
+        if (query.length > 0) {
+          searchResults.classList.add('active');
+          
+          // In a real implementation, this would filter results based on the query
+          // For now, we'll just show all mock results
+          
+          // Highlight the query in results (simple implementation)
+          const resultItems = searchResults.querySelectorAll('strong');
+          resultItems.forEach(item => {
+            const text = item.innerText;
+            if (text.toLowerCase().includes(query)) {
+              const regex = new RegExp(`(${query})`, 'gi');
+              item.innerHTML = text.replace(regex, '<mark>$1</mark>');
+            }
+          });
+        } else {
+          searchResults.classList.remove('active');
+        }
+      }
+      
+      // Make the function available globally
+      window.showSearchResults = function() {
+        searchResults.classList.add('active');
+        
+        // Even if no query, show all results
+        const query = searchInput.value.trim().toLowerCase();
+        const resultItems = searchResults.querySelectorAll('strong');
+        
+        if (query.length > 0) {
+          resultItems.forEach(item => {
+            const text = item.innerText;
+            if (text.toLowerCase().includes(query)) {
+              const regex = new RegExp(`(${query})`, 'gi');
+              item.innerHTML = text.replace(regex, '<mark>$1</mark>');
+            }
+          });
+        }
+        
+        return false;
+      };
+      
+      // Show results on button click
+      searchButton.addEventListener('click', showResults);
+      
+      // Show results when pressing Enter in the search input
+      searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          showResults();
+        }
+      });
+      
+      // Hide results when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!searchInput.contains(e.target) && !searchButton.contains(e.target) && !searchResults.contains(e.target)) {
+          searchResults.classList.remove('active');
+        }
+      });
+      
+      // Add hover effects to category cards for better interactivity
+      const categoryCards = document.querySelectorAll('.category-card');
+      categoryCards.forEach(card => {
+        const icon = card.querySelector('.icon');
+        const viewAllLink = card.querySelector('.view-all-link');
+        
+        card.addEventListener('mouseenter', function() {
+          icon.style.transform = 'scale(1.1)';
+          viewAllLink.style.textDecoration = 'underline';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          icon.style.transform = 'scale(1)';
+          viewAllLink.style.textDecoration = 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html> 

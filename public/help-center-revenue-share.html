@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revenue Share - Deriv Partner Help Centre</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    
+    body {
+      color: #333;
+      line-height: 1.6;
+      background-color: #f5f7fa;
+    }
+    
+    a {
+      text-decoration: none;
+      color: #ff444f;
+      transition: color 0.3s;
+    }
+    
+    a:hover {
+      color: #d33a40;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header styles */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+      color: #333;
+    }
+    
+    .logo img {
+      height: 30px;
+    }
+    
+    /* Breadcrumb styles */
+    .breadcrumb {
+      background-color: white;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 30px;
+    }
+    
+    .breadcrumb ul {
+      list-style: none;
+      display: flex;
+    }
+    
+    .breadcrumb li {
+      margin-right: 10px;
+    }
+    
+    .breadcrumb li:after {
+      content: '›';
+      margin-left: 10px;
+      color: #999;
+    }
+    
+    .breadcrumb li:last-child:after {
+      content: '';
+    }
+    
+    .breadcrumb li:last-child a {
+      color: #666;
+      pointer-events: none;
+    }
+    
+    /* Main content styles */
+    .main-content {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 30px;
+    }
+    
+    /* Sidebar styles */
+    .sidebar {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding: 20px;
+      align-self: start;
+      position: sticky;
+      top: 90px;
+    }
+    
+    .sidebar h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    
+    .sidebar ul {
+      list-style: none;
+    }
+    
+    .sidebar li {
+      margin-bottom: 8px;
+    }
+    
+    .sidebar li a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .sidebar li a:hover {
+      background-color: #f5f7fa;
+    }
+    
+    .sidebar li a.active {
+      background-color: #ff444f;
+      color: white;
+    }
+    
+    /* Article styles */
+    .article {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding: 30px;
+    }
+    
+    .article h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    .article h2 {
+      font-size: 22px;
+      margin: 30px 0 15px;
+      color: #444;
+    }
+    
+    .article h3 {
+      font-size: 18px;
+      margin: 25px 0 10px;
+      color: #555;
+    }
+    
+    .article p {
+      margin-bottom: 15px;
+    }
+    
+    .article ul, .article ol {
+      margin: 15px 0;
+      padding-left: 20px;
+    }
+    
+    .article li {
+      margin-bottom: 8px;
+    }
+    
+    /* Callout boxes */
+    .callout {
+      border-left: 4px solid #ff444f;
+      background-color: #fff8f8;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .callout.tip {
+      border-left-color: #4caf50;
+      background-color: #f8fff8;
+    }
+    
+    .callout.note {
+      border-left-color: #2196f3;
+      background-color: #f8fbff;
+    }
+    
+    /* Feature cards */
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+    
+    .feature-card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      border: 1px solid #eee;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .feature-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    .feature-card p {
+      font-size: 14px;
+      color: #666;
+    }
+    
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    
+    th {
+      background-color: #f5f7fa;
+      padding: 12px 15px;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 2px solid #ddd;
+    }
+    
+    td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #ddd;
+      vertical-align: top;
+    }
+    
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+    
+    /* Example box */
+    .example {
+      background-color: #f8f8f8;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    .example h3 {
+      margin-top: 0;
+      color: #333;
+    }
+    
+    /* Commission rate tables */
+    .rate-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    
+    .rate-table th {
+      background-color: #f5f7fa;
+      padding: 12px 15px;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 2px solid #ddd;
+    }
+    
+    .rate-table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .rate-table tr:hover {
+      background-color: #f9f9f9;
+    }
+    
+    /* Next steps box */
+    .next-steps {
+      background-color: #f5f7fa;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    
+    .next-steps h4 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: #ff444f;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: #d33a40;
+      color: white;
+    }
+    
+    .primary-button {
+      background-color: #ff444f;
+      color: white;
+    }
+    
+    .secondary-button {
+      background-color: #f5f7fa;
+      color: #333;
+      border: 1px solid #ddd;
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .sidebar {
+        position: relative;
+        top: 0;
+        margin-bottom: 20px;
+      }
+      
+      .feature-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="help-center-landing.html" class="logo" onclick="window.location.href='help-center-landing.html'; return false;">
+          <img src="https://deriv.com/static/1677755bfe5931091c2e3ca0a1d6f68c/2bef9/logo.webp" alt="Deriv">
+        </a>
+        <div>
+          <!-- Navigation could go here -->
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Breadcrumb navigation -->
+  <div class="breadcrumb">
+    <div class="container">
+      <ul>
+        <li><a href="help-center-landing.html" onclick="window.location.href='help-center-landing.html'; return false;">Help Centre</a></li>
+        <li><a href="help-center-category-earning.html" onclick="window.location.href='help-center-category-earning.html'; return false;">Earning Models</a></li>
+        <li><a href="#">Revenue Share</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Main content -->
+  <div class="container">
+    <div class="main-content">
+      <!-- Sidebar navigation -->
+      <aside class="sidebar">
+        <h2>Earnings Topics</h2>
+        <ul>
+          <li><a href="help-center-earnings.html" onclick="window.location.href='help-center-earnings.html'; return false;">Commission Models Overview</a></li>
+          <li><a href="help-center-turnover-commission.html" onclick="window.location.href='help-center-turnover-commission.html'; return false;">Turnover Commission</a></li>
+          <li><a href="help-center-revenue-share.html" onclick="window.location.href='help-center-revenue-share.html'; return false;" class="active">Revenue Share</a></li>
+          <li><a href="help-center-cpa.html" onclick="window.location.href='help-center-cpa.html'; return false;">CPA Model</a></li>
+          <li><a href="help-center-commission-calculator.html" onclick="window.location.href='help-center-commission-calculator.html'; return false;">Commission Calculator</a></li>
+          <li><a href="help-center-payment-schedule.html" onclick="window.location.href='help-center-payment-schedule.html'; return false;">Payment Schedule</a></li>
+        </ul>
+        
+        <h2 style="margin-top: 30px;">Related Topics</h2>
+        <ul>
+          <li><a href="help-center-partnership-types.html" onclick="window.location.href='help-center-partnership-types.html'; return false;">Business Strategies</a></li>
+          <li><a href="help-center-tier-system.html" onclick="window.location.href='help-center-tier-system.html'; return false;">Partner Tier System</a></li>
+          <li><a href="help-center-reporting.html" onclick="window.location.href='help-center-reporting.html'; return false;">Earnings Reports</a></li>
+        </ul>
+      </aside>
+      
+      <!-- Article content -->
+      <article class="article">
+        <h1>Revenue Share Commission Model</h1>
+        
+        <p>The Revenue Share model is a powerful commission structure that aligns your earnings directly with Deriv's revenue. Under this model, you earn a percentage of the net revenue generated from your referred clients' trading activities, creating a true partnership where your success is tied to ours.</p>
+        
+        <div class="callout">
+          <strong>Important:</strong> Revenue Share provides the highest earning potential for partners whose clients generate significant profits for Deriv, particularly with options and multiplier products.
+        </div>
+        
+        <h2>Key Benefits of Revenue Share</h2>
+        
+        <div class="feature-cards">
+          <div class="feature-card">
+            <h3>Higher Earning Potential</h3>
+            <p>Earn up to 45% of the net revenue generated by your clients, which can result in significantly higher commissions compared to other models.</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3>Long-term Value</h3>
+            <p>Benefit from the lifetime value of your clients as long as they continue trading, creating a sustainable income stream.</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3>Tiered Commission Rates</h3>
+            <p>Increase your earnings with our progressive commission structure that rewards partners who bring in higher net revenue.</p>
+          </div>
+        </div>
+        
+        <h2>How Revenue Share Works</h2>
+        
+        <p>The Revenue Share model calculates your commission based on the net revenue Deriv earns from your referred clients' trading activities. Here's a simplified explanation of the process:</p>
+        
+        <ol>
+          <li>You refer clients to Deriv through your affiliate links</li>
+          <li>Clients register and start trading on Deriv platforms</li>
+          <li>Deriv calculates the net revenue generated from these clients (total revenue minus costs)</li>
+          <li>You receive a percentage of this net revenue according to your tier level</li>
+        </ol>
+        
+        <div class="callout note">
+          <strong>Note:</strong> Net revenue is calculated as the gross profit from client trading activity minus applicable costs such as payment processing fees, fraud-related chargebacks, and promotional costs.
+        </div>
+        
+        <h2>Commission Rates</h2>
+        
+        <p>Our Revenue Share commission structure operates on a tiered system based on the monthly net revenue generated by your referred clients:</p>
+        
+        <table class="rate-table">
+          <tr>
+            <th>Monthly Net Revenue</th>
+            <th>Commission Rate</th>
+            <th>Partner Tier</th>
+          </tr>
+          <tr>
+            <td>$20,000 or less</td>
+            <td>30%</td>
+            <td>Standard</td>
+          </tr>
+          <tr>
+            <td>Over $20,000</td>
+            <td>45%</td>
+            <td>Premium</td>
+          </tr>
+        </table>
+        
+        <div class="callout tip">
+          <strong>Pro Tip:</strong> Focus on attracting traders who are likely to be active on derivatives products (options and multipliers) as these typically generate higher net revenue compared to CFD products.
+        </div>
+        
+        <h2>Calculation Examples</h2>
+        
+        <div class="example">
+          <h3>Example 1: Standard Tier Partner</h3>
+          <p><strong>Scenario:</strong> In a given month, your referred clients generate a total net revenue of $15,000 for Deriv.</p>
+          <p><strong>Calculation:</strong></p>
+          <ul>
+            <li>Monthly net revenue: $15,000</li>
+            <li>Applicable commission rate: 30% (for net revenue $20,000 or less)</li>
+            <li>$15,000 × 30% = $4,500</li>
+          </ul>
+          <p>Your commission for that month would be $4,500.</p>
+        </div>
+        
+        <div class="example">
+          <h3>Example 2: Premium Tier Partner</h3>
+          <p><strong>Scenario:</strong> In a given month, your referred clients generate a total net revenue of $30,000 for Deriv.</p>
+          <p><strong>Calculation:</strong></p>
+          <ul>
+            <li>Net revenue: $30,000</li>
+            <li>Applicable commission rate: 45% (for net revenue over $20,000)</li>
+            <li>$30,000 × 45% = $13,500</li>
+          </ul>
+          <p>Your commission for that month would be $13,500.</p>
+        </div>
+        
+        <div class="example">
+          <h3>Example 3: Growing Partner</h3>
+          <p><strong>Scenario:</strong> Your business is growing, and this month your clients generate $22,000 in net revenue, pushing you into the Premium tier for the first time.</p>
+          <p><strong>Calculation:</strong></p>
+          <ul>
+            <li>Net revenue: $22,000</li>
+            <li>Applicable commission rate: 45% (for net revenue over $20,000)</li>
+            <li>$22,000 × 45% = $9,900</li>
+          </ul>
+          <p>Your commission for that month would be $9,900, compared to $6,600 (at 30%) if you had remained in the Standard tier.</p>
+        </div>
+        
+        <h2>Factors Affecting Revenue Share Earnings</h2>
+        
+        <p>Several factors can influence your earnings under the Revenue Share model:</p>
+        
+        <h3>Client Trading Behavior</h3>
+        <ul>
+          <li><strong>Trading frequency:</strong> More active clients typically generate more revenue</li>
+          <li><strong>Product selection:</strong> Different products have different profit margins for Deriv</li>
+          <li><strong>Trading success:</strong> If clients consistently win, Deriv's revenue (and your commission) decreases</li>
+        </ul>
+        
+        <h3>Market Conditions</h3>
+        <ul>
+          <li><strong>Volatility:</strong> Higher market volatility often leads to more trading activity</li>
+          <li><strong>Major economic events:</strong> Can influence trading patterns and outcomes</li>
+        </ul>
+        
+        <h3>Client Retention</h3>
+        <ul>
+          <li><strong>Long-term activity:</strong> Clients who trade for longer periods provide more consistent revenue</li>
+          <li><strong>Redepositing behavior:</strong> Clients who regularly fund their accounts tend to generate more revenue</li>
+        </ul>
+        
+        <h2>Comparison with Other Models</h2>
+        
+        <p>Different commission models suit different partner strategies and client types:</p>
+        
+        <h3>Revenue Share vs. Turnover Commission</h3>
+        <ul>
+          <li><strong>Revenue Share:</strong> Based on the profit Deriv makes from clients; potentially higher earnings but more variable.</li>
+          <li><strong>Turnover Commission:</strong> Based on trading volume regardless of outcome; more predictable but potentially lower earnings.</li>
+        </ul>
+        
+        <h3>Revenue Share vs. CPA</h3>
+        <ul>
+          <li><strong>Revenue Share:</strong> Ongoing commissions based on client activity; unlimited long-term earning potential.</li>
+          <li><strong>CPA:</strong> One-time payment per client acquisition; immediate returns but limited earning potential.</li>
+        </ul>
+        
+        <div class="next-steps">
+          <h4>Ready to maximize your earnings?</h4>
+          <p>Use our commission calculator to estimate your potential earnings under different commission models based on your client profile.</p>
+          <div class="buttons">
+            <a href="help-center-commission-calculator.html" class="btn primary-button" onclick="window.location.href='help-center-commission-calculator.html'; return false;">Try the commission calculator</a>
+            <a href="help-center-earnings.html" class="btn secondary-button" onclick="window.location.href='help-center-earnings.html'; return false;">Compare all models</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</body>
+</html> 

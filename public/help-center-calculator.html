@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commission Calculator | Partner Help Centre | Deriv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f7fa;
+    }
+    a {
+      color: #ff444f;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .center-align {
+      text-align: center;
+    }
+    
+    /* Header styles */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 0;
+    }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0e2140;
+    }
+    .logo span {
+      color: #ff444f;
+    }
+    .right-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    .language-selector::before {
+      content: "🌐";
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+    }
+    .primary-button {
+      background-color: #ff444f;
+      color: white;
+    }
+    .primary-button:hover {
+      background-color: #e03e47;
+    }
+    .secondary-button {
+      background-color: transparent;
+      color: #0e2140;
+      border: 1px solid #0e2140;
+    }
+    .secondary-button:hover {
+      background-color: #f0f0f0;
+    }
+    
+    /* Breadcrumb styles */
+    .breadcrumb {
+      padding: 1rem 0;
+      font-size: 0.875rem;
+      color: #666;
+    }
+    .breadcrumb a {
+      color: #666;
+    }
+    .breadcrumb a:hover {
+      color: #ff444f;
+    }
+    
+    /* Calculator container styles */
+    .calculator-container {
+      padding: 2rem 0 4rem;
+      display: flex;
+      gap: 2rem;
+    }
+    
+    /* Sidebar styles */
+    .page-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+    }
+    .side-nav {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    .nav-section {
+      border-bottom: 1px solid #eee;
+    }
+    .nav-section h4 {
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0e2140;
+      background-color: #f8f9fa;
+      cursor: pointer;
+    }
+    .nav-section.expanded h4 {
+      background-color: #f0f7ff;
+    }
+    .nav-section ul {
+      list-style: none;
+      padding: 0.5rem 0;
+      display: none;
+    }
+    .nav-section.expanded ul {
+      display: block;
+    }
+    .nav-section li {
+      padding: 0.5rem 1.5rem 0.5rem 2rem;
+      font-size: 0.9rem;
+    }
+    .nav-section li a {
+      color: #555;
+    }
+    .nav-section li.active {
+      background-color: #f0f7ff;
+    }
+    .nav-section li.active a {
+      color: #ff444f;
+      font-weight: 500;
+    }
+    .help-box {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .help-box h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .help-box p {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    
+    /* Page content styles */
+    .page-content {
+      flex: 1;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 2rem;
+    }
+    .page-content h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .intro-text {
+      color: #666;
+      margin-bottom: 2rem;
+    }
+    
+    /* Calculator tabs */
+    .calculator-tabs {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 2rem;
+    }
+    .tab-button {
+      padding: 1rem 1.5rem;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #666;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+    }
+    .tab-button.active {
+      color: #ff444f;
+      border-bottom-color: #ff444f;
+    }
+    
+    /* Calculator panel styles */
+    .calculator-panel {
+      display: flex;
+      gap: 2rem;
+    }
+    .input-section {
+      flex: 1;
+    }
+    .results-section {
+      flex: 1;
+      padding-left: 2rem;
+      border-left: 1px solid #eee;
+    }
+    .input-section h3, .results-section h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Form styles */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    .form-group input:focus, .form-group select:focus {
+      outline: none;
+      border-color: #ff444f;
+      box-shadow: 0 0 0 3px rgba(255,68,79,0.1);
+    }
+    
+    /* Results styles */
+    .result-card {
+      background-color: #f0f7ff;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .result-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ff444f;
+      margin-bottom: 0.5rem;
+    }
+    .result-label {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .result-breakdown {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .result-breakdown h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 1rem;
+    }
+    .result-breakdown table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .result-breakdown table td {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
+      font-size: 0.9rem;
+    }
+    .result-breakdown table td:last-child {
+      text-align: right;
+      font-weight: 500;
+    }
+    .result-total {
+      font-weight: 600;
+      color: #0e2140;
+    }
+    .disclaimer {
+      font-size: 0.8rem;
+      color: #888;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* CTA box */
+    .cta-box {
+      background-color: #f0f7ff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .cta-box h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .cta-box p {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+    
+    /* FAQ section */
+    .faq-section {
+      margin-top: 3rem;
+    }
+    .faq-section h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 1.5rem;
+    }
+    .accordion {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .accordion-item {
+      border-bottom: 1px solid #ddd;
+    }
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+    .accordion-header {
+      padding: 1.25rem;
+      font-weight: 500;
+      color: #0e2140;
+      background-color: #f8f9fa;
+      cursor: pointer;
+      position: relative;
+    }
+    .accordion-header::after {
+      content: "+";
+      position: absolute;
+      right: 1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.25rem;
+      color: #666;
+    }
+    .accordion-item.active .accordion-header::after {
+      content: "-";
+    }
+    .accordion-content {
+      padding: 0 1.25rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .accordion-item.active .accordion-content {
+      padding: 1.25rem;
+      max-height: 500px;
+    }
+    .accordion-content p {
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .accordion-content p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .calculator-container {
+        flex-direction: column;
+      }
+      .page-sidebar {
+        width: 100%;
+      }
+      .calculator-panel {
+        flex-direction: column;
+      }
+      .results-section {
+        padding-left: 0;
+        border-left: none;
+        padding-top: 2rem;
+        border-top: 1px solid #eee;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="help-center-landing.html" class="logo" onclick="window.location.href='help-center-landing.html'; return false;">
+        <img src="https://deriv.com/static/1677755bfe5931091c2e3ca0a1d6f68c/2bef9/logo.webp" alt="Deriv">
+      </a>
+      <div class="right-nav">
+        <div class="language-selector">EN</div>
+        <button class="btn secondary-button" onclick="alert('Login functionality would be implemented here'); return false;">Log in</button>
+        <button class="btn primary-button" onclick="alert('Signup functionality would be implemented here'); return false;">Sign up</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb navigation -->
+  <div class="breadcrumb">
+    <div class="container">
+      <ul>
+        <li><a href="help-center-landing.html" onclick="window.location.href='help-center-landing.html'; return false;">Home</a></li>
+        <li><a href="help-center-earnings.html" onclick="window.location.href='help-center-earnings.html'; return false;">Earning Models</a></li>
+        <li><a href="#">Commission Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main class="container calculator-container">
+    <div class="page-sidebar">
+      <!-- Sidebar navigation with expandable sections -->
+      <nav class="side-nav">
+        <div class="nav-section expanded">
+          <h4>Earning Models</h4>
+          <ul>
+            <li><a href="help-center-earnings.html" onclick="window.location.href='help-center-earnings.html'; return false;">Understanding commission models</a></li>
+            <li><a href="#" onclick="alert('Revenue share article would be displayed here'); return false;">Revenue share</a></li>
+            <li><a href="#" onclick="alert('Turnover article would be displayed here'); return false;">Turnover</a></li>
+            <li><a href="#" onclick="alert('CPA article would be displayed here'); return false;">CPA</a></li>
+            <li class="active"><a href="help-center-calculator.html" onclick="window.location.href='help-center-calculator.html'; return false;">Commission calculator</a></li>
+            <li><a href="#" onclick="alert('Payment schedule article would be displayed here'); return false;">Payment schedule</a></li>
+            <li><a href="#" onclick="alert('Tier benefits article would be displayed here'); return false;">Tier benefits</a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <h4>Account Management</h4>
+        </div>
+        <div class="nav-section">
+          <h4>Marketing Resources</h4>
+        </div>
+        <div class="nav-section">
+          <h4>Compliance & Guidelines</h4>
+        </div>
+      </nav>
+      
+      <div class="help-box">
+        <h4>Need assistance?</h4>
+        <p>Our team can help explain your commission options</p>
+        <button class="btn secondary-button">Contact us</button>
+      </div>
+    </div>
+    
+    <div class="page-content">
+      <h1>Commission Calculator</h1>
+      <p class="intro-text">Estimate your potential earnings based on your clients' trading activity and your selected commission model.</p>
+      
+      <div class="calculator-tabs">
+        <button class="tab-button active" id="cfdTab">CFD Commissions</button>
+        <button class="tab-button" id="optionsTab">Options Commissions</button>
+      </div>
+      
+      <div class="calculator-panel" id="cfdPanel">
+        <div class="input-section">
+          <h3>Enter client trading details</h3>
+          
+          <div class="form-group">
+            <label>Commission model</label>
+            <select id="commissionModel">
+              <option value="turnover">Turnover</option>
+              <option value="revshare" disabled>Revenue Share (Not available for CFDs)</option>
+              <option value="cpa" disabled>CPA (Available for EU clients only)</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>Product type</label>
+            <select id="productType">
+              <option value="forex">Forex</option>
+              <option value="commodities">Commodities</option>
+              <option value="indices">Indices</option>
+              <option value="stocks">Stocks</option>
+              <option value="crypto">Cryptocurrencies</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>Number of active clients</label>
+            <input type="number" id="clientCount" value="10" min="1" max="1000" />
+          </div>
+          
+          <div class="form-group">
+            <label>Average trading volume per client (lots/month)</label>
+            <input type="number" id="tradingVolume" value="50" min="1" max="10000" />
+          </div>
+          
+          <div class="form-group">
+            <label>Your partner tier</label>
+            <select id="partnerTier">
+              <option value="bronze">Bronze (Base commission)</option>
+              <option value="silver">Silver (+5%)</option>
+              <option value="gold">Gold (+10%)</option>
+              <option value="platinum">Platinum (+15%)</option>
+            </select>
+          </div>
+          
+          <button class="btn primary-button" id="calculateBtn">Calculate earnings</button>
+        </div>
+        
+        <div class="results-section">
+          <h3>Estimated monthly earnings</h3>
+          
+          <div class="result-card">
+            <div class="result-value" id="resultValue">$1,250</div>
+            <div class="result-label">Per month</div>
+          </div>
+          
+          <div class="result-breakdown">
+            <h4>Calculation breakdown</h4>
+            <table>
+              <tr>
+                <td>Base commission per lot:</td>
+                <td id="baseCommission">$2.50</td>
+              </tr>
+              <tr>
+                <td>Total lots traded:</td>
+                <td id="totalLots">500</td>
+              </tr>
+              <tr>
+                <td>Tier bonus:</td>
+                <td id="tierBonus">0%</td>
+              </tr>
+              <tr class="result-total">
+                <td>Total monthly commission:</td>
+                <td id="totalCommission">$1,250</td>
+              </tr>
+            </table>
+          </div>
+          
+          <div class="disclaimer">
+            <p>This calculator provides estimates only. Actual commissions may vary based on exact trading conditions, market volatility, and other factors.</p>
+          </div>
+          
+          <div class="cta-box">
+            <h4>Ready to start earning?</h4>
+            <p>Create your partner account today or speak to our team about customized commission options for high-volume partners.</p>
+            <div class="button-group">
+              <button class="btn primary-button">Sign up now</button>
+              <button class="btn secondary-button">Talk to an expert</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="faq-section">
+        <h3>Frequently asked questions about commissions</h3>
+        
+        <div class="accordion">
+          <div class="accordion-item">
+            <div class="accordion-header">Why are CFD commissions different from options commissions?</div>
+            <div class="accordion-content">
+              <p>CFD trading operates on the Deriv MT5 platform and involves different market mechanisms than options trading. For CFDs, we offer turnover-based commissions, which provide a fixed rate per lot traded regardless of client profitability.</p>
+              <p>Options trading uses our proprietary platforms, allowing us to offer revenue share models where you earn a percentage of client net loss. This option provides the highest earning potential for partners whose clients trade primarily on DTrader, SmartTrader, or BinaryBot.</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <div class="accordion-header">When do I get paid my commissions?</div>
+            <div class="accordion-content">
+              <p>Commissions are calculated daily and processed for payment weekly, provided you've reached the minimum withdrawal threshold of $50. Payments are typically processed on Mondays for the previous week's activity.</p>
+              <p>You can track pending and processed payments in real-time through your partner dashboard under the "Payments" section.</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <div class="accordion-header">How do I track which commission model is earning me more?</div>
+            <div class="accordion-content">
+              <p>Your partner dashboard provides detailed analytics that break down earnings by commission type, product, and client. This allows you to compare performance and optimize your strategy.</p>
+              <p>We recommend testing different approaches with distinct tracking links to determine which models work best for your audience.</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <div class="accordion-header">Can I change my commission model after signing up?</div>
+            <div class="accordion-content">
+              <p>Yes, you can adjust your preferred commission model for options trading through your partner dashboard. For CFD trading, turnover commission is the only available model.</p>
+              <p>Note that commission model changes may take up to 24 hours to take effect, and will only apply to new clients acquired after the change.</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <div class="accordion-header">How do tier multipliers affect my commissions?</div>
+            <div class="accordion-content">
+              <p>As you progress through our partner tiers (Bronze, Silver, Gold, and Platinum), you earn multipliers that increase your base commission rates. For example, reaching Silver tier provides a 5% increase on your base commission rate.</p>
+              <p>Tier promotions are based on total commission earned and happen automatically when you reach the qualifying threshold.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Tab switching
+      const cfdTab = document.getElementById('cfdTab');
+      const optionsTab = document.getElementById('optionsTab');
+      
+      cfdTab.addEventListener('click', function() {
+        cfdTab.classList.add('active');
+        optionsTab.classList.remove('active');
+        // In a full implementation, we would switch panels here
+        alert('Showing CFD commission calculator (already active)');
+      });
+      
+      optionsTab.addEventListener('click', function() {
+        optionsTab.classList.add('active');
+        cfdTab.classList.remove('active');
+        // In a full implementation, we would switch panels here
+        alert('Options commission calculator would be displayed here');
+      });
+      
+      // Sidebar nav sections
+      const navSections = document.querySelectorAll('.nav-section');
+      navSections.forEach(section => {
+        const heading = section.querySelector('h4');
+        heading.addEventListener('click', function() {
+          section.classList.toggle('expanded');
+        });
+      });
+      
+      // Accordion functionality
+      const accordionItems = document.querySelectorAll('.accordion-item');
+      accordionItems.forEach(item => {
+        const header = item.querySelector('.accordion-header');
+        header.addEventListener('click', function() {
+          item.classList.toggle('active');
+        });
+      });
+      
+      // Commission calculator functionality
+      const calculateBtn = document.getElementById('calculateBtn');
+      calculateBtn.addEventListener('click', function() {
+        // Get input values
+        const clients = parseInt(document.getElementById('clientCount').value);
+        const volume = parseInt(document.getElementById('tradingVolume').value);
+        const tier = document.getElementById('partnerTier').value;
+        const product = document.getElementById('productType').value;
+        
+        // Set base rates (these would typically come from an API or data source)
+        let baseRate = 2.5; // Default $2.50 per lot for forex
+        if (product === 'commodities') baseRate = 3.0;
+        if (product === 'indices') baseRate = 2.75;
+        if (product === 'stocks') baseRate = 2.0;
+        if (product === 'crypto') baseRate = 4.0;
+        
+        // Calculate tier bonus
+        let tierMultiplier = 1.0;
+        let tierBonusPercent = "0%";
+        if (tier === 'silver') {
+          tierMultiplier = 1.05;
+          tierBonusPercent = "5%";
+        } else if (tier === 'gold') {
+          tierMultiplier = 1.10;
+          tierBonusPercent = "10%";
+        } else if (tier === 'platinum') {
+          tierMultiplier = 1.15;
+          tierBonusPercent = "15%";
+        }
+        
+        // Calculate results
+        const totalLots = clients * volume;
+        const totalCommission = Math.round(baseRate * totalLots * tierMultiplier);
+        
+        // Update the UI
+        document.getElementById('baseCommission').textContent = "$" + baseRate.toFixed(2);
+        document.getElementById('totalLots').textContent = totalLots.toLocaleString();
+        document.getElementById('tierBonus').textContent = tierBonusPercent;
+        document.getElementById('totalCommission').textContent = "$" + totalCommission.toLocaleString();
+        document.getElementById('resultValue').textContent = "$" + totalCommission.toLocaleString();
+      });
+    });
+  </script>
+</body>
+</html> 

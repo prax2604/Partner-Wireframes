@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turnover Commission Model | Partner Help Centre | Deriv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f7fa;
+    }
+    a {
+      color: #ff444f;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    /* Header styles */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 0;
+    }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0e2140;
+    }
+    .logo span {
+      color: #ff444f;
+    }
+    .right-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    .language-selector::before {
+      content: "🌐";
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+    }
+    .primary-button {
+      background-color: #ff444f;
+      color: white;
+    }
+    .primary-button:hover {
+      background-color: #e03e47;
+    }
+    .secondary-button {
+      background-color: transparent;
+      color: #0e2140;
+      border: 1px solid #0e2140;
+    }
+    .secondary-button:hover {
+      background-color: #f0f0f0;
+    }
+    
+    /* Breadcrumb styles */
+    .breadcrumb {
+      padding: 1rem 0;
+      font-size: 0.875rem;
+      color: #666;
+    }
+    .breadcrumb a {
+      color: #666;
+    }
+    .breadcrumb a:hover {
+      color: #ff444f;
+    }
+    
+    /* Article container styles */
+    .article-container {
+      padding: 2rem 0 4rem;
+      display: flex;
+      gap: 2rem;
+    }
+    
+    /* Sidebar styles */
+    .page-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+    }
+    .side-nav {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    .nav-section {
+      border-bottom: 1px solid #eee;
+    }
+    .nav-section h4 {
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0e2140;
+      background-color: #f8f9fa;
+      cursor: pointer;
+    }
+    .nav-section.expanded h4 {
+      background-color: #f0f7ff;
+    }
+    .nav-section ul {
+      list-style: none;
+      padding: 0.5rem 0;
+      display: none;
+    }
+    .nav-section.expanded ul {
+      display: block;
+    }
+    .nav-section li {
+      padding: 0.5rem 1.5rem 0.5rem 2rem;
+      font-size: 0.9rem;
+    }
+    .nav-section li a {
+      color: #555;
+    }
+    .nav-section li.active {
+      background-color: #f0f7ff;
+    }
+    .nav-section li.active a {
+      color: #ff444f;
+      font-weight: 500;
+    }
+    
+    /* Article content styles */
+    .article-content {
+      flex: 1;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 2rem;
+    }
+    .article-content h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .last-updated {
+      font-size: 0.8rem;
+      color: #888;
+      margin-bottom: 2rem;
+    }
+    
+    /* Table of contents */
+    .table-of-contents {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .table-of-contents h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 1rem;
+    }
+    .table-of-contents ul {
+      list-style: none;
+    }
+    .table-of-contents li {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .table-of-contents a {
+      color: #555;
+    }
+    
+    /* Section styles */
+    .article-content section {
+      margin-bottom: 2.5rem;
+      scroll-margin-top: 100px;
+    }
+    .article-content h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #0e2140;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 0.5rem;
+    }
+    .article-content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 1rem;
+      margin-top: 1.5rem;
+    }
+    .article-content p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.7;
+    }
+    .article-content ul, .article-content ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+    .article-content li {
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Info box styles */
+    .info-box {
+      background-color: #f0f7ff;
+      border-left: 4px solid #85ACB0;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .info-box h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .info-box p {
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+    
+    /* Alert box styles */
+    .alert-box {
+      background-color: #fff7e6;
+      border-left: 4px solid #FFB700;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .alert-box h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .alert-box p {
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+    
+    /* Visual example styles */
+    .visual-example {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .visual-example h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .calculation-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .step-number {
+      width: 30px;
+      height: 30px;
+      background-color: #ff444f;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .step-content {
+      flex: 1;
+    }
+    
+    /* Table styles */
+    .rate-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+    .rate-table th {
+      background-color: #f0f7ff;
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+      color: #0e2140;
+      border: 1px solid #ddd;
+    }
+    .rate-table td {
+      padding: 1rem;
+      border: 1px solid #ddd;
+    }
+    
+    /* Next steps styles */
+    .next-steps {
+      background-color: #f0f7ff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .next-steps h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .next-steps p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .next-steps .buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    /* Article footer styles */
+    .article-footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #eee;
+    }
+    .helpful-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .helpful-controls p {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 0;
+    }
+    .helpful-button {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .helpful-button:hover {
+      background-color: #f0f0f0;
+    }
+    .related-articles h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 1rem;
+    }
+    .related-articles ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .related-articles li {
+      margin-bottom: 0.75rem;
+    }
+    
+    /* Contact sidebar styles */
+    .contact-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+    }
+    .contact-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      position: sticky;
+      top: 100px;
+    }
+    .contact-card h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 1rem;
+    }
+    .contact-card p {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 1100px) {
+      .article-container {
+        flex-direction: column;
+      }
+      .page-sidebar, .contact-sidebar {
+        width: 100%;
+      }
+      .contact-card {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="help-center-landing.html" class="logo" onclick="window.location.href='help-center-landing.html'; return false;">
+        <img src="https://deriv.com/static/1677755bfe5931091c2e3ca0a1d6f68c/2bef9/logo.webp" alt="Deriv">
+      </a>
+      <div class="right-nav">
+        <div class="language-selector">EN</div>
+        <button class="btn secondary-button" onclick="alert('Login functionality would be implemented here'); return false;">Log in</button>
+        <button class="btn primary-button" onclick="alert('Signup functionality would be implemented here'); return false;">Sign up</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb navigation -->
+  <div class="breadcrumb">
+    <div class="container">
+      <ul>
+        <li><a href="help-center-landing.html" onclick="window.location.href='help-center-landing.html'; return false;">Home</a></li>
+        <li><a href="help-center-earnings.html" onclick="window.location.href='help-center-earnings.html'; return false;">Earning Models</a></li>
+        <li><a href="#">Turnover Commission</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main class="container article-container">
+    <div class="page-sidebar">
+      <!-- Sidebar navigation with expandable sections -->
+      <nav class="side-nav">
+        <div class="nav-section expanded">
+          <h4>Earning Models</h4>
+          <ul>
+            <li><a href="help-center-earnings.html" onclick="window.location.href='help-center-earnings.html'; return false;">Understanding commission models</a></li>
+            <li><a href="help-center-revenue-share.html" onclick="window.location.href='help-center-revenue-share.html'; return false;">Revenue share</a></li>
+            <li class="active"><a href="#">Turnover</a></li>
+            <li><a href="#" onclick="alert('CPA article would be displayed here'); return false;">CPA</a></li>
+            <li><a href="help-center-calculator.html" onclick="window.location.href='help-center-calculator.html'; return false;">Commission calculator</a></li>
+            <li><a href="#" onclick="alert('Payment schedule article would be displayed here'); return false;">Payment schedule</a></li>
+            <li><a href="#" onclick="alert('Tier benefits article would be displayed here'); return false;">Tier benefits</a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <h4>Account Management</h4>
+        </div>
+        <div class="nav-section">
+          <h4>Marketing Resources</h4>
+        </div>
+        <div class="nav-section">
+          <h4>Compliance & Guidelines</h4>
+        </div>
+      </nav>
+    </div>
+    
+    <div class="article-content">
+      <h1>Turnover Commission Model Explained</h1>
+      <div class="last-updated">Last updated: August 20, 2023</div>
+      
+      <div class="table-of-contents">
+        <h4>In this article:</h4>
+        <ul>
+          <li><a href="#overview">Turnover model overview</a></li>
+          <li><a href="#how-it-works">How turnover works</a></li>
+          <li><a href="#digital-options">Digital Options commissions</a></li>
+          <li><a href="#other-options">Other Options commissions</a></li>
+          <li><a href="#benefits">Benefits of turnover model</a></li>
+          <li><a href="#comparison">Comparison with other models</a></li>
+        </ul>
+      </div>
+      
+      <section id="overview">
+        <h2>Turnover model overview</h2>
+        <p>The Turnover commission model provides a fixed commission for every lot or contract traded by your referred clients, regardless of whether those trades are profitable or result in losses. This model offers consistent, predictable income based on trading volume.</p>
+        
+        <div class="info-box">
+          <h4>Key points</h4>
+          <p>With the Turnover model, you earn commissions based on the volume of trades your clients make, not their trading results. Commission rates vary by product type and are paid on both winning and losing trades.</p>
+        </div>
+        
+        <p>This model is ideal for partners who refer clients who trade frequently and is applicable to all Deriv products, including both options and CFDs (although CFD commissions follow a different structure through the IB program).</p>
+      </section>
+      
+      <section id="how-it-works">
+        <h2>How turnover works</h2>
+        <p>When your referred clients place trades, you earn a commission based on the volume traded, with rates varying by product type. The commission structure for the Turnover plan is product-specific:</p>
+        
+        <ul>
+          <li><strong>Digital Options:</strong> Based on the payout probability of the client's contracts</li>
+          <li><strong>Multipliers:</strong> 40% of client fee</li>
+          <li><strong>Accumulator Options:</strong> 40% of client fee</li>
+          <li><strong>Turbo Options:</strong> 40% of client fee</li>
+          <li><strong>Vanilla Options:</strong> 40% of client fee</li>
+          <li><strong>Lookbacks (only on SmartTrader):</strong> 0.8% of the trade stake</li>
+        </ul>
+        
+        <div class="alert-box">
+          <h4>Important note:</h4>
+          <p>Due to regulatory restrictions, EU-based affiliates can sign up for the Turnover plan but can only refer clients who reside outside the EU.</p>
+        </div>
+      </section>
+      
+      <section id="digital-options">
+        <h2>Digital Options commissions</h2>
+        <p>For Digital Options, the commission rate depends on the payout probability of the client's contract. Here's how it works:</p>
+        
+        <table class="rate-table">
+          <tr>
+            <th>Payout Probability</th>
+            <th>Commission Rate</th>
+          </tr>
+          <tr>
+            <td>0% - 20%</td>
+            <td>0.4%</td>
+          </tr>
+          <tr>
+            <td>20% - 50%</td>
+            <td>0.5%</td>
+          </tr>
+          <tr>
+            <td>50% - 80%</td>
+            <td>0.7%</td>
+          </tr>
+          <tr>
+            <td>80% - 95%</td>
+            <td>1.0%</td>
+          </tr>
+        </table>
+        
+        <div class="visual-example">
+          <h4>Example calculation for Digital Options</h4>
+          <div class="calculation-steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <p>Your client trades Digital Options with a stake of $10</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <p>The payout probability is 40%, which falls in the 20%-50% range (commission rate = 0.5%)</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <p>Commission calculation: $10 × 0.5% = $0.05</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section id="other-options">
+        <h2>Other Options commissions</h2>
+        <p>For options products other than Digital Options, the commission is generally 40% of the client fee or a fixed percentage of the stake:</p>
+        
+        <div class="visual-example">
+          <h4>Example calculation for Multipliers</h4>
+          <div class="calculation-steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <p>Your client trades Multipliers with a stake of $137 with a multiplier of 100</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <p>The client is charged $5 for this trade (client fee)</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <p>Commission calculation: $5 × 40% = $2</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="visual-example">
+          <h4>Example calculation for Lookbacks</h4>
+          <div class="calculation-steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <p>Your client trades Lookbacks with a stake of $10</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <p>Commission calculation: $10 × 0.8% = $0.08</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section id="benefits">
+        <h2>Benefits of turnover model</h2>
+        <p>The Turnover model offers several distinct advantages:</p>
+        
+        <h3>1. Predictable income</h3>
+        <p>Earn commissions regardless of client profitability, creating more stable and predictable revenue streams.</p>
+        
+        <h3>2. Available for all products</h3>
+        <p>Unlike Revenue Share, the Turnover model applies to all trading products, including both options and CFDs.</p>
+        
+        <h3>3. Rewards client activity</h3>
+        <p>The more your clients trade, the more you earn, directly rewarding your efforts to refer active traders.</p>
+        
+        <h3>4. No dependency on client results</h3>
+        <p>Your earnings aren't affected by whether your clients win or lose, removing that uncertainty from your income projections.</p>
+      </section>
+      
+      <section id="comparison">
+        <h2>Comparison with other models</h2>
+        <p>Different commission models suit different partner strategies and client types:</p>
+        
+        <h3>Turnover vs. Revenue Share</h3>
+        <ul>
+          <li><strong>Turnover:</strong> Based on trading volume regardless of outcomes; more stable earnings.</li>
+          <li><strong>Revenue Share:</strong> Based on client net losses; potentially higher earnings with losing clients.</li>
+        </ul>
+        
+        <h3>Turnover vs. CPA</h3>
+        <ul>
+          <li><strong>Turnover:</strong> Ongoing commissions based on trading volume; unlimited earning potential.</li>
+          <li><strong>CPA:</strong> One-time payment for client acquisition; simpler but limited earning potential.</li>
+        </ul>
+        
+        <div class="next-steps">
+          <h4>Ready to maximize your earnings?</h4>
+          <p>Use our commission calculator to estimate your potential earnings under different commission models based on your client profile.</p>
+          <div class="buttons">
+            <a href="help-center-calculator.html" class="btn primary-button" onclick="window.location.href='help-center-calculator.html'; return false;">Try the commission calculator</a>
+            <a href="#" class="btn secondary-button" onclick="alert('Commission models comparison article would be displayed here'); return false;">Compare all models</a>
+          </div>
+        </div>
+      </section>
+      
+      <div class="article-footer">
+        <div class="helpful-controls">
+          <p>Was this article helpful?</p>
+          <button class="helpful-button" onclick="alert('Thank you for your feedback!'); return false;">Yes</button>
+          <button class="helpful-button" onclick="alert('Thank you for your feedback!'); return false;">No</button>
+        </div>
+        
+        <div class="related-articles">
+          <h4>Related articles</h4>
+          <ul>
+            <li><a href="help-center-earnings.html" onclick="window.location.href='help-center-earnings.html'; return false;">Understanding Commission Models</a></li>
+            <li><a href="help-center-revenue-share.html" onclick="window.location.href='help-center-revenue-share.html'; return false;">Revenue Share Model</a></li>
+            <li><a href="#" onclick="alert('CPA article would be displayed here'); return false;">Cost Per Acquisition (CPA) Model</a></li>
+            <li><a href="help-center-calculator.html" onclick="window.location.href='help-center-calculator.html'; return false;">Commission Calculator</a></li>
+            <li><a href="#" onclick="alert('CFD commission rates article would be displayed here'); return false;">CFD Commission Rates & Calculations</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="contact-sidebar">
+      <div class="contact-card">
+        <h4>Need more information?</h4>
+        <p>Our partner success team is available to answer any questions about the Turnover commission model.</p>
+        <button class="btn primary-button" onclick="alert('Contact form would be displayed here'); return false;">Contact support</button>
+        <p style="margin-top: 1rem; font-size: 0.8rem;">Typical response time: Under 24 hours</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Sidebar nav sections
+      const navSections = document.querySelectorAll('.nav-section');
+      navSections.forEach(section => {
+        const heading = section.querySelector('h4');
+        heading.addEventListener('click', function() {
+          section.classList.toggle('expanded');
+        });
+      });
+      
+      // Smooth scrolling for table of contents links
+      const tocLinks = document.querySelectorAll('.table-of-contents a');
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      
+      // Helpful buttons
+      const helpfulButtons = document.querySelectorAll('.helpful-button');
+      helpfulButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          helpfulButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          alert('Thank you for your feedback!');
+        });
+      });
+    });
+  </script>
+</body>
+</html> 

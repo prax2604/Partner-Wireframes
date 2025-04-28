@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Management | Partner Help Centre | Deriv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f7fa;
+    }
+    a {
+      color: #ff444f;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    /* Header styles */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 0;
+    }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0e2140;
+    }
+    .logo span {
+      color: #ff444f;
+    }
+    .right-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    .language-selector::before {
+      content: "🌐";
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+    }
+    .primary-button {
+      background-color: #ff444f;
+      color: white;
+    }
+    .primary-button:hover {
+      background-color: #e03e47;
+    }
+    .secondary-button {
+      background-color: transparent;
+      color: #0e2140;
+      border: 1px solid #0e2140;
+    }
+    .secondary-button:hover {
+      background-color: #f0f0f0;
+    }
+    
+    /* Breadcrumb styles */
+    .breadcrumb {
+      padding: 1rem 0;
+      font-size: 0.875rem;
+      color: #666;
+    }
+    .breadcrumb a {
+      color: #666;
+    }
+    .breadcrumb a:hover {
+      color: #ff444f;
+    }
+    
+    /* Main content styles */
+    .category-container {
+      padding: 2rem 0 4rem;
+    }
+    .category-header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .category-header h1 {
+      font-size: 2.5rem;
+      color: #0e2140;
+      margin-bottom: 1rem;
+    }
+    .category-header p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #666;
+    }
+    
+    /* Cards grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    .article-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .article-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .card-image {
+      height: 160px;
+      background-color: #f0f7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-image span {
+      font-size: 2.5rem;
+    }
+    .card-content {
+      padding: 1.5rem;
+    }
+    .card-content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.75rem;
+    }
+    .card-content p {
+      color: #666;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .card-action-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .card-action-link::after {
+      content: "→";
+    }
+    
+    /* Tools section */
+    .tools-section {
+      margin-top: 4rem;
+    }
+    .tools-section h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #0e2140;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .tool-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .tool-card:hover {
+      transform: translateY(-5px);
+    }
+    .tool-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #f0f7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .tool-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .tool-card p {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    
+    /* Stats section */
+    .stats-section {
+      margin-top: 4rem;
+      background-color: #0e2140;
+      color: white;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .stats-section h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .stat-item {
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #ff444f;
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    /* FAQ section */
+    .faq-section {
+      margin-top: 4rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 2rem;
+    }
+    .faq-section h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #0e2140;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid #eee;
+      padding: 1.5rem 0;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-question {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-question::after {
+      content: "+";
+      font-size: 1.5rem;
+      color: #ff444f;
+    }
+    .faq-question.active::after {
+      content: "-";
+    }
+    .faq-answer {
+      display: none;
+      color: #666;
+      font-size: 0.95rem;
+      padding-bottom: 0.5rem;
+    }
+    .faq-answer p {
+      margin-bottom: 1rem;
+    }
+    .faq-answer p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* Contact section */
+    .contact-section {
+      margin-top: 4rem;
+      background-color: #0e2140;
+      color: white;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .contact-section h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .contact-section p {
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      opacity: 0.9;
+    }
+    
+    /* Resources section */
+    .resources-section {
+      margin-top: 4rem;
+    }
+    .resources-section h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #0e2140;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .resource-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .resource-card:hover {
+      transform: translateY(-5px);
+    }
+    .resource-image {
+      height: 180px;
+      background-color: #f0f7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .resource-image span {
+      font-size: 3rem;
+    }
+    .resource-content {
+      padding: 1.5rem;
+    }
+    .resource-content h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.75rem;
+    }
+    .resource-content p {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .tools-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+      .category-header h1 {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="help-center-landing.html" class="logo" onclick="window.location.href='help-center-landing.html'; return false;"><span>deriv</span>Partners</a>
+      <div class="right-nav">
+        <div class="language-selector">EN</div>
+        <button class="btn secondary-button" onclick="alert('Login functionality would be implemented here'); return false;">Log in</button>
+        <button class="btn primary-button" onclick="alert('Signup functionality would be implemented here'); return false;">Sign up</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="help-center-landing.html" onclick="window.location.href='help-center-landing.html'; return false;">Home</a> > Client Management
+    </div>
+  </div>
+
+  <main class="container category-container">
+    <div class="category-header">
+      <h1>Client Management</h1>
+      <p>Track client activity, monitor performance, and optimize your marketing strategies to grow your partnership revenue.</p>
+    </div>
+
+    <div class="cards-grid">
+      <article class="article-card">
+        <div class="card-image">
+          <span>📊</span>
+        </div>
+        <div class="card-content">
+          <h3>Client Tracking & Analytics</h3>
+          <p>Understand how to track client activity, analyze performance metrics, and gain insights to optimize your partnership.</p>
+          <div class="card-actions">
+            <a href="#" class="card-action-link" onclick="alert('Tracking parameters article would be displayed here'); return false;">Setting up tracking parameters</a>
+            <a href="#" class="card-action-link" onclick="alert('Client performance metrics article would be displayed here'); return false;">Client performance metrics</a>
+            <a href="#" class="card-action-link" onclick="alert('Analytics guide article would be displayed here'); return false;">Using the analytics dashboard</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <div class="card-image">
+          <span>🔗</span>
+        </div>
+        <div class="card-content">
+          <h3>Tracking Links & Campaigns</h3>
+          <p>Create, manage, and optimize your tracking links and marketing campaigns to attract new clients.</p>
+          <div class="card-actions">
+            <a href="#" class="card-action-link" onclick="alert('Tracking links article would be displayed here'); return false;">Creating tracking links</a>
+            <a href="#" class="card-action-link" onclick="alert('Campaign tracking article would be displayed here'); return false;">Setting up campaigns</a>
+            <a href="#" class="card-action-link" onclick="alert('Link management article would be displayed here'); return false;">Managing multiple links</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <div class="card-image">
+          <span>📈</span>
+        </div>
+        <div class="card-content">
+          <h3>Performance Reporting</h3>
+          <p>Access detailed reports on client acquisition, retention, trading activity, and commission earnings.</p>
+          <div class="card-actions">
+            <a href="#" class="card-action-link" onclick="alert('Client acquisition reports article would be displayed here'); return false;">Client acquisition reports</a>
+            <a href="#" class="card-action-link" onclick="alert('Trading activity reports article would be displayed here'); return false;">Trading activity reports</a>
+            <a href="#" class="card-action-link" onclick="alert('Commission reports article would be displayed here'); return false;">Commission reports</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <div class="card-image">
+          <span>👥</span>
+        </div>
+        <div class="card-content">
+          <h3>Client Acquisition Strategies</h3>
+          <p>Learn effective strategies to acquire high-value clients and maximize your partnership earnings.</p>
+          <div class="card-actions">
+            <a href="#" class="card-action-link" onclick="alert('Target audience article would be displayed here'); return false;">Identifying target audience</a>
+            <a href="#" class="card-action-link" onclick="alert('Conversion optimization article would be displayed here'); return false;">Conversion optimization</a>
+            <a href="#" class="card-action-link" onclick="alert('High-value client article would be displayed here'); return false;">Attracting high-value clients</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <div class="card-image">
+          <span>🤝</span>
+        </div>
+        <div class="card-content">
+          <h3>Client Retention & Growth</h3>
+          <p>Discover tactics to increase client retention, encourage active trading, and grow your client base.</p>
+          <div class="card-actions">
+            <a href="#" class="card-action-link" onclick="alert('Client engagement article would be displayed here'); return false;">Client engagement tactics</a>
+            <a href="#" class="card-action-link" onclick="alert('Reactivation strategies article would be displayed here'); return false;">Reactivation strategies</a>
+            <a href="#" class="card-action-link" onclick="alert('Client loyalty article would be displayed here'); return false;">Building client loyalty</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <div class="card-image">
+          <span>📱</span>
+        </div>
+        <div class="card-content">
+          <h3>IB Portal Mobile App</h3>
+          <p>Manage your clients and monitor performance on the go with the Deriv Partners mobile application.</p>
+          <div class="card-actions">
+            <a href="#" class="card-action-link" onclick="alert('Mobile app guide article would be displayed here'); return false;">Getting started with the app</a>
+            <a href="#" class="card-action-link" onclick="alert('Mobile notifications article would be displayed here'); return false;">Mobile notifications</a>
+            <a href="#" class="card-action-link" onclick="alert('Mobile features article would be displayed here'); return false;">Key mobile features</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <section class="tools-section">
+      <h2>Essential Client Management Tools</h2>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="tool-icon">🔍</div>
+          <h3>Client Lookup</h3>
+          <p>Quickly search and find details for specific clients in your network.</p>
+          <a href="#" class="btn primary-button" onclick="alert('Client lookup tool would be displayed here'); return false;">Access Tool</a>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-icon">📧</div>
+          <h3>Email Templates</h3>
+          <p>Pre-designed email templates for client communication and marketing.</p>
+          <a href="#" class="btn primary-button" onclick="alert('Email templates would be displayed here'); return false;">View Templates</a>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-icon">📆</div>
+          <h3>Activity Calendar</h3>
+          <p>Track important dates and client activity milestones.</p>
+          <a href="#" class="btn primary-button" onclick="alert('Activity calendar would be displayed here'); return false;">Open Calendar</a>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-icon">🧮</div>
+          <h3>Revenue Calculator</h3>
+          <p>Estimate potential earnings based on client activity and commission structure.</p>
+          <a href="#" class="btn primary-button" onclick="alert('Revenue calculator would be displayed here'); return false;">Calculate Revenue</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section">
+      <h2>Deriv Partners Success Metrics</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">1M+</div>
+          <div class="stat-label">Active Traders</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">$50M+</div>
+          <div class="stat-label">Partner Commissions Paid</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">160+</div>
+          <div class="stat-label">Countries Covered</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Partner Support</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="resources-section">
+      <h2>Client Management Resources</h2>
+      <div class="resources-grid">
+        <div class="resource-card">
+          <div class="resource-image">
+            <span>📔</span>
+          </div>
+          <div class="resource-content">
+            <h3>Client Success Playbook</h3>
+            <p>A comprehensive guide with strategies and tactics to help your clients succeed—and increase your earnings.</p>
+            <a href="#" class="btn secondary-button" onclick="alert('Client success playbook would be displayed here'); return false;">Download PDF</a>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-image">
+            <span>🎬</span>
+          </div>
+          <div class="resource-content">
+            <h3>Client Management Video Series</h3>
+            <p>Step-by-step video tutorials on using the Deriv Partners platform for effective client management.</p>
+            <a href="#" class="btn secondary-button" onclick="alert('Video tutorials would be displayed here'); return false;">Watch Videos</a>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-image">
+            <span>📑</span>
+          </div>
+          <div class="resource-content">
+            <h3>Client Onboarding Templates</h3>
+            <p>Customizable templates to streamline your client onboarding process and increase conversion rates.</p>
+            <a href="#" class="btn secondary-button" onclick="alert('Onboarding templates would be displayed here'); return false;">Access Templates</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">How do I track client registrations from my referral links?</div>
+          <div class="faq-answer">
+            <p>You can track client registrations from your referral links through the Deriv Partners dashboard:</p>
+            <p>1. Log in to your Deriv Partners account<br>
+               2. Navigate to the "Reports" section<br>
+               3. Select "Client Acquisition" from the report types<br>
+               4. Filter by date range or specific tracking link<br>
+               5. View detailed information about clients who registered using your links</p>
+            <p>The report includes registration dates, client IDs, and the specific tracking links used for registration. You can export this data as CSV or Excel for further analysis.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What information can I see about my referred clients?</div>
+          <div class="faq-answer">
+            <p>For compliance and privacy reasons, you can view performance data without accessing personal client information. Available data includes:</p>
+            <p>- Client ID (anonymized)<br>
+               - Registration date<br>
+               - Country of residence<br>
+               - Trading activity summary<br>
+               - Deposit and withdrawal summaries<br>
+               - Account status (active, dormant, closed)<br>
+               - Generated commissions</p>
+            <p>This information allows you to analyze client performance while respecting privacy regulations and data protection standards.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How can I create multiple tracking links for different campaigns?</div>
+          <div class="faq-answer">
+            <p>To create multiple tracking links for different campaigns:</p>
+            <p>1. Log in to your Deriv Partners dashboard<br>
+               2. Go to the "Marketing Tools" section<br>
+               3. Select "Tracking Links"<br>
+               4. Click the "Create New Link" button<br>
+               5. Choose your campaign type (social media, website, email, etc.)<br>
+               6. Add a unique campaign name to easily identify this specific tracking link<br>
+               7. Select your target landing page<br>
+               8. Click "Generate Link"</p>
+            <p>You can create up to 100 unique tracking links for different campaigns, allowing you to measure the effectiveness of each marketing channel separately.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do I identify my best-performing clients?</div>
+          <div class="faq-answer">
+            <p>To identify your best-performing clients:</p>
+            <p>1. Log in to your Deriv Partners dashboard<br>
+               2. Navigate to the "Reports" section<br>
+               3. Select "Client Performance" from the report types<br>
+               4. Filter the report by date range (e.g., last 30 days, last quarter)<br>
+               5. Click on the "Sort By" option and select "Commissions Generated" or "Trading Volume"<br>
+               6. Review the sorted list of clients with the highest revenue generation</p>
+            <p>Additionally, you can leverage the Analytics Dashboard to visualize client performance patterns and identify trends in your top-performing clients, which can help inform your client acquisition and retention strategies.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Can I see which marketing materials are most effective?</div>
+          <div class="faq-answer">
+            <p>Yes, you can track the effectiveness of different marketing materials:</p>
+            <p>1. Create specific tracking links for each marketing material<br>
+               2. Access the "Campaign Performance" report in your dashboard<br>
+               3. Compare metrics such as click-through rates, conversion rates, and commissions generated by each link<br>
+               4. View the performance data by campaign type, timeframe, or geographic region</p>
+            <p>This information helps you understand which materials drive the most registrations, deposits, and active trading, allowing you to optimize your marketing efforts and focus on the most effective channels and content.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <h2>Need Expert Guidance?</h2>
+      <p>Our partner managers are available to help you develop effective client acquisition and retention strategies tailored to your specific audience.</p>
+      <a href="#" class="btn primary-button" onclick="alert('Partner manager contact form would be displayed here'); return false;">Schedule a Consultation</a>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // FAQ accordion functionality
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+          this.classList.toggle('active');
+          const answer = this.nextElementSibling;
+          if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+          } else {
+            answer.style.display = 'block';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html> 

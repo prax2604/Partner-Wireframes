@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commission Calculator - Deriv Partner Help Centre</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f5f7fa;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #ff444f;
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: #d33a40;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .logo img {
+            height: 30px;
+        }
+        
+        /* Breadcrumb styles */
+        .breadcrumb {
+            background-color: white;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+        
+        .breadcrumb ul {
+            list-style: none;
+            display: flex;
+        }
+        
+        .breadcrumb li {
+            margin-right: 10px;
+        }
+        
+        .breadcrumb li:after {
+            content: '›';
+            margin-left: 10px;
+            color: #999;
+        }
+        
+        .breadcrumb li:last-child:after {
+            content: '';
+        }
+        
+        .breadcrumb li:last-child a {
+            color: #666;
+            pointer-events: none;
+        }
+        
+        /* Main content styles */
+        .main-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+        
+        /* Sidebar styles */
+        .sidebar {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 20px;
+            align-self: start;
+            position: sticky;
+            top: 90px;
+        }
+        
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin-bottom: 8px;
+        }
+        
+        .sidebar li a {
+            display: block;
+            padding: 8px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .sidebar li a:hover {
+            background-color: #f5f7fa;
+        }
+        
+        .sidebar li a.active {
+            background-color: #ff444f;
+            color: white;
+        }
+        
+        /* Article styles */
+        .article {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+        
+        .article h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .article h2 {
+            font-size: 22px;
+            margin: 30px 0 15px;
+            color: #444;
+        }
+        
+        .article h3 {
+            font-size: 18px;
+            margin: 25px 0 10px;
+            color: #555;
+        }
+        
+        .article p {
+            margin-bottom: 15px;
+        }
+        
+        /* Calculator specific styles */
+        .calculator-help {
+            background-color: #f8fbff;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .calculator-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin: 20px 0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        select, input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ff444f;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #d33a40;
+        }
+        
+        /* Results section */
+        .results {
+            display: none;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f5f7fa;
+            border-radius: 8px;
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .earnings-summary {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #4bb4b3;
+        }
+        
+        .calculation-breakdown {
+            background-color: white;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            border: 1px solid #eee;
+        }
+        
+        /* FAQ accordion */
+        .faq-section {
+            margin-top: 3rem;
+        }
+        
+        .accordion {
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .accordion-header {
+            padding: 15px;
+            background-color: #f5f7fa;
+            cursor: pointer;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .accordion-header::after {
+            content: '+';
+            position: absolute;
+            right: 15px;
+            font-size: 18px;
+        }
+        
+        .accordion-header.active::after {
+            content: '-';
+        }
+        
+        .accordion-content {
+            display: none;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .accordion-content.show {
+            display: block;
+        }
+        
+        /* Next steps box */
+        .next-steps {
+            background-color: #f5f7fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .next-steps h4 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .primary-button {
+            background-color: #ff444f;
+            color: white;
+        }
+        
+        .secondary-button {
+            background-color: #f5f7fa;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: relative;
+                top: 0;
+                margin-bottom: 20px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="help-center-landing.html" class="logo" onclick="window.location.href='help-center-landing.html'; return false;">
+                    <img src="https://deriv.com/static/1677755bfe5931091c2e3ca0a1d6f68c/2bef9/logo.webp" alt="Deriv">
+                </a>
+                <div>
+                    <!-- Navigation could go here -->
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Breadcrumb navigation -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="help-center-landing.html" onclick="window.location.href='help-center-landing.html'; return false;">Help Centre</a></li>
+                <li><a href="help-center-category-earning.html" onclick="window.location.href='help-center-category-earning.html'; return false;">Earning Models</a></li>
+                <li><a href="#">Commission Calculator</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Main content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Sidebar navigation -->
+            <aside class="sidebar">
+                <h2>Earnings Topics</h2>
+                <ul>
+                    <li><a href="help-center-earnings.html" onclick="window.location.href='help-center-earnings.html'; return false;">Commission Models Overview</a></li>
+                    <li><a href="help-center-turnover-commission.html" onclick="window.location.href='help-center-turnover-commission.html'; return false;">Turnover Commission</a></li>
+                    <li><a href="help-center-revenue-share.html" onclick="window.location.href='help-center-revenue-share.html'; return false;">Revenue Share</a></li>
+                    <li><a href="help-center-cpa.html" onclick="window.location.href='help-center-cpa.html'; return false;">CPA Model</a></li>
+                    <li><a href="help-center-commission-calculator.html" onclick="window.location.href='help-center-commission-calculator.html'; return false;" class="active">Commission Calculator</a></li>
+                    <li><a href="help-center-payment-schedule.html" onclick="window.location.href='help-center-payment-schedule.html'; return false;">Payment Schedule</a></li>
+                </ul>
+                
+                <h2 style="margin-top: 30px;">Related Topics</h2>
+                <ul>
+                    <li><a href="help-center-partnership-types.html" onclick="window.location.href='help-center-partnership-types.html'; return false;">Business Strategies</a></li>
+                    <li><a href="help-center-tier-system.html" onclick="window.location.href='help-center-tier-system.html'; return false;">Partner Tier System</a></li>
+                    <li><a href="help-center-reporting.html" onclick="window.location.href='help-center-reporting.html'; return false;">Earnings Reports</a></li>
+                </ul>
+            </aside>
+            
+            <!-- Article content -->
+            <article class="article">
+                <h1>Commission Calculator</h1>
+                
+                <p>Estimate your potential earnings as a Deriv partner based on your commission model, client base, and trading activity. This interactive calculator helps you compare different scenarios and plan your partnership strategy.</p>
+                
+                <div class="calculator-help">
+                    <strong>How to use:</strong> Select your commission model, enter your client details, and click "Calculate Earnings" to see your estimated monthly commission.
+                </div>
+                
+                <div class="calculator-card">
+                    <div id="calculator">
+                        <div class="form-group">
+                            <label for="commission-model">Commission Model</label>
+                            <select id="commission-model">
+                                <option value="revenue-share">Revenue Share</option>
+                                <option value="turnover">Turnover Commission</option>
+                                <option value="cpa">CPA</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="product-type">Product Type</label>
+                            <select id="product-type">
+                                <option value="mt5-standard">MT5 Standard</option>
+                                <option value="mt5-advanced">MT5 Advanced</option>
+                                <option value="mt5-synthetic">MT5 Synthetic</option>
+                                <option value="deriv-x">Deriv X</option>
+                                <option value="deriv-ez">Deriv EZ</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="active-clients">Number of Active Clients</label>
+                            <input type="number" id="active-clients" min="1" value="10">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="trading-volume">Average Monthly Trading Volume per Client (USD)</label>
+                            <input type="number" id="trading-volume" min="100" value="10000">
+                        </div>
+                        
+                        <div class="form-group" id="tier-group">
+                            <label for="partner-tier">Partner Tier</label>
+                            <select id="partner-tier">
+                                <option value="standard">Standard Tier (0-$20,000 Revenue)</option>
+                                <option value="premium">Premium Tier (>$20,000 Revenue)</option>
+                            </select>
+                        </div>
+                        
+                        <button class="btn primary-button" id="calculate-btn">Calculate Earnings</button>
+                    </div>
+                    
+                    <div class="results" id="results">
+                        <h2>Your Estimated Earnings</h2>
+                        <div class="earnings-summary" id="earnings-summary">
+                            Estimated Monthly Earnings: $<span id="total-earnings">0</span>
+                        </div>
+                        
+                        <div class="calculation-breakdown">
+                            <h3>Calculation Breakdown</h3>
+                            <div id="calculation-details"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2>Understanding Commission Models</h2>
+                
+                <p>Each commission model has its own calculation method and is suited to different partner strategies. Use the calculator above to compare your potential earnings under each model.</p>
+                
+                <div class="faq-section">
+                    <h2>Frequently Asked Questions</h2>
+                    
+                    <div class="accordion">
+                        <div class="accordion-header">How is the Revenue Share commission calculated?</div>
+                        <div class="accordion-content">
+                            <p>Revenue share commission is based on the net revenue generated by your clients' trading activity. The percentage depends on your partner tier:</p>
+                            <ul>
+                                <li>Standard Tier (monthly net revenue $0-$20,000): 30% commission</li>
+                                <li>Premium Tier (monthly net revenue >$20,000): 45% commission</li>
+                            </ul>
+                            <p>The formula is: <strong>Client Net Revenue × Commission Rate = Your Commission</strong></p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion">
+                        <div class="accordion-header">How is the Turnover Commission calculated?</div>
+                        <div class="accordion-content">
+                            <p>Turnover commission is based on the total trading volume of your clients. The rates vary by product:</p>
+                            <ul>
+                                <li>MT5 Standard: 10 pips commission</li>
+                                <li>MT5 Advanced: 8 pips commission</li>
+                                <li>MT5 Synthetic: 5% commission</li>
+                                <li>Deriv X: 12 pips commission</li>
+                                <li>Deriv EZ: 3% commission</li>
+                            </ul>
+                            <p>For pip-based products, the formula is: <strong>(Trading Volume × Pips) / 100 = Your Commission</strong></p>
+                            <p>For percentage-based products, the formula is: <strong>Trading Volume × Commission Rate = Your Commission</strong></p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion">
+                        <div class="accordion-header">How is the CPA (Cost Per Acquisition) calculated?</div>
+                        <div class="accordion-content">
+                            <p>The CPA model provides a fixed payment for each qualified client you refer who meets specific requirements:</p>
+                            <ul>
+                                <li>Basic qualification: Client deposits minimum amount and makes at least one trade</li>
+                                <li>CPA rates range from $100 to $300 per qualified client depending on the region and product</li>
+                            </ul>
+                            <p>The formula is: <strong>Number of Qualified Clients × CPA Rate = Your Commission</strong></p>
+                            <p>For this calculator, we use an average CPA rate of $150 per qualified client, with an estimated qualification rate of 60% for new clients.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion">
+                        <div class="accordion-header">Which commission model should I choose?</div>
+                        <div class="accordion-content">
+                            <p>The best commission model depends on your business strategy and client base:</p>
+                            <ul>
+                                <li><strong>Revenue Share:</strong> Best for partners with active traders who generate consistent profits for Deriv</li>
+                                <li><strong>Turnover Commission:</strong> Ideal for partners with clients who trade frequently with high volumes</li>
+                                <li><strong>CPA:</strong> Good for partners who focus on client acquisition and prefer immediate fixed payments</li>
+                            </ul>
+                            <p>You can also discuss with your account manager to find the best model for your specific situation or to create a hybrid model.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="next-steps">
+                    <h4>Ready to start your partnership journey?</h4>
+                    <p>Join our partner program today and start earning commissions based on your preferred model.</p>
+                    <div class="buttons">
+                        <a href="#" class="btn primary-button" onclick="alert('Sign-up would happen here'); return false;">Sign up as a partner</a>
+                        <a href="help-center-earnings.html" class="btn secondary-button" onclick="window.location.href='help-center-earnings.html'; return false;">Learn more about commission models</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script>
+        // Toggle accordion
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                } else {
+                    content.style.display = 'block';
+                }
+            });
+        });
+        
+        // Calculator functionality
+        document.getElementById('calculate-btn').addEventListener('click', function() {
+            const commissionModel = document.getElementById('commission-model').value;
+            const productType = document.getElementById('product-type').value;
+            const activeClients = parseInt(document.getElementById('active-clients').value);
+            const tradingVolume = parseInt(document.getElementById('trading-volume').value);
+            const partnerTier = document.getElementById('partner-tier').value;
+            
+            let totalEarnings = 0;
+            let calculationDetails = '';
+            
+            if (commissionModel === 'revenue-share') {
+                // Assume average profit margin for Deriv is 30% of trading volume
+                const avgClientNetRevenue = tradingVolume * 0.3;
+                const commissionRate = partnerTier === 'premium' ? 0.45 : 0.3;
+                
+                totalEarnings = avgClientNetRevenue * activeClients * commissionRate;
+                
+                calculationDetails = `
+                    <p><strong>Average client trading volume:</strong> $${tradingVolume.toLocaleString()}</p>
+                    <p><strong>Estimated net revenue per client:</strong> $${avgClientNetRevenue.toLocaleString()} (30% of trading volume)</p>
+                    <p><strong>Total net revenue from all clients:</strong> $${(avgClientNetRevenue * activeClients).toLocaleString()}</p>
+                    <p><strong>Your commission rate:</strong> ${commissionRate * 100}% (${partnerTier === 'premium' ? 'Premium' : 'Standard'} tier)</p>
+                    <p><strong>Your commission:</strong> $${totalEarnings.toLocaleString()}</p>
+                `;
+            } else if (commissionModel === 'turnover') {
+                let commissionRate;
+                let isPipBased = false;
+                
+                switch(productType) {
+                    case 'mt5-standard':
+                        commissionRate = 10; // pips
+                        isPipBased = true;
+                        break;
+                    case 'mt5-advanced':
+                        commissionRate = 8; // pips
+                        isPipBased = true;
+                        break;
+                    case 'mt5-synthetic':
+                        commissionRate = 0.05; // 5%
+                        break;
+                    case 'deriv-x':
+                        commissionRate = 12; // pips
+                        isPipBased = true;
+                        break;
+                    case 'deriv-ez':
+                        commissionRate = 0.03; // 3%
+                        break;
+                }
+                
+                if (isPipBased) {
+                    totalEarnings = (tradingVolume * activeClients * commissionRate) / 100;
+                    calculationDetails = `
+                        <p><strong>Total trading volume from all clients:</strong> $${(tradingVolume * activeClients).toLocaleString()}</p>
+                        <p><strong>Commission rate:</strong> ${commissionRate} pips</p>
+                        <p><strong>Your commission:</strong> (Total volume × ${commissionRate} pips) / 100 = $${totalEarnings.toLocaleString()}</p>
+                    `;
+                } else {
+                    totalEarnings = tradingVolume * activeClients * commissionRate;
+                    calculationDetails = `
+                        <p><strong>Total trading volume from all clients:</strong> $${(tradingVolume * activeClients).toLocaleString()}</p>
+                        <p><strong>Commission rate:</strong> ${commissionRate * 100}%</p>
+                        <p><strong>Your commission:</strong> Total volume × ${commissionRate * 100}% = $${totalEarnings.toLocaleString()}</p>
+                    `;
+                }
+            } else if (commissionModel === 'cpa') {
+                // Assuming average CPA of $150 with 60% qualification rate
+                const cpaRate = 150;
+                const qualificationRate = 0.6;
+                
+                totalEarnings = activeClients * qualificationRate * cpaRate;
+                
+                calculationDetails = `
+                    <p><strong>Number of clients:</strong> ${activeClients}</p>
+                    <p><strong>Estimated qualification rate:</strong> 60%</p>
+                    <p><strong>Expected qualified clients:</strong> ${Math.round(activeClients * qualificationRate)}</p>
+                    <p><strong>CPA rate per qualified client:</strong> $${cpaRate}</p>
+                    <p><strong>Your commission:</strong> ${Math.round(activeClients * qualificationRate)} qualified clients × $${cpaRate} = $${totalEarnings.toLocaleString()}</p>
+                `;
+            }
+            
+            // Show results
+            document.getElementById('total-earnings').textContent = Math.round(totalEarnings).toLocaleString();
+            document.getElementById('calculation-details').innerHTML = calculationDetails;
+            document.getElementById('results').classList.add('show');
+            
+            // Toggle visibility of partner tier dropdown based on commission model
+            const tierGroup = document.getElementById('tier-group');
+            tierGroup.style.display = commissionModel === 'revenue-share' ? 'block' : 'none';
+        });
+        
+        // Update form fields based on selected commission model
+        document.getElementById('commission-model').addEventListener('change', function() {
+            const commissionModel = this.value;
+            const tierGroup = document.getElementById('tier-group');
+            
+            if (commissionModel === 'revenue-share') {
+                tierGroup.style.display = 'block';
+            } else {
+                tierGroup.style.display = 'none';
+            }
+            
+            // Hide results when model changes
+            document.getElementById('results').classList.remove('show');
+        });
+        
+        // Initialize
+        document.getElementById('tier-group').style.display = 'block';
+    </script>
+</body>
+</html> 

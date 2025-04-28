@@ -1,0 +1,689 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# Your rule content
+
+- You can @ files here
+- You can use markdown but dont have to
+Partner Experience: Comprehensive Website Experience Vision
+Overview
+This document outlines our vision for the partner website experience, focusing on the discovery and acquisition stage of the partner journey. The website serves as the critical first touchpoint for potential partners and must effectively communicate our value proposition, differentiate Deriv from competitors, and initiate a seamless transition to registration.
+Current State Assessment
+Pain Points
+Generic Value Proposition: Current website content speaks generically to all partners without addressing specific partner types or needs.
+Unclear Differentiation: The unique advantages of Deriv's partner program compared to competitors are not clearly articulated.
+Complex Navigation: Potential partners must navigate through multiple pages to find relevant information.
+Inconsistent Messaging: Value proposition and benefits vary across different pages and materials.
+Limited Self-Discovery: Partners who don't fit traditional categories have difficulty finding their path.
+Passive Approach: Current acquisition relies heavily on inbound interest rather than proactive targeting.
+Disjointed Handoff: The transition from website to registration lacks continuity and context preservation.
+Strategic Principles
+Core Offerings and Navigation Structure The website should maintain clear separation between different business offerings:
+
+
+Main Navigation Structure:
+Deriv Partners: The core partner program for referrals and commissions
+Deriv API: For developers building trading applications
+This separation ensures each offering receives appropriate focus and speaks to its target audience effectively. Note that Deriv Prime should NOT be featured on the main partners homepage.
+
+
+Interest-Based Navigation (Within Deriv Partners) The Deriv Partners section should guide potential partners based on their primary goals:
+Individual Referrers: For those seeking passive income with minimal effort
+Content Creators & Webmasters: For those with online audiences and websites
+Trading Professionals (IBs): For introducing brokers and trading experts
+Network Builders: For those building and managing affiliate networks
+Just Exploring: For undecided prospects who want to browse all options
+
+
+Progressive Disclosure Information should be presented in layers of increasing detail:
+Level 1: High-level benefits and value proposition
+Level 2: Program structures and tier benefits
+Level 3: Basic commission examples and qualification criteria
+Level 4 (Partners Hub only): Detailed calculations and technical specifications
+
+
+Benefits Before Mechanics Lead with what partners gain, not how the system works:
+Focus on outcomes partners can achieve
+Showcase success stories and realistic earnings
+Position commission structures as a means to an end
+Emphasize support, tools, and growth opportunities
+
+
+Clear Differentiation Highlight what makes Deriv's partner program unique:
+Tier-based progression system with multipliers
+Premium support programs (121 Partner Program)
+Master Partner program available to all partners
+Educational resources and growth support
+Future State Vision
+Vision Statement
+Prospective partners easily discover our program through targeted channels and immediately understand the unique value proposition that differentiates Deriv from competitors, with clear pathways based on their specific goals and business models.
+Future State Narrative
+In our vision, potential partners encounter Deriv through targeted digital and in-person channels tailored to their specific needs and markets. Landing pages immediately communicate our unique value proposition with clear, compelling benefits that address the primary motivations of different partner segments.
+The website experience uses an interest-based approach combined with self-discovery options, allowing partners to follow their preferred path while showcasing our tier-based benefits structure, Partner 121 program, and Master Partner opportunities for those who qualify.
+High-potential partners receive personalized outreach from Country Managers who understand their specific market dynamics, with references to upcoming regional seminars and events. The path from interest to application is seamless, with minimal clicks and clear expectations at each step.
+Content Structure and Guidelines
+Key Components
+Interest-Based + Self-Discovery Approach The website will combine two complementary approaches:
+
+
+Interest-Based: Clear paths based on partner goals (generate passive income, build a business, monetize audience, refer network)
+Self-Discovery: Exploration options through success stories, partner types, and guided assessment
+
+
+Segment-Specific Value Propositions
+Dedicated landing pages and content for different partner types
+Value propositions tailored to specific partner motivations
+Region-specific success stories and commission examples
+Custom pathways for potential Master Partners
+
+
+Tier-Based Benefits Showcase
+Clear visualization of tier structure (Bronze, Silver, Gold, Platinum, N/A)
+Transparent display of commission multipliers (100%, 105%, 110%, 115%, 120%)
+Progressive revelation of tier benefits to encourage advancement
+Visual pathways to VIP status and 121 Program eligibility
+
+
+Premium Program Highlights
+121 Program Showcase: Featuring success stories and benefits for qualified partners
+Master Partner Program: Explaining the opportunity to earn from recruited partners
+Seminar and Event Calendar: Highlighting upcoming regional events
+Advanced Support Services: Showcasing financial content, website support, and other premium services
+Commission Structure Explanation
+Simple, visual explanations of commission structures
+Interactive calculator to estimate potential earnings
+Clear comparison between different plans (turnover vs. revenue share)
+Master Partner commission visualization (20% on 2nd level commissions)
+
+
+Competitive Differentiation
+Transparent comparison with competitor programs
+Highlight of unique Deriv advantages
+Evidence-based claims with real partner testimonials
+Emphasis on premium support services as differentiators
+
+
+Educational Content Preview
+Sample educational resources to demonstrate value
+Webinar recordings and workshop previews
+Knowledge base sample articles
+Examples of financial commentary and analysis
+
+
+Success Validation
+Transparent display of top partner earnings by region
+Success stories with measurable results
+Award recognition and industry validation
+Master Partner success highlights
+Section-Specific Guidelines
+Hero Section
+Include:
+Benefit-focused headline (e.g., "Start earning as a Deriv Partner today")
+Enhanced value proposition that emphasizes complete partnership benefits beyond just commissions
+Clear, simple process steps (Register → Get links → Share → Earn)
+Primary CTA (Sign up/Register)
+Supporting image showing success/partnership
+Avoid:
+Technical terms or industry jargon
+Multiple competing CTAs
+Generic value propositions
+Focusing solely on commission percentages
+Key Metrics Section
+Include:
+Visual representation of key metrics (partners, payouts, countries)
+Specific, impressive numbers that establish credibility
+Clean, card-based display for easy scanning
+Avoid:
+Overwhelming number of statistics
+Dated or unimpressive metrics
+Complicated visualizations
+Top Partner Payouts Section
+Include:
+World map visualization showing regional earnings
+Specific payout amounts by region
+Balanced representation of different global regions
+Real, impressive figures that create aspiration
+Avoid:
+Unrealistic earnings claims
+Overrepresentation of certain regions
+Generic or rounded numbers that feel fabricated
+Partner Paths Section
+Include:
+Five clear paths with brief descriptions (4 partner types + exploration option)
+Visual elements that represent each partner type
+Benefits specific to each partner category
+Dual CTAs (Learn More / Sign Up)
+"Just Exploring?" option for undecided prospects
+Avoid:
+Overwhelming number of options
+Technical requirements for each path
+Complex eligibility criteria
+Premium Programs Section
+Include:
+Master Partner Program prominently featured
+Clear statement that Master Partner Program is open to ALL partners
+121 Partner Program with benefits and qualification path
+Brief, compelling descriptions of each program's value
+Strong visual elements showing growth and relationships
+Avoid:
+Implying restrictive eligibility for Master Partner program
+Detailed program terms and conditions
+Complex commission structures for Master Partners
+Extensive application processes
+Commission Plans Overview
+Include:
+Simple, visual comparison of main commission types
+Clear, positive explanations of each commission model
+Ideal partner type for each plan
+Sample earning scenario for each (simplified)
+"Learn more" links to detailed explanations (in Partners Hub)
+Avoid:
+Detailed calculation methodologies
+Full commission tables for all instruments
+Technical formulas and minimum volume requirements
+Extensive disclaimers (summarize key points only)
+Partner Success Tools Section
+Include:
+Focus on practical tools partners need for success
+Marketing Resources: Ready-made materials, banners, content
+Conversion Tools: Widgets, calculators, landing pages
+Support Network: Personalized assistance at different tiers
+Performance Analytics: Tracking and optimization tools
+Avoid:
+Educational content about trading concepts
+Technical training on using trading platforms
+Generic resources not directly related to partner success
+Testimonials Section
+Include:
+"Get Inspired" layout with diverse regional stories
+Real success stories with specific achievements
+Different partner types represented
+Realistic earnings figures and timelines
+Visual design that highlights regional diversity
+Avoid:
+Generic, non-specific testimonials
+Unrealistic earnings claims
+Testimonials without specific results or timelines
+Overrepresentation of certain regions
+Additional Offerings Section
+Include:
+Small section near the bottom of the main partners page titled "Looking for Other Opportunities?"
+Brief overview of Deriv API with dual value proposition
+Simple CTAs to learn more about each offering
+Visual distinction from the main partner program content
+Avoid:
+Overshadowing the main partner program
+Technical details about API functionality
+Featuring Deriv Prime on the homepage
+Call to Action Sections
+Include:
+Clear, action-oriented language
+Simplified next steps
+Alternative support options (chat, contact)
+Reinforcement of key benefits
+Visual element supporting the action
+Avoid:
+Multiple competing actions
+Technical prerequisites
+Lengthy forms or processes
+Proposed Website Structure
+Homepage Elements
++------------------------------------------------------+
+| DERIV PARTNERS                       Login/Sign up   |
++------------------------------------------------------+
+|                                                      |
+| HEADLINE: Find Your Path to Success with Deriv Partners|
+|                                                      |
++------------------------------------------------------+
+|                                                      |
+| WHAT ARE YOUR GOALS?                                 |
+|                                                      |
+| +-------------+ +-------------+ +-------------+      |
+| | Generate    | | Build a     | | Monetize    |      |
+| | Passive     | | Brokerage   | | Your        |      |
+| | Income      | | Business    | | Audience    |      |
+| +-------------+ +-------------+ +-------------+      |
+|                                                      |
+| +-------------+ +-------------+                      |
+| | Refer Your  | | Not Sure?   |                      |
+| | Network     | | Explore     |                      |
+| |             | | Options     |                      |
+| +-------------+ +-------------+                      |
+|                                                      |
++------------------------------------------------------+
+|                                                      |
+| PARTNER PROGRAM HIGHLIGHTS:                          |
+|                                                      |
+| • Competitive commissions with up to 120% multiplier |
+| • Tier-based benefits with clear advancement path    |
+| • Exclusive 121 Program for qualifying partners      |
+| • Master Partner opportunities to expand your network|
+| • 150+ seminars annually across global markets       |
+|                                                      |
++------------------------------------------------------+
+|                                                      |
+| KEY STATS:                                           |
+| 115K+ Partners | $47M+ Paid | 190+ Countries        |
+|                                                      |
++------------------------------------------------------+
+|                                                      |
+| SUCCESS STORIES                                      |
+|                                                      |
+| [Filter by: Region ▼] [Partner Type ▼] [Earnings ▼]  |
+|                                                      |
+| +-------------+ +-------------+ +-------------+      |
+| | Story 1     | | Story 2     | | Story 3     |      |
+| | Southeast   | | Africa      | | Latin       |      |
+| | Asia        | |             | | America     |      |
+| | Content     | | IB          | | Affiliate   |      |
+| | Creator     | |             | |             |      |
+| | $34,114     | | $26,081     | | $28,537     |      |
+| +-------------+ +-------------+ +-------------+      |
+|                                                      |
++------------------------------------------------------+
+|                                                      |
+| UPCOMING PARTNER EVENTS:                             |
+|                                                      |
+| • Apr 15: Bangkok Partner Seminar                    |
+| • Apr 22: Virtual Partner Webinar                    |
+| • May 5: Lagos Partner Workshop                      |
+|                                                      |
+| [View Full Calendar]                                 |
+|                                                      |
++------------------------------------------------------+
+Path-Specific Pages
+Common Structure for All Path Pages
+Include:
+Custom-colored hero section with targeted headline
+Path-specific benefits and advantages
+Recommended commission plans for that partner type
+Success stories featuring similar partners
+Tailored resources and tools
+Easy return to main page
+Each interest path leads to a dedicated page with targeted content:
+Generate Passive Income
+
+
+Focus on simplicity and predictable earnings
+Emphasize turnover commission structure
+Showcase individual affiliate success stories
+Highlight educational resources and support
+
+
+Build a Brokerage Business
+Focus on IB model and scaling potential
+Highlight advanced tools and reporting
+Showcase Master IB program and benefits
+Feature 121 Program success stories
+
+
+Monetize Your Audience
+Focus on content creator integration
+Highlight marketing materials and educational content
+Showcase influencer and community leader success stories
+Feature financial content support services
+
+
+Refer Your Network
+Focus on simplicity and relationship-based referrals
+Emphasize ease of sharing and tracking
+Showcase everyday referrer success stories
+Highlight Master Partner opportunities
+
+
+Exploration Path
+Interactive assessment to find best fit
+Comparison of different partner approaches
+Diverse success stories across all categories
+Clear pathways to premium programs
+Partner Tier & Benefits Page
++------------------------------------------------------+
+| DERIV PARTNERS                       Login/Sign up   |
++------------------------------------------------------+
+|                                                      |
+| PARTNER TIERS & BENEFITS                             |
+| Clear rewards for your growth and success            |
+|                                                      |
++------------------------------------------------------+
+|                                                      |
+| TIER OVERVIEW:                                       |
+|                                                      |
+| +--------+ +--------+ +--------+ +--------+         |
+| | BRONZE  | | SILVER  | | GOLD    | |PLATINUM|         |
+| | 100%    | | 105%    | | 110%    | | 115%   |         |
+| +--------+ +--------+ +--------+ +--------+         |
+|                                                      |
+| [N/A Tier - By invitation only - 120%]              |
+|                                                      |
++------------------------------------------------------+
+|                                                      |
+| COMPARE BENEFITS:                                    |
+|                                                      |
+| +-------------------------------------------------+ |
+| | [Detailed comparison table of benefits by tier] | |
+| +-------------------------------------------------+ |
+|                                                      |
++------------------------------------------------------+
+|                                                      |
+| ADVANCEMENT PATH:                                    |
+|                                                      |
+| +-------------------------------------------------+ |
+| | • Bronze: Starting tier for all partners        | |
+| | • Silver: Achieve $500 in commissions          | |
+| | • Gold: Achieve $1,000 in commissions          | |
+| | • Platinum: Achieve $5,000 in commissions      | |
+| | • N/A: Exclusive invitation-only tier          | |
+| +-------------------------------------------------+ |
+|                                                      |
+| [Become a Partner]                                   |
+|                                                      |
++------------------------------------------------------+
+Premium Programs Page
++------------------------------------------------------+
+| DERIV PARTNERS                       Login/Sign up   |
++------------------------------------------------------+
+|                                                      |
+| PREMIUM PARTNER PROGRAMS                             |
+| Exclusive opportunities for qualified partners       |
+|                                                      |
++------------------------------------------------------+
+|                                                      |
+| 121 PARTNER PROGRAM:                                 |
+|                                                      |
+| +-------------------------------------------------+ |
+| | Dedicated support for high-potential partners   | |
+| |                                                 | |
+| | • Strategic business consulting                 | |
+| | • Dedicated senior support team                 | |
+| | • Custom growth strategy development            | |
+| | • Priority feature and product access           | |
+| | • Specialized marketing and content support     | |
+| |                                                 | |
+| | [121 Program Success Stories]                   | |
+| +-------------------------------------------------+ |
+|                                                      |
++------------------------------------------------------+
+|                                                      |
+| MASTER PARTNER PROGRAM:                              |
+|                                                      |
+| +-------------------------------------------------+ |
+| | Expand your business by recruiting partners     | |
+| |                                                 | |
+| | • Earn 20% on commissions from your network    | |
+| | • Specialized training and recruitment tools    | |
+| | • Enhanced tracking and management capabilities | |
+| | • Growth support for your partner network       | |
+| |                                                 | |
+| | [Master Partner Success Stories]                | |
+| +-------------------------------------------------+ |
+|                                                      |
++------------------------------------------------------+
+|                                                      |
+| PARTNER EVENTS & SEMINARS:                           |
+|                                                      |
+| +-------------------------------------------------+ |
+| | Connect, learn, and grow with 150+ annual events| |
+| |                                                 | |
+| | • Regional partner seminars                     | |
+| | • Educational workshops                         | |
+| | • Networking opportunities                      | |
+| | • Strategy sessions with Deriv experts          | |
+| |                                                 | |
+| | [View Upcoming Events]                          | |
+| +-------------------------------------------------+ |
+|                                                      |
++------------------------------------------------------+
+Advanced Support Services Page
++------------------------------------------------------+
+| DERIV PARTNERS                       Login/Sign up   |
++------------------------------------------------------+
+|                                                      |
+| PARTNER SUPPORT SERVICES                             |
+| Comprehensive resources to drive your success        |
+|                                                      |
++------------------------------------------------------+
+|                                                      |
+| FINANCIAL CONTENT SUPPORT:                           |
+|                                                      |
+| +-------------------------------------------------+ |
+| | Professional market analysis for your audience  | |
+| |                                                 | |
+| | • Daily gold market analysis                    | |
+| | • Technical and fundamental insights            | |
+| | • Educational content for your clients          | |
+| | • Customizable delivery formats                 | |
+| |                                                 | |
+| | [Sample Content]                                | |
+| +-------------------------------------------------+ |
+|                                                      |
++------------------------------------------------------+
+|                                                      |
+| WEBSITE & DIGITAL SUPPORT:                           |
+|                                                      |
+| +-------------------------------------------------+ |
+| | Enhance your digital presence and performance   | |
+| |                                                 | |
+| | • Technical website audits                      | |
+| | • Conversion optimization recommendations       | |
+| | • Content development assistance                | |
+| | • Digital marketing guidance                    | |
+| |                                                 | |
+| | [Partner Website Showcase]                      | |
+| +-------------------------------------------------+ |
+|                                                      |
++------------------------------------------------------+
+|                                                      |
+| EDUCATIONAL RESOURCES:                               |
+|                                                      |
+| +-------------------------------------------------+ |
+| | Comprehensive learning paths for every level    | |
+| |                                                 | |
+| | • Getting started guides                        | |
+| | • Product knowledge training                    | |
+| | • Marketing and promotion strategies            | |
+| | • Advanced business development                 | |
+| |                                                 | |
+| | [Explore Partner Academy]                       | |
+| +-------------------------------------------------+ |
+|                                                      |
++------------------------------------------------------+
+Commission Information Guidelines
+Website (Public-Facing)
+Include:
+High-level overview of commission types:
+Revenue Share: "Earn up to 45% of revenue generated from your referred clients' trading activity"
+Turnover: "Earn based on your clients' trading volume regardless of profitability"
+CPA: "Earn fixed amounts for each qualifying client you refer"
+Basic tier structure with commission multipliers
+Sample earnings scenarios (simplified, realistic)
+Interactive earnings calculator with basic inputs
+Avoid:
+Detailed commission tables by instrument
+Technical calculation formulas
+Minimum volume requirements
+Complex regulatory disclaimers
+Partners Hub (Post-Registration)
+Reserve for Partners Hub:
+Detailed commission tables for all instruments
+Full calculation methodology explanations
+Minimum volume requirement formulas
+Comprehensive regulatory information
+Advanced commission calculators
+Technical specifications for tracking
+Detailed qualification criteria for tiers
+Master Partner Program Presentation
+Website (Public-Facing)
+Include:
+Clear statement that the Master Partner program is open to all partners
+Simple explanation: "Earn 20% commission on your sub-partners' earnings"
+Basic overview of how the program works
+Sample earnings scenario
+Visual representation of the network building concept
+Prominent placement on the homepage in Premium Programs section
+Avoid:
+Complex eligibility criteria
+Detailed commission structures
+Technical implementation details
+Partners Hub (Post-Registration)
+Reserve for Partners Hub:
+Detailed sign-up process
+Sub-partner management tools
+Commission tracking features
+Marketing materials for recruiting sub-partners
+Best practices for building a network
+URL and Terminology Strategy
+URL Structure:
+
+
+Implement canonical tags from deriv.com/affiliates pointing to deriv.com/partners
+Maintain current URL structure to preserve SEO benefits
+Balanced Terminology:
+
+
+Use "Deriv Partners" for main branding, navigation, and headlines
+Include "affiliate program" in secondary headings, body content, and meta descriptions
+Maintain consistent "partner" language throughout visible elements
+Include "affiliate" terminology for SEO purposes without emphasizing it visually
+Visual Design Guidelines
+Color Usage
+Use the primary Deriv red for CTAs and key highlights
+Apply tier colors consistently across all tier references
+Use color to indicate progression and achievement
+Ensure sufficient contrast for accessibility
+Typography
+Maintain consistent hierarchy with clear headings
+Use larger font sizes for commission rates and key benefits
+Ensure readability of all disclaimer text
+Limit use of italics and all caps
+Imagery
+Show diverse partners from different regions
+Include realistic work settings (mobile, laptop)
+Demonstrate success and professional growth
+Avoid generic stock photos without context
+Data Visualization
+Use simple charts for commission comparisons
+Apply visual indicators for tier progression
+Create interactive elements for earnings exploration
+Ensure all data visualizations are mobile-responsive
+Mobile Optimization Guidelines
+Ensure all commission information is readable on mobile
+Adapt tier visualization for vertical scrolling
+Simplify tables and charts for smaller screens
+Maintain touch-friendly interactive elements
+Prioritize critical information for mobile users
+Implementation Guidelines
+Content Strategy
+Use clear, benefit-focused headlines
+Focus on outcomes rather than features
+Use social proof throughout (testimonials, success metrics)
+Ensure all claims are backed by evidence
+Maintain consistent messaging across all channels
+Integrate tier benefits and premium programs throughout
+Design Principles
+Clean, professional aesthetic that conveys trust
+Minimal distractions on conversion-focused pages
+Clear call-to-action buttons on every page
+Mobile-first design approach
+Accessible to all users regardless of ability
+Visual hierarchy highlighting premium offerings
+Program Presentation
+Transparent presentation of tier criteria and benefits
+Clear explanation of premium program qualification
+Realistic representation of Master Partner opportunity
+Easy access to event calendar and registration
+Showcase of 121 Program results without overpromising
+Technical Requirements
+Page load time under 2 seconds
+Seamless handoff of user data to registration process
+Ability to A/B test different value propositions
+Analytics tracking at all conversion points
+UTM parameter tracking for campaign effectiveness
+Interest path selection preserved through registration
+User Testing Requirements
+Test comprehension of commission structures
+Validate tier benefit understanding
+Ensure regulatory requirements are understood
+Confirm users can find detailed information when needed
+Verify that the path to registration is clear
+Success Metrics
+Primary Metrics
+New partner sign-ups (volume, quality, and regional distribution)
+Conversion rate at each stage of the funnel
+Average time from first visit to registration
+Cost per acquisition by channel and partner type
+Partner quality score distribution
+Premium program interest rate
+Master Partner program sign-ups
+Secondary Metrics
+Website engagement metrics (time on site, pages per visit)
+Content engagement (success story views, calculator usage)
+Return visitor rate
+Social sharing of partner content
+Regional traffic distribution
+Event registration rate from website
+Tier benefit page engagement
+Key Performance Indicators
+Conversion rate from website visitor to registration
+Time spent on commission information pages
+Interaction rate with calculators and interactive elements
+Click-through rate to detailed information
+Registration completion rate by partner type
+Immediate Expectations Checklist
+[ ] Partner acquisition pages must load in under 2 seconds
+[ ] Partner signup forms must require only essential information (5 minutes or less to complete)
+[ ] Commission calculator must be available on all main landing pages
+[ ] Success stories must be filterable by region and partner type
+[ ] Key value propositions must be visible without scrolling
+[ ] Mobile experience must be fully functional
+[ ] Tier benefits must be clearly displayed and comparable
+[ ] Premium programs must be prominently featured
+[ ] Event calendar must be accessible and filterable by region
+[ ] Master Partner opportunity must be clearly explained
+[ ] Initial approval/rejection communication must be sent within 24 hours
+[ ] Partner acquisition costs must be tracked by channel and region
+Next Steps
+Conduct user testing of proposed website structure
+Develop content for each partner segment
+Create design mockups for key pages
+Implement analytics tracking
+Develop A/B testing plan for launch
+Create seamless handoff to registration process
+Integrate tier visualization and premium program showcase
+Develop event calendar functionality
+Create Master Partner program materials
+Appendix
+Partner Persona Examples
+Individual Affiliate Anna: Part-time affiliate looking for passive income
+Brokerage Builder Boris: Experienced IB looking to grow a client base
+Content Creator Clara: Financial educator with established audience
+Professional Referrer Paulo: Networker with industry connections
+Master Partner Maria: Experienced partner looking to build a network
+Example Value Proposition Copy
+Revised: "Partner with Deriv to earn competitive commissions, receive dedicated support, and access premium marketing resources"
+Example Master Partner Program Copy
+For Website: "The Master Partner Program is open to all partners! Build your own network and earn 20% commission on your sub-partners' earnings. Start growing your network today to multiply your income potential - no special qualifications required."
+Example Success Tools Section Copy
+Section Heading: "Partner Success Tools: Everything you need to maximize conversions and earnings" Tools Categories:
+Marketing Resources: "Ready-to-use banners, email templates, and promotional content"
+Conversion Tools: "Widgets, calculators, and landing pages to boost conversions"
+Support Network: "Personalized assistance at every tier to help you succeed"
+Performance Analytics: "Track results and optimize your promotional strategies"
+Example Testimonial Framework
+Structure:
+Region-specific headline
+Specific challenge or opportunity in that market
+Solution or approach with Deriv
+Concrete results with specific numbers
+Partner name, region, and tier level
+Premium Program Qualification Criteria
+[Detailed criteria for 121 Program and Master Partner eligibility]
+Success Story Template
+[Template for creating consistent partner success stories]
+Tier Benefits Reference
+[Comprehensive breakdown of benefits by tier level]
+
+
+

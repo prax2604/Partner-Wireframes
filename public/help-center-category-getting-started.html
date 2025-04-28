@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started | Partner Help Centre | Deriv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f7fa;
+    }
+    a {
+      color: #ff444f;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    /* Header styles */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 0;
+    }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0e2140;
+    }
+    .logo span {
+      color: #ff444f;
+    }
+    .right-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    .language-selector::before {
+      content: "🌐";
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+    }
+    .primary-button {
+      background-color: #ff444f;
+      color: white;
+    }
+    .primary-button:hover {
+      background-color: #e03e47;
+    }
+    .secondary-button {
+      background-color: transparent;
+      color: #0e2140;
+      border: 1px solid #0e2140;
+    }
+    .secondary-button:hover {
+      background-color: #f0f0f0;
+    }
+    
+    /* Breadcrumb styles */
+    .breadcrumb {
+      padding: 1rem 0;
+      font-size: 0.875rem;
+      color: #666;
+    }
+    .breadcrumb a {
+      color: #666;
+    }
+    .breadcrumb a:hover {
+      color: #ff444f;
+    }
+    
+    /* Main content styles */
+    .category-container {
+      padding: 2rem 0 4rem;
+    }
+    .category-header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .category-header h1 {
+      font-size: 2.5rem;
+      color: #0e2140;
+      margin-bottom: 1rem;
+    }
+    .category-header p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #666;
+    }
+    
+    /* Search container styles */
+    .search-container {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: #ff444f;
+      box-shadow: 0 0 0 3px rgba(255,68,79,0.1);
+    }
+    .search-button {
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #ff444f;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+    
+    /* Topic grid styles */
+    .topics-container {
+      display: flex;
+      gap: 2rem;
+    }
+    .topics-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+    }
+    .topics-list {
+      flex: 1;
+    }
+    .sidebar-section {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+    .sidebar-section h3 {
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0e2140;
+      background-color: #f8f9fa;
+      border-bottom: 1px solid #eee;
+    }
+    .sidebar-section ul {
+      list-style: none;
+      padding: 0.5rem 0;
+    }
+    .sidebar-section li {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.9rem;
+    }
+    .sidebar-section li.active {
+      background-color: #f0f7ff;
+    }
+    .sidebar-section li.active a {
+      color: #ff444f;
+      font-weight: 500;
+    }
+    
+    /* Topics list styles */
+    .topic-section {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    .topic-section h2 {
+      font-size: 1.5rem;
+      color: #0e2140;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    .topic-list {
+      list-style: none;
+    }
+    .topic-item {
+      border-bottom: 1px solid #eee;
+      padding: 1rem 0;
+    }
+    .topic-item:last-child {
+      border-bottom: none;
+    }
+    .topic-title {
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+    .topic-description {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: #888;
+    }
+    .article-meta .views::before {
+      content: "👁️ ";
+    }
+    .article-meta .rating::before {
+      content: "⭐ ";
+    }
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      background-color: #f0f7ff;
+      color: #0e2140;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      margin-right: 0.5rem;
+    }
+    
+    /* FAQ section styles */
+    .faq-section {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    .faq-section h2 {
+      font-size: 1.5rem;
+      color: #0e2140;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    .accordion {
+      list-style: none;
+    }
+    .accordion-item {
+      border-bottom: 1px solid #eee;
+    }
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+    .accordion-header {
+      padding: 1rem 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #333;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .accordion-header::after {
+      content: "+";
+      font-size: 1.5rem;
+      color: #ff444f;
+    }
+    .accordion-header.active::after {
+      content: "-";
+    }
+    .accordion-content {
+      padding: 0 0 1rem;
+      display: none;
+    }
+    .accordion-content p {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+    .accordion-content a {
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+    .accordion-content ul {
+      margin-left: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .accordion-content li {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Resources section styles */
+    .resource-card {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .resource-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: #f0f7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .resource-content h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #0e2140;
+    }
+    .resource-content p {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    
+    /* Video tutorial styles */
+    .video-tutorial {
+      margin-top: 2rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+    }
+    .video-tutorial h3 {
+      font-size: 1.25rem;
+      color: #0e2140;
+      margin-bottom: 1rem;
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+    }
+    .video-placeholder i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #ff444f;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .topics-container {
+        flex-direction: column;
+      }
+      .topics-sidebar {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="help-center-landing.html" class="logo" onclick="window.location.href='help-center-landing.html'; return false;"><span>deriv</span>Partners</a>
+      <div class="right-nav">
+        <div class="language-selector">EN</div>
+        <button class="btn secondary-button" onclick="alert('Login functionality would be implemented here'); return false;">Log in</button>
+        <button class="btn primary-button" onclick="alert('Signup functionality would be implemented here'); return false;">Sign up</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="help-center-landing.html" onclick="window.location.href='help-center-landing.html'; return false;">Home</a> > Getting Started
+    </div>
+  </div>
+
+  <main class="container category-container">
+    <div class="category-header">
+      <h1>Getting Started</h1>
+      <p>Learn about Deriv partnership programs, how to sign up, and everything you need to know to start earning commissions.</p>
+    </div>
+    
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search getting started topics...">
+      <button class="search-button" onclick="alert('Search functionality would be implemented here'); return false;">Search</button>
+    </div>
+    
+    <div class="topics-container">
+      <div class="topics-sidebar">
+        <div class="sidebar-section">
+          <h3>Getting Started</h3>
+          <ul>
+            <li class="active"><a href="#">All topics</a></li>
+            <li><a href="#" onclick="alert('Partnership Programs article would be displayed here'); return false;">Partnership Programs</a></li>
+            <li><a href="#" onclick="alert('Becoming an Affiliate article would be displayed here'); return false;">Becoming an Affiliate</a></li>
+            <li><a href="#" onclick="alert('Becoming an IB article would be displayed here'); return false;">Becoming an IB</a></li>
+            <li><a href="#" onclick="alert('Account Setup article would be displayed here'); return false;">Account Setup</a></li>
+            <li><a href="#" onclick="alert('Verification Process article would be displayed here'); return false;">Verification Process</a></li>
+            <li><a href="#" onclick="alert('Dashboard Guide article would be displayed here'); return false;">Dashboard Guide</a></li>
+          </ul>
+        </div>
+        
+        <div class="sidebar-section">
+          <h3>Related Categories</h3>
+          <ul>
+            <li><a href="help-center-category-earning.html" onclick="window.location.href='help-center-category-earning.html'; return false;">Earning Models</a></li>
+            <li><a href="#" onclick="alert('Payments category would be displayed'); return false;">Payments</a></li>
+            <li><a href="#" onclick="alert('Marketing Resources category would be displayed'); return false;">Marketing Resources</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="topics-list">
+        <div class="topic-section">
+          <h2>Partnership Programs</h2>
+          <ul class="topic-list">
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Partnership Programs Overview article would be displayed here'); return false;">Partnership Programs Overview</a></h3>
+              <p class="topic-description">An introduction to all the partnership opportunities available at Deriv, including Affiliate & IB, Deriv API, and Deriv Prime.</p>
+              <div class="article-meta">
+                <span class="views">4,256 views</span>
+                <span class="rating">4.9/5</span>
+              </div>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Affiliate vs. IB Program article would be displayed here'); return false;">Affiliate vs. IB Program: Which is Right for You?</a></h3>
+              <p class="topic-description">A comparison of the Affiliate and IB programs, their benefits, and how to choose the right one for your business.</p>
+              <div class="article-meta">
+                <span class="views">3,821 views</span>
+                <span class="rating">4.7/5</span>
+              </div>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Deriv API Partnership article would be displayed here'); return false;">Deriv API Partnership: Build Your Own Trading App</a></h3>
+              <p class="topic-description">Learn how to create custom trading applications with Deriv API and earn up to 5% in markup commissions.</p>
+              <div class="article-meta">
+                <span class="views">2,459 views</span>
+                <span class="rating">4.8/5</span>
+              </div>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Deriv Prime article would be displayed here'); return false;">Deriv Prime: Liquidity Solutions for Startup Brokers</a></h3>
+              <p class="topic-description">Discover Deriv Prime, our data-driven liquidity solution designed specifically for startup brokers.</p>
+              <div class="article-meta">
+                <span class="views">1,845 views</span>
+                <span class="rating">4.6/5</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="topic-section">
+          <h2>Becoming a Partner</h2>
+          <ul class="topic-list">
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Affiliate Application Process article would be displayed here'); return false;">Affiliate Application Process</a></h3>
+              <p class="topic-description">A step-by-step guide to applying for the Deriv Affiliate program, from filling out the application to getting approved.</p>
+              <span class="tag">Affiliate</span>
+              <span class="tag">Registration</span>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('IB Requirements article would be displayed here'); return false;">IB Requirements & Application</a></h3>
+              <p class="topic-description">Learn about the requirements for becoming an Introducing Broker (IB) with Deriv and how to apply.</p>
+              <span class="tag">IB</span>
+              <span class="tag">Registration</span>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Eligibility Criteria article would be displayed here'); return false;">Eligibility Criteria for Partners</a></h3>
+              <p class="topic-description">Understand who is eligible to become a Deriv partner, including age requirements and country restrictions.</p>
+              <span class="tag">Eligibility</span>
+              <span class="tag">Requirements</span>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Account Verification article would be displayed here'); return false;">Account Verification Guide</a></h3>
+              <p class="topic-description">How to complete the verification process for your Deriv partner account to ensure smooth operation.</p>
+              <span class="tag">Verification</span>
+              <span class="tag">KYC</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="topic-section">
+          <h2>Setting Up Your Account</h2>
+          <ul class="topic-list">
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Dashboard Overview article would be displayed here'); return false;">Dashboard Overview</a></h3>
+              <p class="topic-description">A comprehensive guide to navigating your partner dashboard and accessing key features.</p>
+              <span class="tag">Dashboard</span>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Getting Your Referral Link article would be displayed here'); return false;">Getting Your Referral Link</a></h3>
+              <p class="topic-description">How to obtain and use your unique referral links to start earning commissions from client sign-ups.</p>
+              <span class="tag">Referral</span>
+              <span class="tag">Marketing</span>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Setting Up Payment Methods article would be displayed here'); return false;">Setting Up Payment Methods</a></h3>
+              <p class="topic-description">Instructions for configuring your preferred payment methods to receive commission payments.</p>
+              <span class="tag">Payments</span>
+              <span class="tag">Setup</span>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Tracking Clients article would be displayed here'); return false;">Tracking Clients & Performance</a></h3>
+              <p class="topic-description">How to monitor your referred clients, their activity, and your earning performance.</p>
+              <span class="tag">Tracking</span>
+              <span class="tag">Analytics</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="faq-section">
+          <h2>Frequently Asked Questions</h2>
+          <ul class="accordion">
+            <li class="accordion-item">
+              <div class="accordion-header">What partnership programmes does Deriv have?</div>
+              <div class="accordion-content">
+                <p>Deriv has the following partnership programmes available:</p>
+                <ul>
+                  <li><strong>Affiliate & IB Programme:</strong> Introduce your clients to Deriv and earn up to 45% in commissions when they trade.</li>
+                  <li><strong>Deriv API:</strong> Create apps with our API and earn up to 5% in markup commissions.</li>
+                  <li><strong>Deriv Prime:</strong> Data-driven liquidity solutions designed for startup brokers.</li>
+                </ul>
+                <a href="#" onclick="alert('Partnership Programs Overview article would be displayed here'); return false;">Learn more about Deriv partnership programmes →</a>
+              </div>
+            </li>
+            <li class="accordion-item">
+              <div class="accordion-header">How do I become an Affiliate or an Introducing Broker (IB) with Deriv?</div>
+              <div class="accordion-content">
+                <p>To become a Deriv Affiliate:</p>
+                <ul>
+                  <li>Go to our Partners page and click on "Join Now".</li>
+                  <li>Complete the Affiliate application form.</li>
+                  <li>Wait for approval, which typically takes 1-3 working days.</li>
+                </ul>
+                <p>The approval process may take less time if you have a real Deriv account with the same email as your partner account application.</p>
+                <p>If you have clients trading CFDs, you'll need to create a real Deriv MT5 Standard account to become an Introducing Broker (IB).</p>
+                <a href="#" onclick="alert('Affiliate Application Process article would be displayed here'); return false;">View detailed application steps →</a>
+              </div>
+            </li>
+            <li class="accordion-item">
+              <div class="accordion-header">Who is eligible to become a Deriv Affiliate?</div>
+              <div class="accordion-content">
+                <p>To be eligible as a Deriv Affiliate, you must:</p>
+                <ul>
+                  <li>Be 18 years old or older</li>
+                  <li>Not reside in a FATF-restricted country</li>
+                </ul>
+                <p>Anyone capable of referring traders is welcome to apply.</p>
+                <p>If you are any of the following, you'll have an even better chance of referring potential clients:</p>
+                <ul>
+                  <li>Trading experts</li>
+                  <li>Content creators (bloggers, YouTubers, social media influencers)</li>
+                  <li>Software developers</li>
+                </ul>
+                <a href="#" onclick="alert('Eligibility Criteria article would be displayed here'); return false;">Check complete eligibility criteria →</a>
+              </div>
+            </li>
+            <li class="accordion-item">
+              <div class="accordion-header">Is there a fee to join the Deriv partnership programmes?</div>
+              <div class="accordion-content">
+                <p>There is no fee to join any of Deriv partnership programmes. It is free of charge and does not involve any hidden costs.</p>
+              </div>
+            </li>
+            <li class="accordion-item">
+              <div class="accordion-header">When and how do I get my commissions?</div>
+              <div class="accordion-content">
+                <p>You'll receive your commissions around the 15th of each month. It will be directly deposited into your selected payment method.</p>
+                <p>If your clients are trading on Deriv MT5 accounts, commissions on those trades will be credited daily to your Deriv MT5 Standard account.</p>
+                <p>To ensure you receive your commissions on time, set up your payment method and verify your payment threshold.</p>
+                <a href="#" onclick="alert('Commission Payment Schedule article would be displayed here'); return false;">Learn more about commission payments →</a>
+              </div>
+            </li>
+            <li class="accordion-item">
+              <div class="accordion-header">How do I get my Deriv affiliate referral link?</div>
+              <div class="accordion-content">
+                <ol>
+                  <li>Log in to your affiliate dashboard.</li>
+                  <li>Click "Marketing" tab.</li>
+                  <li>Scroll down, select 'Direct links' on the left-hand side of your screen.</li>
+                  <li>Click on the link titled 'Direct signup- EN'.</li>
+                  <li>Copy the link under 'Landing page URL' and share it with your clients.</li>
+                </ol>
+                <p>You also may provide other referral links based on your clients' preferred languages.</p>
+                <a href="#" onclick="alert('Video tutorial would be displayed here'); return false;">Watch video tutorial: How to get your referral link →</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="video-tutorial">
+          <h3>Video Tutorial: Getting Started with Deriv Partners</h3>
+          <div class="video-container">
+            <div class="video-placeholder">
+              <i>▶️</i>
+              <p>Click to watch the tutorial (Video would appear here)</p>
+            </div>
+          </div>
+          <p>This comprehensive introduction covers everything you need to know to get started as a Deriv partner, including account setup, obtaining referral links, and tracking commissions.</p>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon">📚</div>
+          <div class="resource-content">
+            <h3>Partner Quickstart Guide</h3>
+            <p>Download our comprehensive quickstart guide for a step-by-step walkthrough of becoming a successful Deriv partner.</p>
+            <a href="#" class="btn primary-button" onclick="alert('Quickstart guide PDF would be downloaded here'); return false;">Download guide</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Accordion functionality
+      const accordionHeaders = document.querySelectorAll('.accordion-header');
+      accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+          this.classList.toggle('active');
+          const content = this.nextElementSibling;
+          if (content.style.display === 'block') {
+            content.style.display = 'none';
+          } else {
+            content.style.display = 'block';
+          }
+        });
+      });
+      
+      // Search functionality
+      const searchButton = document.querySelector('.search-button');
+      const searchInput = document.querySelector('.search-input');
+      searchButton.addEventListener('click', function() {
+        const query = searchInput.value.trim();
+        if (query) {
+          alert(`Searching for: ${query}\n\nSearch results would be displayed here.`);
+        } else {
+          alert('Please enter a search term.');
+        }
+      });
+    });
+  </script>
+</body>
+</html> 

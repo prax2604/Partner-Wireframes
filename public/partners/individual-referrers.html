@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Individual Referrers | Deriv Partners</title>
+  <meta name="description" content="Start earning passive income by referring clients to Deriv. No specialized knowledge required - perfect for part-time affiliates.">
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Inline styles -->
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #333333;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: none;
+      letter-spacing: 0.25px;
+    }
+    .btn-primary {
+      background-color: #ff444f;
+      color: white;
+    }
+    .btn-primary:hover {
+      background-color: #d43e47;
+    }
+    .btn-outline {
+      border: 1px solid #333333;
+      color: #333333;
+    }
+    .btn-outline:hover {
+      background-color: #f3f4f6;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .mb-8 {
+      margin-bottom: 2rem;
+    }
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+    .mt-8 {
+      margin-top: 2rem;
+    }
+    
+    /* Header styles */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #ff444f;
+      text-decoration: none;
+    }
+    .logo-text {
+      margin-left: 0.5rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-link {
+      color: #333333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #ff444f;
+    }
+    .auth-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    /* Hero section */
+    .hero {
+      background-color: #222222;
+      color: white;
+      padding: 4rem 0;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 800px;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    /* Benefits section */
+    .benefits {
+      padding: 4rem 0;
+      background-color: #f9fafb;
+    }
+    .benefits-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: #0e2140;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .benefit-card {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .benefit-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 1rem 0;
+      color: #0e2140;
+    }
+    .benefit-card p {
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
+    
+    /* Commission plans section */
+    .commission {
+      padding: 4rem 0;
+    }
+    .commission-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: #0e2140;
+    }
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+      gap: 2rem;
+    }
+    .plan {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .plan h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #0e2140;
+    }
+    .plan-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+    .plan-features li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+    }
+    .plan-features li::before {
+      content: "•";
+      color: #ff444f;
+      font-weight: bold;
+      margin-right: 0.75rem;
+    }
+    
+    /* Success stories section */
+    .success-stories {
+      padding: 4rem 0;
+      background-color: #f9fafb;
+    }
+    .stories-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #0e2140;
+    }
+    .stories-subtitle {
+      font-size: 1.125rem;
+      color: #4b5563;
+      margin-bottom: 3rem;
+    }
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    .story-card {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .story-card blockquote {
+      font-style: italic;
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .story-card blockquote::before {
+      content: """;
+      font-size: 3rem;
+      color: #ff444f;
+      opacity: 0.2;
+      position: absolute;
+      left: -1.5rem;
+      top: -1rem;
+    }
+    .author {
+      display: flex;
+      align-items: center;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #e5e7eb;
+      margin-right: 1rem;
+    }
+    .author-info h4 {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: #0e2140;
+    }
+    .author-info p {
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    
+    /* Resources section */
+    .resources {
+      padding: 4rem 0;
+    }
+    .resources-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: #0e2140;
+    }
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .resource-card {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .resource-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.5rem;
+      color: #0e2140;
+    }
+    .resource-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #0e2140;
+    }
+    .resource-card p {
+      color: #4b5563;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Getting started section */
+    .getting-started {
+      padding: 4rem 0;
+      background-color: #f9fafb;
+    }
+    .steps-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .step-item {
+      display: flex;
+      margin-bottom: 2rem;
+    }
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #ff444f;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 1.5rem;
+      flex-shrink: 0;
+    }
+    .step-content {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      flex-grow: 1;
+    }
+    .step-content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #0e2140;
+    }
+    .step-content p {
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
+    
+    /* FAQ Section */
+    .faq {
+      padding: 4rem 0;
+    }
+    .faq-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: #0e2140;
+    }
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 1.5rem;
+    }
+    .faq-question {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #0e2140;
+    }
+    .faq-answer {
+      color: #4b5563;
+    }
+    
+    /* CTA Section */
+    .cta {
+      background: linear-gradient(to right, #0e2140, #3E2F79);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    .cta-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .cta-description {
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      opacity: 0.9;
+    }
+    
+    /* Footer Styles */
+    footer {
+      padding: 2rem 0;
+      background-color: #f9fafb;
+      text-align: center;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .plans, .stories-grid, .resources-grid {
+        grid-template-columns: 1fr;
+      }
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      .auth-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/" class="logo">
+          <span class="logo-text">deriv partners</span>
+        </a>
+        <div class="nav-links">
+          <a href="/partners" class="nav-link">Partners</a>
+          <a href="#" class="nav-link">Deriv API</a>
+        </div>
+        <div class="auth-links">
+          <a href="/login" class="btn btn-outline">Log in</a>
+          <a href="/signup" class="btn btn-primary">Sign up</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Individual Referrers</h1>
+      <p>Earn passive income by sharing Deriv with your network - no specialized knowledge required. Perfect for part-time affiliates looking for a simple way to earn.</p>
+      <a href="/signup" class="btn btn-primary">Sign Up as an Individual Referrer</a>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits">
+    <div class="container">
+      <h2 class="benefits-title">Why This Path Is Perfect For You</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h3>Simple to Start</h3>
+          <p>Share your unique referral links with friends, family, and social contacts - no technical setup required.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Minimal Time Investment</h3>
+          <p>Perfect for those looking to earn on the side without a major time commitment.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Ongoing Revenue</h3>
+          <p>Earn commissions every time your referred clients trade, creating a passive income stream.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Easy-to-Use Tools</h3>
+          <p>Simple tracking links, ready-made promotional materials, and a straightforward dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commission Plans Section -->
+  <section class="commission">
+    <div class="container">
+      <h2 class="commission-title">Recommended Commission Plan</h2>
+      <div class="plans">
+        <div class="plan">
+          <h3>CPA (Cost Per Acquisition)</h3>
+          <ul class="plan-features">
+            <li>Earn $100 for each qualified client you refer</li>
+            <li>One-time payment with simple requirements</li>
+            <li>Perfect for those who prefer straightforward earnings</li>
+            <li>Available for EU-based clients</li>
+          </ul>
+          <a href="/partners/cpa-details" class="btn btn-outline">Learn More About CPA</a>
+        </div>
+        <div class="plan">
+          <h3>Turnover</h3>
+          <ul class="plan-features">
+            <li>Earn based on clients' trading volume</li>
+            <li>Steady commission regardless of client results</li>
+            <li>Predictable earnings perfect for casual referrers</li>
+            <li>Available for clients worldwide</li>
+          </ul>
+          <a href="/partners/turnover-details" class="btn btn-outline">Learn More About Turnover</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Getting Started Section -->
+  <section class="getting-started">
+    <div class="container">
+      <h2 class="benefits-title">How to Get Started</h2>
+      <div class="steps-container">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Sign up for a Deriv Partners account</h3>
+            <p>Create your free account in minutes. All you need is a valid email address and basic personal information.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Get your unique referral links</h3>
+            <p>Once approved, you'll get access to your dashboard where you can find your personalized referral links for different Deriv products.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Share your links</h3>
+            <p>Share your links with friends, on social media, or with your community. Use our pre-made marketing materials to increase conversions.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Track your performance and earnings</h3>
+            <p>Monitor your referrals, conversions, and earnings in real-time from your user-friendly dashboard.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h3>Receive your commissions</h3>
+            <p>Get paid monthly via your preferred payment method. Minimum withdrawal amount is only $50.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Stories Section -->
+  <section class="success-stories">
+    <div class="container">
+      <h2 class="stories-title">Success Stories</h2>
+      <p class="stories-subtitle">Hear from successful Individual Referrers around the world</p>
+      <div class="stories-grid">
+        <div class="story-card">
+          <blockquote>
+            I started sharing my Deriv affiliate link with friends who were interested in trading. Within 3 months, I was earning $450 per month in passive income. It's been the simplest side income I've ever made.
+          </blockquote>
+          <div class="author">
+            <div class="author-avatar"></div>
+            <div class="author-info">
+              <h4>Alex M.</h4>
+              <p>Singapore • Bronze Partner</p>
+            </div>
+          </div>
+        </div>
+        <div class="story-card">
+          <blockquote>
+            As a finance student, I share Deriv with my classmates. The CPA plan works perfectly for me - I earned $1,200 in my first semester just by helping peers get started with trading.
+          </blockquote>
+          <div class="author">
+            <div class="author-avatar"></div>
+            <div class="author-info">
+              <h4>Sarah K.</h4>
+              <p>UK • Silver Partner</p>
+            </div>
+          </div>
+        </div>
+        <div class="story-card">
+          <blockquote>
+            I simply share Deriv on my social media accounts once a week. The passive income has helped pay for my children's extra-curricular activities. I've been a Bronze partner for 8 months and earn around $350 monthly.
+          </blockquote>
+          <div class="author">
+            <div class="author-avatar"></div>
+            <div class="author-info">
+              <h4>Miguel R.</h4>
+              <p>Mexico • Bronze Partner</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources Section -->
+  <section class="resources">
+    <div class="container">
+      <h2 class="resources-title">Recommended Resources for Individual Referrers</h2>
+      <div class="resources-grid">
+        <div class="resource-card">
+          <div class="resource-icon">📱</div>
+          <h3>Social Sharing Guide</h3>
+          <p>Learn how to effectively share your links on social media</p>
+          <a href="#" class="btn btn-outline">Read Guide</a>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon">📊</div>
+          <h3>Dashboard Tutorial</h3>
+          <p>Learn how to track your referrals and commissions</p>
+          <a href="#" class="btn btn-outline">Watch Video</a>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon">🔗</div>
+          <h3>Link Generator</h3>
+          <p>Create and customize your referral links</p>
+          <a href="#" class="btn btn-outline">Access Tool</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq">
+    <div class="container">
+      <h2 class="faq-title">Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <h3 class="faq-question">How much can I earn as an Individual Referrer?</h3>
+          <p class="faq-answer">Your earnings depend on how many clients you refer and their trading activity. Our most active Individual Referrers earn between $300-$1000 per month, but earnings can go much higher as you refer more clients.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">Do I need trading knowledge to be successful?</h3>
+          <p class="faq-answer">No, you don't need any specialized trading knowledge. You simply share your referral links, and our platform and resources do the rest. However, having some basic understanding of trading can help you better engage potential clients.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">How soon can I start earning?</h3>
+          <p class="faq-answer">You can start earning as soon as your referred clients begin trading. With the CPA plan, you'll earn after clients meet simple qualification requirements. With the Turnover plan, you'll earn based on clients' trading volume.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">What promotional materials are available?</h3>
+          <p class="faq-answer">We provide a variety of ready-to-use materials including banners, landing pages, email templates, social media posts, and educational content you can share with your audience.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">How do I get paid?</h3>
+          <p class="faq-answer">We offer multiple payment methods including bank transfers, e-wallets, and cryptocurrencies. Commissions are calculated daily and paid monthly, with a minimum withdrawal amount of just $50.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <h2 class="cta-title">Ready to start earning?</h2>
+      <p class="cta-description">Join thousands of Individual Referrers already earning with Deriv. Create your free account today and get access to all the tools you need to succeed.</p>
+      <a href="/signup" class="btn btn-primary">Sign up as an Individual Referrer</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <a href="/partners" class="btn btn-outline">Back to Main Page</a>
+    </div>
+  </footer>
+</body>
+</html> 

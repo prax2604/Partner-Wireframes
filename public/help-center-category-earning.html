@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Earning Models | Partner Help Centre | Deriv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f7fa;
+    }
+    a {
+      color: #ff444f;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    /* Header styles */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 0;
+    }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0e2140;
+    }
+    .logo span {
+      color: #ff444f;
+    }
+    .right-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    .language-selector::before {
+      content: "🌐";
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+    }
+    .primary-button {
+      background-color: #ff444f;
+      color: white;
+    }
+    .primary-button:hover {
+      background-color: #e03e47;
+    }
+    .secondary-button {
+      background-color: transparent;
+      color: #0e2140;
+      border: 1px solid #0e2140;
+    }
+    .secondary-button:hover {
+      background-color: #f0f0f0;
+    }
+    
+    /* Breadcrumb styles */
+    .breadcrumb {
+      padding: 1rem 0;
+      font-size: 0.875rem;
+      color: #666;
+    }
+    .breadcrumb a {
+      color: #666;
+    }
+    .breadcrumb a:hover {
+      color: #ff444f;
+    }
+    
+    /* Main content styles */
+    .category-container {
+      padding: 2rem 0 4rem;
+    }
+    .category-header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .category-header h1 {
+      font-size: 2.5rem;
+      color: #0e2140;
+      margin-bottom: 1rem;
+    }
+    .category-header p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #666;
+    }
+    
+    /* Search container styles */
+    .search-container {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: #ff444f;
+      box-shadow: 0 0 0 3px rgba(255,68,79,0.1);
+    }
+    .search-button {
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #ff444f;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+    
+    /* Topic grid styles */
+    .topics-container {
+      display: flex;
+      gap: 2rem;
+    }
+    .topics-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+    }
+    .topics-list {
+      flex: 1;
+    }
+    .sidebar-section {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+    .sidebar-section h3 {
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0e2140;
+      background-color: #f8f9fa;
+      border-bottom: 1px solid #eee;
+    }
+    .sidebar-section ul {
+      list-style: none;
+      padding: 0.5rem 0;
+    }
+    .sidebar-section li {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.9rem;
+    }
+    .sidebar-section li.active {
+      background-color: #f0f7ff;
+    }
+    .sidebar-section li.active a {
+      color: #ff444f;
+      font-weight: 500;
+    }
+    
+    /* Topics list styles */
+    .topic-section {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    .topic-section h2 {
+      font-size: 1.5rem;
+      color: #0e2140;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    .topic-list {
+      list-style: none;
+    }
+    .topic-item {
+      border-bottom: 1px solid #eee;
+      padding: 1rem 0;
+    }
+    .topic-item:last-child {
+      border-bottom: none;
+    }
+    .topic-title {
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+    .topic-description {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: #888;
+    }
+    .article-meta .views::before {
+      content: "👁️ ";
+    }
+    .article-meta .rating::before {
+      content: "⭐ ";
+    }
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      background-color: #f0f7ff;
+      color: #0e2140;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      margin-right: 0.5rem;
+    }
+    
+    /* FAQ section styles */
+    .faq-section {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    .faq-section h2 {
+      font-size: 1.5rem;
+      color: #0e2140;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    .accordion {
+      list-style: none;
+    }
+    .accordion-item {
+      border-bottom: 1px solid #eee;
+    }
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+    .accordion-header {
+      padding: 1rem 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #333;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .accordion-header::after {
+      content: "+";
+      font-size: 1.5rem;
+      color: #ff444f;
+    }
+    .accordion-header.active::after {
+      content: "-";
+    }
+    .accordion-content {
+      padding: 0 0 1rem;
+      display: none;
+    }
+    .accordion-content p {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+    .accordion-content a {
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+    
+    /* Resources section styles */
+    .resource-card {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .resource-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: #f0f7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .resource-content h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #0e2140;
+    }
+    .resource-content p {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .topics-container {
+        flex-direction: column;
+      }
+      .topics-sidebar {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="help-center-landing.html" class="logo" onclick="window.location.href='help-center-landing.html'; return false;"><span>deriv</span>Partners</a>
+      <div class="right-nav">
+        <div class="language-selector">EN</div>
+        <button class="btn secondary-button" onclick="alert('Login functionality would be implemented here'); return false;">Log in</button>
+        <button class="btn primary-button" onclick="alert('Signup functionality would be implemented here'); return false;">Sign up</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="help-center-landing.html" onclick="window.location.href='help-center-landing.html'; return false;">Home</a> > Earning Models
+    </div>
+  </div>
+
+  <main class="container category-container">
+    <div class="category-header">
+      <h1>Earning Models</h1>
+      <p>Everything you need to know about revenue share, turnover, and CPA commission models to maximize your earnings as a Deriv partner.</p>
+    </div>
+    
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search for specific commission topics...">
+      <button class="search-button" onclick="alert('Search functionality would be implemented here'); return false;">Search</button>
+    </div>
+    
+    <div class="topics-container">
+      <div class="topics-sidebar">
+        <div class="sidebar-section">
+          <h3>Earning Models</h3>
+          <ul>
+            <li class="active"><a href="#">All topics</a></li>
+            <li><a href="help-center-earnings.html" onclick="window.location.href='help-center-earnings.html'; return false;">Understanding commission models</a></li>
+            <li><a href="#" onclick="alert('Revenue share article would be displayed here'); return false;">Revenue share</a></li>
+            <li><a href="#" onclick="alert('Turnover article would be displayed here'); return false;">Turnover</a></li>
+            <li><a href="#" onclick="alert('CPA article would be displayed here'); return false;">CPA</a></li>
+            <li><a href="help-center-calculator.html" onclick="window.location.href='help-center-calculator.html'; return false;">Commission calculator</a></li>
+            <li><a href="#" onclick="alert('Payment schedule article would be displayed here'); return false;">Payment schedule</a></li>
+            <li><a href="#" onclick="alert('Tier benefits article would be displayed here'); return false;">Tier benefits</a></li>
+          </ul>
+        </div>
+        
+        <div class="sidebar-section">
+          <h3>Related Categories</h3>
+          <ul>
+            <li><a href="#" onclick="alert('Getting Started category would be displayed'); return false;">Getting Started</a></li>
+            <li><a href="#" onclick="alert('Payments category would be displayed'); return false;">Payments</a></li>
+            <li><a href="#" onclick="alert('Client Management category would be displayed'); return false;">Client Management</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="topics-list">
+        <div class="topic-section">
+          <h2>Featured Articles</h2>
+          <ul class="topic-list">
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="help-center-earnings.html" onclick="window.location.href='help-center-earnings.html'; return false;">Understanding Commission Models</a></h3>
+              <p class="topic-description">An overview of the three commission models available to Deriv partners: revenue share, turnover, and CPA.</p>
+              <div class="article-meta">
+                <span class="views">2,845 views</span>
+                <span class="rating">4.8/5</span>
+              </div>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="help-center-calculator.html" onclick="window.location.href='help-center-calculator.html'; return false;">Commission Calculator</a></h3>
+              <p class="topic-description">Estimate your potential earnings with our interactive commission calculator for different products and models.</p>
+              <div class="article-meta">
+                <span class="views">3,721 views</span>
+                <span class="rating">4.9/5</span>
+              </div>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Revenue share article would be displayed here'); return false;">Revenue Share Model Explained</a></h3>
+              <p class="topic-description">A detailed explanation of the revenue share model, with examples and calculations for different scenarios.</p>
+              <div class="article-meta">
+                <span class="views">2,156 views</span>
+                <span class="rating">4.7/5</span>
+              </div>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('CPA article would be displayed here'); return false;">Cost Per Acquisition (CPA) Model</a></h3>
+              <p class="topic-description">Learn about our CPA model, qualifying criteria, payment amounts by region, and best practices.</p>
+              <div class="article-meta">
+                <span class="views">1,984 views</span>
+                <span class="rating">4.6/5</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="topic-section">
+          <h2>Commission Models</h2>
+          <ul class="topic-list">
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Revenue share for options article would be displayed here'); return false;">Revenue Share for Options Trading</a></h3>
+              <p class="topic-description">How revenue share works specifically for options trading products on DTrader, SmartTrader, and Binary Bot.</p>
+              <span class="tag">Revenue Share</span>
+              <span class="tag">Options</span>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Turnover for forex article would be displayed here'); return false;">Turnover Commissions for Forex</a></h3>
+              <p class="topic-description">Specific details on turnover commission rates for forex trading, with examples and calculations.</p>
+              <span class="tag">Turnover</span>
+              <span class="tag">Forex</span>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Turnover for commodities article would be displayed here'); return false;">Turnover Commissions for Commodities</a></h3>
+              <p class="topic-description">Specific details on turnover commission rates for commodities trading, with examples and calculations.</p>
+              <span class="tag">Turnover</span>
+              <span class="tag">Commodities</span>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Turnover for indices article would be displayed here'); return false;">Turnover Commissions for Indices</a></h3>
+              <p class="topic-description">Specific details on turnover commission rates for indices trading, with examples and calculations.</p>
+              <span class="tag">Turnover</span>
+              <span class="tag">Indices</span>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('CPA regional rates article would be displayed here'); return false;">CPA Regional Rates and Requirements</a></h3>
+              <p class="topic-description">A breakdown of CPA rates and minimum deposit requirements by region, with eligibility criteria.</p>
+              <span class="tag">CPA</span>
+              <span class="tag">Regional</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="topic-section">
+          <h2>Payments and Tiers</h2>
+          <ul class="topic-list">
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Payment schedule article would be displayed here'); return false;">Commission Payment Schedule</a></h3>
+              <p class="topic-description">When and how commissions are calculated, processed, and paid out for different commission models.</p>
+              <span class="tag">Payments</span>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Tier benefits article would be displayed here'); return false;">Partner Tier Benefits</a></h3>
+              <p class="topic-description">Explanation of the tier system, benefits of each tier, and requirements to reach and maintain tiers.</p>
+              <span class="tag">Tiers</span>
+              <span class="tag">Benefits</span>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Payment methods article would be displayed here'); return false;">Available Payment Methods</a></h3>
+              <p class="topic-description">Overview of payment methods, currencies, minimum thresholds, and processing times.</p>
+              <span class="tag">Payments</span>
+              <span class="tag">Methods</span>
+            </li>
+            <li class="topic-item">
+              <h3 class="topic-title"><a href="#" onclick="alert('Commission calculations article would be displayed here'); return false;">How Commissions Are Calculated</a></h3>
+              <p class="topic-description">Technical details on how different commission types are calculated, with formulas and examples.</p>
+              <span class="tag">Calculations</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="faq-section">
+          <h2>Frequently Asked Questions</h2>
+          <ul class="accordion">
+            <li class="accordion-item">
+              <div class="accordion-header">Can I change my commission model after signing up?</div>
+              <div class="accordion-content">
+                <p>Yes, you can change your commission model once per month by submitting a request through your partner dashboard. The change will take effect from the 1st day of the following month. Note that some historical data might not be transferred between models.</p>
+                <a href="#" onclick="alert('Changing commission model article would be displayed here'); return false;">Learn more about changing models →</a>
+              </div>
+            </li>
+            <li class="accordion-item">
+              <div class="accordion-header">Which commission model is best for CFD trading clients?</div>
+              <div class="accordion-content">
+                <p>For partners with clients who primarily trade CFDs on MT5, the turnover model is typically the most advantageous. This model pays a fixed commission per lot traded, regardless of whether clients win or lose, ensuring steady income based on trading volume.</p>
+                <a href="#" onclick="alert('Commission models for CFD article would be displayed here'); return false;">Learn more about CFD commissions →</a>
+              </div>
+            </li>
+            <li class="accordion-item">
+              <div class="accordion-header">How do partner tiers affect my commission rates?</div>
+              <div class="accordion-content">
+                <p>Higher partner tiers can increase your commission rates by 5-10% depending on the tier level. For example, a Diamond tier partner could earn up to 45% revenue share instead of the standard 40%. Tier status is determined by the number of active clients and total trading volume over a 3-month period.</p>
+                <a href="#" onclick="alert('Tier benefits article would be displayed here'); return false;">Learn more about partner tiers →</a>
+              </div>
+            </li>
+            <li class="accordion-item">
+              <div class="accordion-header">Is there a minimum payout threshold for commissions?</div>
+              <div class="accordion-content">
+                <p>Yes, there is a minimum payout threshold of $50 (or equivalent in other currencies). If your commission total is below this threshold, it will be carried forward to the next payment period until the minimum is reached.</p>
+                <a href="#" onclick="alert('Payment thresholds article would be displayed here'); return false;">Learn more about payment thresholds →</a>
+              </div>
+            </li>
+            <li class="accordion-item">
+              <div class="accordion-header">How long do clients remain attributed to my account?</div>
+              <div class="accordion-content">
+                <p>Clients remain attributed to your account indefinitely, as long as they continue to use your referral link or sign up code. There is no expiration date for client attribution, ensuring you earn commissions from their activity for as long as they remain active traders.</p>
+                <a href="#" onclick="alert('Client attribution article would be displayed here'); return false;">Learn more about client attribution →</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon">🧮</div>
+          <div class="resource-content">
+            <h3>Calculate Your Potential Earnings</h3>
+            <p>Use our interactive calculator to estimate your commission earnings based on different models, client numbers, and trading volumes.</p>
+            <a href="help-center-calculator.html" class="btn primary-button" onclick="window.location.href='help-center-calculator.html'; return false;">Try the calculator</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Accordion functionality
+      const accordionHeaders = document.querySelectorAll('.accordion-header');
+      accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+          this.classList.toggle('active');
+          const content = this.nextElementSibling;
+          if (content.style.display === 'block') {
+            content.style.display = 'none';
+          } else {
+            content.style.display = 'block';
+          }
+        });
+      });
+      
+      // Search functionality
+      const searchButton = document.querySelector('.search-button');
+      const searchInput = document.querySelector('.search-input');
+      searchButton.addEventListener('click', function() {
+        const query = searchInput.value.trim();
+        if (query) {
+          alert(`Searching for: ${query}\n\nSearch results would be displayed here.`);
+        } else {
+          alert('Please enter a search term.');
+        }
+      });
+    });
+  </script>
+</body>
+</html> 

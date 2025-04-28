@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Programs | Deriv</title>
+  <meta name="description" content="Join Deriv's partner programs. Earn commissions by introducing traders to our trading platforms and tools.">
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Inline styles to avoid any external CSS dependencies -->
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #333333;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: none;
+      letter-spacing: 0.25px;
+    }
+    .btn-primary {
+      background-color: #ff444f;
+      color: white;
+    }
+    .btn-primary:hover {
+      background-color: #d43e47;
+    }
+    .btn-rounded {
+      border-radius: 24px;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .py-16 {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+    .py-8 {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    .mb-8 {
+      margin-bottom: 2rem;
+    }
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+    .mb-2 {
+      margin-bottom: 0.5rem;
+    }
+    .mt-4 {
+      margin-top: 1rem;
+    }
+    
+    /* Header styles */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #333333;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-link {
+      color: #333333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #ff444f;
+    }
+    
+    /* Modern Hero section with image */
+    .hero {
+      background: linear-gradient(135deg, #111d32 0%, #0e2140 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+    }
+    .hero-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-content {
+      max-width: 600px;
+      padding: 4rem 0;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 500px;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+    .hero-image {
+      position: relative;
+      flex: 1;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* Steps process */
+    .steps-process {
+      margin-top: 2rem;
+      padding-left: 1rem;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+    .step-number {
+      font-weight: 700;
+      font-size: 1.125rem;
+      margin-right: 1rem;
+      color: #ff444f;
+      min-width: 30px;
+    }
+    .step-text {
+      font-size: 1.125rem;
+    }
+    
+    /* Review badge */
+    .review-badge {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 0.5rem 0;
+      text-align: center;
+      font-size: 0.875rem;
+      color: white;
+      z-index: 3;
+    }
+    .stars {
+      color: #FFB700;
+      margin: 0 0.5rem;
+      display: inline-block;
+    }
+    
+    /* Card grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .grid-4 {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    .grid-3 {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    .platform-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: box-shadow 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .border-top-blue {
+      border-top: 4px solid #85ACB0;
+    }
+    .border-top-green {
+      border-top: 4px solid #70E0BA;
+    }
+    .border-top-purple {
+      border-top: 4px solid #3E2F79;
+    }
+    .border-top-amber {
+      border-top: 4px solid #FFB700;
+    }
+    .card-title {
+      font-weight: 600;
+      font-size: 1.125rem;
+      margin-bottom: 0.75rem;
+      color: #0e2140;
+    }
+    .card-text {
+      font-size: 0.875rem;
+      color: #4b5563;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+    .card-link {
+      color: #ff444f;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+    }
+    .card-link:hover {
+      text-decoration: underline;
+    }
+    
+    /* Section styles */
+    .section {
+      padding: 4rem 0;
+    }
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin: 0.5rem 0 1rem;
+      color: #0e2140;
+      letter-spacing: -0.5px;
+    }
+    .section-subtitle {
+      font-size: 1.125rem;
+      color: #333333;
+      max-width: 48rem;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+    .section-label {
+      color: #ff444f;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      letter-spacing: 1px;
+    }
+    
+    /* Platform icons */
+    .platform-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 12px auto;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .icon-blue {
+      background: #E6F1F5;
+      color: #85ACB0;
+    }
+    .icon-green {
+      background: #E7F9F4;
+      color: #70E0BA;
+    }
+    .icon-pink {
+      background: #EEEDFA;
+      color: #3E2F79;
+    }
+    .icon-amber {
+      background: #FFF7E6;
+      color: #FFB700;
+    }
+    
+    /* Background colors */
+    .bg-white {
+      background-color: white;
+    }
+    .bg-gray {
+      background-color: #F2F3F4;
+    }
+    
+    /* Testimonial */
+    .testimonial {
+      background: #F2F3F4;
+      border-radius: 8px;
+      padding: 1.5rem;
+      max-width: 48rem;
+      margin: 2rem auto 0;
+      text-align: center;
+    }
+    .testimonial-text {
+      color: #333333;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      font-style: italic;
+    }
+    .testimonial-author {
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    
+    /* Resources links */
+    .resources {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .resource-link {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: white;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      color: #333333;
+      font-weight: 500;
+      text-decoration: none;
+      transition: box-shadow 0.3s ease;
+    }
+    .resource-link:hover {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    /* CTA section */
+    .cta {
+      background: linear-gradient(to right, #0e2140, #3E2F79);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    .cta-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+    .cta-description {
+      font-size: 1.125rem;
+      max-width: 36rem;
+      margin: 0 auto 2rem;
+      opacity: 0.9;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #0e2140;
+      color: white;
+      padding: 3rem 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    .footer-heading {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .footer-links {
+      list-style: none;
+    }
+    .footer-link {
+      margin-bottom: 0.5rem;
+    }
+    .footer-link a {
+      color: #d1d5db;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-link a:hover {
+      color: white;
+    }
+    .copyright {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #374151;
+      color: #9ca3af;
+      font-size: 0.875rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .hero-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-content {
+        max-width: 100%;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .steps-process {
+        margin: 2rem auto;
+        max-width: 400px;
+      }
+      .hero-image {
+        margin-top: 2rem;
+        min-height: 300px;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .grid, .grid-4, .grid-3, .platform-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+      }
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+      .section-title {
+        font-size: 1.875rem;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero-image {
+        min-height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/" class="logo">Deriv</a>
+        <div class="nav-links">
+          <a href="https://developers.deriv.com" class="nav-link">Deriv API</a>
+          <a href="/derivprime" class="nav-link">Deriv Prime</a>
+          <a href="/partners/help-centre" class="nav-link">Partner Help Centre</a>
+          <a href="/login" class="nav-link">Login</a>
+          <a href="/signup" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem; margin-left: 1rem;">Sign up</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section - Updated to match the design in the image -->
+  <section class="hero">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <h1>Start earning as a Deriv Partner today</h1>
+        <p>Join our partnership programme. Refer and earn.</p>
+        <a href="/register" class="btn btn-primary btn-rounded">Become a Partner</a>
+      </div>
+      <div class="hero-image" style="display: flex; justify-content: flex-end; align-items: center;">
+        <!-- Removing the repeated steps process that appears alongside the image -->
+        
+        <!-- Placeholder for the person image -->
+        <div style="width: 400px; height: 500px; background: rgba(255,255,255,0.05); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); position: relative;">
+          <!-- When you have the actual image, replace this placeholder with: -->
+          <!-- <img src="/images/partner-person.jpg" alt="Deriv Partner using mobile app" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" /> -->
+          Person smiling with phone
+        </div>
+      </div>
+    </div>
+    <div class="review-badge">
+      <span>Our customers say</span>
+      <span style="font-weight: 600; margin-left: 8px;">Excellent</span>
+      <span class="stars">★★★★★</span>
+      <span>based on 85,148 reviews</span>
+      <span style="margin-left: 8px;">Trustpilot</span>
+    </div>
+  </section>
+
+  <!-- Metrics Section - No changes needed -->
+  <section class="section bg-white" style="padding-top: 3rem; padding-bottom: 1rem;">
+    <div class="container">
+      <div style="display: flex; justify-content: center; align-items: center; gap: 4rem; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center;">
+          <span style="font-size: 3rem; font-weight: 700; color: #ff444f; margin-right: 1rem;">15K+</span>
+          <span style="color: #4b5563; font-size: 1.125rem;">Active partners</span>
+        </div>
+        
+        <div style="display: flex; align-items: center;">
+          <span style="font-size: 3rem; font-weight: 700; color: #ff444f; margin-right: 1rem;">$10M+</span>
+          <span style="color: #4b5563; font-size: 1.125rem;">Partner commissions paid</span>
+        </div>
+        
+        <div style="display: flex; align-items: center;">
+          <span style="font-size: 3rem; font-weight: 700; color: #ff444f; margin-right: 1rem;">130+</span>
+          <span style="color: #4b5563; font-size: 1.125rem;">Countries worldwide</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USP Section - Split into separate partner and client benefit sections -->
+  <!-- Partner Benefits Section -->
+  <section class="section bg-dark-blue" style="background: linear-gradient(to right, #0e2140, #1a3563);">
+    <div class="container">
+      <div class="text-center mb-8">
+        <span class="section-label" style="color: #85ACB0;">WHY CHOOSE DERIV</span>
+        <h2 class="section-title" style="color: white;">Partner benefits that drive success</h2>
+        <p class="section-subtitle" style="color: #e5e7eb;">Discover what makes our partner program industry-leading</p>
+      </div>
+      
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <!-- USP 1: Commission Rates -->
+        <div style="background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 2rem;">
+          <div style="font-size: 2.5rem; color: #ff444f; margin-bottom: 1rem;">1</div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: white;">Industry-leading commission rates</h3>
+          <p style="color: #e5e7eb;">Up to 45% revenue share - significantly higher than competitors' programs with proven higher earnings.</p>
+        </div>
+        
+        <!-- USP 2: Dedicated Support -->
+        <div style="background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 2rem;">
+          <div style="font-size: 2.5rem; color: #ff444f; margin-bottom: 1rem;">2</div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: white;">One-on-one partner management</h3>
+          <p style="color: #e5e7eb;">Dedicated specialists actively help maximize your earnings with personalized growth strategies.</p>
+        </div>
+        
+        <!-- USP 3: 25-Year Track Record -->
+        <div style="background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 2rem;">
+          <div style="font-size: 2.5rem; color: #ff444f; margin-bottom: 1rem;">3</div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: white;">25-year industry pioneer</h3>
+          <p style="color: #e5e7eb;">Quarter-century of regulatory compliance and financial stability across global markets.</p>
+        </div>
+      </div>
+      
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+        <!-- USP 4: Lifetime Value -->
+        <div style="background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 2rem;">
+          <div style="font-size: 2.5rem; color: #ff444f; margin-bottom: 1rem;">4</div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: white;">Lifetime client value</h3>
+          <p style="color: #e5e7eb;">Earn forever from your referrals - no time limits or first-deposit-only restrictions like other programs.</p>
+        </div>
+        
+        <!-- USP 5: Diverse Trading Options -->
+        <div style="background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 2rem;">
+          <div style="font-size: 2.5rem; color: #ff444f; margin-bottom: 1rem;">5</div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: white;">Diverse trading portfolio</h3>
+          <p style="color: #e5e7eb;">100+ markets with varied contract types across CFDs, options, and specialized derivatives.</p>
+        </div>
+        
+        <!-- USP 6: Daily Payments -->
+        <div style="background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 2rem;">
+          <div style="font-size: 2.5rem; color: #ff444f; margin-bottom: 1rem;">6</div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: white;">Daily payments, no threshold</h3>
+          <p style="color: #e5e7eb;">Get your earnings every day with no minimum withdrawal requirements - unlike monthly competitor payouts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Benefits Section - New section -->
+  <section class="section bg-gray">
+    <div class="container">
+      <div class="text-center mb-8">
+        <span class="section-label">WHAT YOUR CLIENTS GET</span>
+        <h2 class="section-title">Benefits that make your referrals happy</h2>
+        <p class="section-subtitle">Features your clients will love - making it easier for you to promote</p>
+      </div>
+      
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <!-- Client Benefit 1 -->
+        <div class="card text-center">
+          <div style="width: 80px; height: 80px; border-radius: 50%; background-color: #E6F1F5; color: #85ACB0; font-size: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">1</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Competitive trading conditions</h3>
+          <p style="color: #4b5563;">Tight spreads and high leverage options ensure your clients get excellent value on every trade.</p>
+        </div>
+        
+        <!-- Client Benefit 2 -->
+        <div class="card text-center">
+          <div style="width: 80px; height: 80px; border-radius: 50%; background-color: #E6F1F5; color: #85ACB0; font-size: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">2</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">24/7 multilingual support</h3>
+          <p style="color: #4b5563;">Round-the-clock assistance ensures your clients always have help when they need it.</p>
+        </div>
+        
+        <!-- Client Benefit 3 -->
+        <div class="card text-center">
+          <div style="width: 80px; height: 80px; border-radius: 50%; background-color: #E6F1F5; color: #85ACB0; font-size: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">3</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Trusted, regulated brand</h3>
+          <p style="color: #4b5563;">Trading with a 25-year established brand that prioritizes proper regulation and financial security.</p>
+        </div>
+        
+        <!-- Client Benefit 4 -->
+        <div class="card text-center">
+          <div style="width: 80px; height: 80px; border-radius: 50%; background-color: #E6F1F5; color: #85ACB0; font-size: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">4</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Long-term relationship</h3>
+          <p style="color: #4b5563;">Continuous product improvements and loyalty rewards keep clients engaged and active.</p>
+        </div>
+        
+        <!-- Client Benefit 5 -->
+        <div class="card text-center">
+          <div style="width: 80px; height: 80px; border-radius: 50%; background-color: #E6F1F5; color: #85ACB0; font-size: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">5</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Multiple trading opportunities</h3>
+          <p style="color: #4b5563;">Access to forex, commodities, indices, cryptocurrencies and more all in one place.</p>
+        </div>
+        
+        <!-- Client Benefit 6 -->
+        <div class="card text-center">
+          <div style="width: 80px; height: 80px; border-radius: 50%; background-color: #E6F1F5; color: #85ACB0; font-size: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">6</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Fast payment processing</h3>
+          <p style="color: #4b5563;">Quick deposits and withdrawals with multiple payment methods and excellent fund security.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner Path Section -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="text-center mb-8">
+        <span class="section-label">PARTNERSHIP OPPORTUNITIES</span>
+        <h2 class="section-title">How would you like to earn with Deriv?</h2>
+        <p class="section-subtitle">Select your preferred earning method below and we'll provide a tailored program to maximize your income</p>
+      </div>
+      
+      <div class="grid grid-4">
+        <!-- Card 1 -->
+        <div class="card border-top-blue">
+          <h3 class="card-title">Generate passive income</h3>
+          <p class="card-text">Earn commissions by simply sharing your referral links with friends, family, and social contacts. Minimal effort, steady returns.</p>
+          <a href="/partners/individual-referrers.html" class="card-link">Start earning passively →</a>
+        </div>
+        
+        <!-- Card 2 - Revised for Trading Professionals -->
+        <div class="card border-top-green">
+          <h3 class="card-title">For trading experts</h3>
+          <p class="card-text">Leverage your trading knowledge to recommend Deriv platforms. Ideal for analysts, signal providers, and market experts who want to monetize their expertise.</p>
+          <a href="/partners/trading-experts.html" class="card-link">Join as a trading expert →</a>
+        </div>
+        
+        <!-- Card 3 - Added educators -->
+        <div class="card border-top-purple">
+          <h3 class="card-title">Content creators & educators</h3>
+          <p class="card-text">Convert your online following or students into revenue. Perfect for finance educators, content creators, bloggers, and influencers teaching trading skills.</p>
+          <a href="/partners/content-creators.html" class="card-link">Leverage your audience →</a>
+        </div>
+        
+        <!-- Card 4 - Added introducing brokers -->
+        <div class="card border-top-amber">
+          <h3 class="card-title">Business partnerships</h3>
+          <p class="card-text">Leverage your professional network to refer clients. Ideal for introducing brokers, consultants, advisors, and business networkers in finance.</p>
+          <a href="/partners/business-partners.html" class="card-link">Activate your network →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flexible Commission Plans Section -->
+  <section class="section bg-gray" id="commissions">
+    <div class="container">
+      <div class="text-center mb-8">
+        <span class="section-label">FLEXIBLE COMMISSION PLANS</span>
+        <h2 class="section-title">Choose the structure that works best for your business model</h2>
+        <p class="section-subtitle">Our versatile commission plans are designed to maximize your earnings potential</p>
+      </div>
+      
+      <div style="max-width: 1000px; margin: 0 auto;">
+        <!-- Tabs for Plans -->
+        <div style="display: flex; border-bottom: 1px solid #e5e7eb; margin-bottom: 2rem;">
+          <div id="revShareTab" style="flex: 1; text-align: center; padding: 1rem; border-bottom: 2px solid #ff444f; font-weight: 600; color: #ff444f; cursor: pointer;">Revenue Share</div>
+          <div id="turnoverTab" style="flex: 1; text-align: center; padding: 1rem; cursor: pointer;">Turnover</div>
+          <div id="cpaTab" style="flex: 1; text-align: center; padding: 1rem; cursor: pointer;">CPA</div>
+        </div>
+        
+        <!-- Revenue Share Plan Details -->
+        <div id="revShareContent">
+          <h3 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: #0e2140;">Revenue Share</h3>
+          <p style="font-size: 1.125rem; margin-bottom: 1rem; color: #4b5563;">Earn commissions up to 45% based on the monthly net revenue generated by your clients. The higher their net revenue, the higher your earnings.</p>
+          
+          <div style="padding: 1rem; background-color: #f0f8ff; border-radius: 8px; margin-bottom: 2rem;">
+            <p style="font-weight: 500; color: #0e2140; margin-bottom: 0.5rem;">Available for:</p>
+            <p style="color: #4b5563;">Options trading products (✓) | CFD trading products (✗)</p>
+            <p style="font-size: 0.875rem; margin-top: 0.5rem; color: #666;">Note: For CFD products, we offer turnover-based commission plans only.</p>
+          </div>
+          
+          <div style="margin-bottom: 2rem;">
+            <ul style="list-style: none;">
+              <li style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+                <span>Up to 45% of client revenue</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+                <span>Unlimited earning potential</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+                <span>Recurring income from active traders</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+                <span>Tier multipliers increase your earnings</span>
+              </li>
+            </ul>
+          </div>
+          
+          <a href="/partners/revenue-share.html" class="btn btn-primary">Learn more about Revenue Share</a>
+        </div>
+        
+        <!-- Turnover Plan Details (Initially hidden) -->
+        <div id="turnoverContent" style="display: none;">
+          <h3 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: #0e2140;">Turnover</h3>
+          <p style="font-size: 1.125rem; margin-bottom: 1rem; color: #4b5563;">Earn fixed commissions based on the trading volume (lots) of your referred clients, regardless of their profitability.</p>
+          
+          <div style="padding: 1rem; background-color: #f0f8ff; border-radius: 8px; margin-bottom: 2rem;">
+            <p style="font-weight: 500; color: #0e2140; margin-bottom: 0.5rem;">Available for:</p>
+            <p style="color: #4b5563;">Options trading products (✓) | CFD trading products (✓)</p>
+            <p style="font-size: 0.875rem; margin-top: 0.5rem; color: #666;">Note: This is the only commission plan available for CFD products.</p>
+          </div>
+          
+          <div style="margin-bottom: 2rem;">
+            <ul style="list-style: none;">
+              <li style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+                <span>Fixed commission per lot traded</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+                <span>Predictable income model</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+                <span>Rewards high-volume clients</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+                <span>Available for all trading products</span>
+              </li>
+            </ul>
+          </div>
+          
+          <a href="/partners/turnover.html" class="btn btn-primary">Learn more about Turnover Commission</a>
+        </div>
+        
+        <!-- CPA Plan Details (Initially hidden) -->
+        <div id="cpaContent" style="display: none;">
+          <h3 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: #0e2140;">CPA (Cost Per Acquisition)</h3>
+          <p style="font-size: 1.125rem; margin-bottom: 1rem; color: #4b5563;">Earn a one-time fixed payment for each qualified client you refer, based on their initial deposit amount.</p>
+          
+          <div style="padding: 1rem; background-color: #f0f8ff; border-radius: 8px; margin-bottom: 2rem;">
+            <p style="font-weight: 500; color: #0e2140; margin-bottom: 0.5rem;">Available for:</p>
+            <p style="color: #4b5563;">Currently available for EU clients | Global availability coming soon</p>
+            <p style="font-size: 0.875rem; margin-top: 0.5rem; color: #666;">Note: CPA rates vary based on the client's region and deposit amount.</p>
+          </div>
+          
+          <div style="margin-bottom: 2rem;">
+            <ul style="list-style: none;">
+              <li style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+                <span>Immediate one-time payments</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+                <span>No dependence on client trading performance</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+                <span>Tiered payment structure</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+                <span>Great for acquisition-focused campaigns</span>
+              </li>
+            </ul>
+          </div>
+          
+          <a href="/partners/cpa.html" class="btn btn-primary">Learn more about CPA</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add JavaScript for tab switching -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get tab elements
+      const revShareTab = document.getElementById('revShareTab');
+      const turnoverTab = document.getElementById('turnoverTab');
+      const cpaTab = document.getElementById('cpaTab');
+      
+      // Get content elements
+      const revShareContent = document.getElementById('revShareContent');
+      const turnoverContent = document.getElementById('turnoverContent');
+      const cpaContent = document.getElementById('cpaContent');
+      
+      // Function to reset tab styles
+      function resetTabs() {
+        revShareTab.style.borderBottom = 'none';
+        revShareTab.style.fontWeight = '400';
+        revShareTab.style.color = '#333333';
+        
+        turnoverTab.style.borderBottom = 'none';
+        turnoverTab.style.fontWeight = '400';
+        turnoverTab.style.color = '#333333';
+        
+        cpaTab.style.borderBottom = 'none';
+        cpaTab.style.fontWeight = '400';
+        cpaTab.style.color = '#333333';
+        
+        // Hide all content
+        revShareContent.style.display = 'none';
+        turnoverContent.style.display = 'none';
+        cpaContent.style.display = 'none';
+      }
+      
+      // Show Revenue Share tab
+      revShareTab.addEventListener('click', function() {
+        resetTabs();
+        revShareContent.style.display = 'block';
+        revShareTab.style.borderBottom = '2px solid #ff444f';
+        revShareTab.style.fontWeight = '600';
+        revShareTab.style.color = '#ff444f';
+      });
+      
+      // Show Turnover tab
+      turnoverTab.addEventListener('click', function() {
+        resetTabs();
+        turnoverContent.style.display = 'block';
+        turnoverTab.style.borderBottom = '2px solid #ff444f';
+        turnoverTab.style.fontWeight = '600';
+        turnoverTab.style.color = '#ff444f';
+      });
+      
+      // Show CPA tab
+      cpaTab.addEventListener('click', function() {
+        resetTabs();
+        cpaContent.style.display = 'block';
+        cpaTab.style.borderBottom = '2px solid #ff444f';
+        cpaTab.style.fontWeight = '600';
+        cpaTab.style.color = '#ff444f';
+      });
+    });
+  </script>
+
+  <!-- Partner Tiers Section - Moved up to follow Commission Plans-->
+  <section class="section bg-gray">
+    <div class="container">
+      <div class="text-center mb-8">
+        <span class="section-label">PARTNER TIERS</span>
+        <h2 class="section-title">Grow your success with partner tiers</h2>
+        <p class="section-subtitle">Clear rewards for your growth and achievement</p>
+      </div>
+      
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+        <!-- Bronze Tier -->
+        <div class="card text-center" style="border-top: 4px solid #CD7F32;">
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #0e2140;">Bronze</h3>
+          <div style="font-size: 2.5rem; font-weight: 700; color: #ff444f; margin-bottom: 1rem;">100%</div>
+          <p style="margin-bottom: 1rem; font-size: 0.95rem;">Starting tier for all partners</p>
+          
+          <ul style="list-style: none; text-align: left; margin-bottom: 1.5rem;">
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 0.5rem;">✓</span>
+              <span style="font-size: 0.95rem;">Basic commission rates</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 0.5rem;">✓</span>
+              <span style="font-size: 0.95rem;">Standard support</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 0.5rem;">✓</span>
+              <span style="font-size: 0.95rem;">Marketing materials</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 0.5rem;">✓</span>
+              <span style="font-size: 0.95rem;">Performance reports</span>
+            </li>
+          </ul>
+          
+          <a href="/signup" class="btn btn-outline" style="width: 100%;">Start here</a>
+        </div>
+        
+        <!-- Silver Tier -->
+        <div class="card text-center" style="border-top: 4px solid #C0C0C0;">
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #0e2140;">Silver</h3>
+          <div style="font-size: 2.5rem; font-weight: 700; color: #ff444f; margin-bottom: 1rem;">105%</div>
+          <p style="margin-bottom: 1rem; font-size: 0.95rem;">$500 in commissions</p>
+          
+          <ul style="list-style: none; text-align: left; margin-bottom: 1.5rem;">
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 0.5rem;">✓</span>
+              <span style="font-size: 0.95rem;">5% commission boost</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 0.5rem;">✓</span>
+              <span style="font-size: 0.95rem;">Priority support</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 0.5rem;">✓</span>
+              <span style="font-size: 0.95rem;">Enhanced reporting</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 0.5rem;">✓</span>
+              <span style="font-size: 0.95rem;">Advanced marketing materials</span>
+            </li>
+          </ul>
+          
+          <a href="/partners/silver-tier.html" class="btn btn-outline" style="width: 100%;">Learn more</a>
+        </div>
+        
+        <!-- Gold Tier -->
+        <div class="card text-center" style="border-top: 4px solid #FFD700;">
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #0e2140;">Gold</h3>
+          <div style="font-size: 2.5rem; font-weight: 700; color: #ff444f; margin-bottom: 1rem;">110%</div>
+          <p style="margin-bottom: 1rem; font-size: 0.95rem;">$1,000 in commissions</p>
+          
+          <ul style="list-style: none; text-align: left; margin-bottom: 1.5rem;">
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 0.5rem;">✓</span>
+              <span style="font-size: 0.95rem;">10% commission boost</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 0.5rem;">✓</span>
+              <span style="font-size: 0.95rem;">Dedicated account manager</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 0.5rem;">✓</span>
+              <span style="font-size: 0.95rem;">Website support</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 0.5rem;">✓</span>
+              <span style="font-size: 0.95rem;">Educational content access</span>
+            </li>
+          </ul>
+          
+          <a href="/partners/gold-tier.html" class="btn btn-outline" style="width: 100%;">Learn more</a>
+        </div>
+        
+        <!-- Platinum Tier -->
+        <div class="card text-center" style="border-top: 4px solid #E5E4E2;">
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #0e2140;">Platinum</h3>
+          <div style="font-size: 2.5rem; font-weight: 700; color: #ff444f; margin-bottom: 1rem;">115%</div>
+          <p style="margin-bottom: 1rem; font-size: 0.95rem;">$5,000 in commissions</p>
+          
+          <ul style="list-style: none; text-align: left; margin-bottom: 1.5rem;">
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 0.5rem;">✓</span>
+              <span style="font-size: 0.95rem;">15% commission boost</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 0.5rem;">✓</span>
+              <span style="font-size: 0.95rem;">Strategic business reviews</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 0.5rem;">✓</span>
+              <span style="font-size: 0.95rem;">Financial content support</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 0.5rem;">✓</span>
+              <span style="font-size: 0.95rem;">121 Program eligibility</span>
+            </li>
+          </ul>
+          
+          <a href="/partners/platinum-tier.html" class="btn btn-outline" style="width: 100%;">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Partner Programs Section - RE-ADDED -->
+  <section class="section bg-white" id="premium">
+    <div class="container">
+      <div class="text-center mb-8">
+        <span class="section-label">PREMIUM PARTNER PROGRAMS</span>
+        <h2 class="section-title">Exclusive opportunities for top performers</h2>
+        <p class="section-subtitle">Unlock additional benefits and enhanced support when you qualify for our premium partnership programs</p>
+      </div>
+      
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+        <!-- 121 Partner Program -->
+        <div class="card" style="border-top: 4px solid #ff444f; padding: 2rem;">
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Deriv Partner 121</h3>
+          <p style="margin-bottom: 1.5rem; color: #4b5563;">Our most exclusive partnership tier with personalized strategy sessions, dedicated resources, and priority development support.</p>
+          
+          <ul style="list-style: none; margin-bottom: 1.5rem;">
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>One-on-one strategy development</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Customized marketing and growth plans</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Priority feature requests and development</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Enhanced commission rates and bonuses</span>
+            </li>
+          </ul>
+          
+          <a href="/partners/121-program.html" class="btn btn-outline" style="width: 100%;">Learn more</a>
+        </div>
+        
+        <!-- Master Partner Program -->
+        <div class="card" style="border-top: 4px solid #0e2140; padding: 2rem;">
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Master Partner Program</h3>
+          <p style="margin-bottom: 1.5rem; color: #4b5563;">Build your own network of sub-affiliates and earn from their performance while growing your business with our support.</p>
+          
+          <ul style="list-style: none; margin-bottom: 1.5rem;">
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Earn from your own affiliate network</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Multi-level tracking and reporting</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Comprehensive sub-affiliate management tools</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Higher commission structure on all levels</span>
+            </li>
+          </ul>
+          
+          <a href="/partners/master-partner.html" class="btn btn-outline" style="width: 100%;">Learn more</a>
+        </div>
+        
+        <!-- Seminars and Events -->
+        <div class="card" style="border-top: 4px solid #85ACB0; padding: 2rem;">
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Seminars & Events</h3>
+          <p style="margin-bottom: 1.5rem; color: #4b5563;">Host educational seminars and events with our sponsorship and support to build your credibility and expand your client base.</p>
+          
+          <ul style="list-style: none; margin-bottom: 1.5rem;">
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Financial sponsorship for qualified events</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Co-branded marketing materials</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Speaker support and presentation materials</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>On-site Deriv representatives when possible</span>
+            </li>
+          </ul>
+          
+          <a href="/partners/seminars-events.html" class="btn btn-outline" style="width: 100%;">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Programs Section - MOVED HERE from earlier position -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="text-center mb-8">
+        <span class="section-label">SPECIALIZED PROGRAMS</span>
+        <h2 class="section-title">Beyond traditional partnerships</h2>
+        <p class="section-subtitle">Explore additional ways to collaborate with Deriv and maximize your potential</p>
+      </div>
+      
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 2rem;">
+        <!-- Deriv API -->
+        <div class="card" style="border-left: 4px solid #70E0BA; padding: 2rem;">
+          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background-color: #E7F9F4; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+              <span style="font-size: 1.25rem; color: #70E0BA;">⚙️</span>
+            </div>
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: #0e2140;">Deriv API</h3>
+          </div>
+          
+          <p style="margin-bottom: 1.5rem; font-size: 1.125rem;">Build custom trading applications and earn through markups or affiliate commissions.</p>
+          
+          <ul style="list-style: none; margin-bottom: 1.5rem;">
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Comprehensive API documentation</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Developer support and sandbox environment</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Earn from markups on client trades</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Additional affiliate commissions</span>
+            </li>
+          </ul>
+          
+          <a href="https://developers.deriv.com" class="btn btn-outline" style="border-color: #70E0BA; color: #70E0BA;">Explore Deriv API</a>
+        </div>
+        
+        <!-- Deriv Prime -->
+        <div class="card" style="border-left: 4px solid #85ACB0; padding: 2rem;">
+          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background-color: #E6F1F5; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+              <span style="font-size: 1.25rem; color: #85ACB0;">🏛️</span>
+            </div>
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: #0e2140;">Deriv Prime</h3>
+          </div>
+          
+          <p style="margin-bottom: 1.5rem; font-size: 1.125rem;">Institutional-grade liquidity solutions for brokers, hedge funds, and professional trading firms.</p>
+          
+          <ul style="list-style: none; margin-bottom: 1.5rem;">
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Deep liquidity across multiple asset classes</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Competitive spreads and low latency</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Dedicated institutional support</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+              <span style="color: #22c55e; margin-right: 1rem;">✓</span>
+              <span>Customizable solutions for various needs</span>
+            </li>
+          </ul>
+          
+          <a href="/derivprime" class="btn btn-outline" style="border-color: #85ACB0; color: #85ACB0;">Discover Deriv Prime</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner Success Tools Section -->
+  <section class="section bg-gray">
+    <div class="container">
+      <div class="text-center mb-8">
+        <span class="section-label">PARTNER SUCCESS TOOLS</span>
+        <h2 class="section-title">Everything you need to maximize conversions</h2>
+        <p class="section-subtitle">Our comprehensive toolkit helps you attract, convert, and retain clients</p>
+      </div>
+      
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+        <!-- Marketing Resources -->
+        <div class="card text-center">
+          <div style="width: 80px; height: 80px; border-radius: 50%; background-color: #f9fafb; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+            <span style="font-size: 2rem;">📊</span>
+          </div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Marketing Resources</h3>
+          <p style="margin-bottom: 1.5rem; color: #4b5563;">Ready-to-use banners, email templates, and promotional content</p>
+          <a href="/partners/marketing-resources" class="btn btn-outline">Explore</a>
+        </div>
+        
+        <!-- Conversion Tools -->
+        <div class="card text-center">
+          <div style="width: 80px; height: 80px; border-radius: 50%; background-color: #f9fafb; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+            <span style="font-size: 2rem;">⚙️</span>
+          </div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Conversion Tools</h3>
+          <p style="margin-bottom: 1.5rem; color: #4b5563;">Widgets, calculators, and landing pages to boost conversions</p>
+          <a href="/partners/conversion-tools" class="btn btn-outline">Explore</a>
+        </div>
+        
+        <!-- Support Network -->
+        <div class="card text-center">
+          <div style="width: 80px; height: 80px; border-radius: 50%; background-color: #f9fafb; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+            <span style="font-size: 2rem;">👥</span>
+          </div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Support Network</h3>
+          <p style="margin-bottom: 1.5rem; color: #4b5563;">Personalized assistance at every tier to help you succeed</p>
+          <a href="/partners/support" class="btn btn-outline">Explore</a>
+        </div>
+        
+        <!-- Performance Analytics -->
+        <div class="card text-center">
+          <div style="width: 80px; height: 80px; border-radius: 50%; background-color: #f9fafb; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+            <span style="font-size: 2rem;">📈</span>
+          </div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Performance Analytics</h3>
+          <p style="margin-bottom: 1.5rem; color: #4b5563;">Track results and optimize your promotional strategies</p>
+          <a href="/partners/analytics" class="btn btn-outline">Explore</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Partner With Us Section -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="text-center mb-8">
+        <span class="section-label">WHY PARTNER WITH US</span>
+        <h2 class="section-title">The Deriv partner advantage</h2>
+        <p class="section-subtitle">Join thousands of successful partners who are already benefiting from our comprehensive support</p>
+      </div>
+      
+      <div class="grid grid-3">
+        <div class="card text-center">
+          <h3 class="card-title">Up to 45% commission</h3>
+          <p class="card-text">Earn competitive revenue share with increasing tier multipliers as your referrals grow.</p>
+        </div>
+        
+        <div class="card text-center">
+          <h3 class="card-title">Global reach</h3>
+          <p class="card-text">Access to over 100 markets worldwide with multilingual support for your clients.</p>
+        </div>
+        
+        <div class="card text-center">
+          <h3 class="card-title">Dedicated support</h3>
+          <p class="card-text">Your success is our priority with personalized partner managers and marketing resources.</p>
+        </div>
+        
+        <div class="card text-center">
+          <h3 class="card-title">Multiple platforms</h3>
+          <p class="card-text">Offer your clients a variety of trading platforms to suit different trading styles and preferences.</p>
+        </div>
+        
+        <div class="card text-center">
+          <h3 class="card-title">Reliable payments</h3>
+          <p class="card-text">On-time commission payments with multiple withdrawal methods and low minimum thresholds.</p>
+        </div>
+        
+        <div class="card text-center">
+          <h3 class="card-title">Transparent reporting</h3>
+          <p class="card-text">Access detailed reports on client activity, conversions, and earnings through our intuitive dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources Section - Moved to appear before FAQs -->
+  <section class="section bg-gray">
+    <div class="container">
+      <div class="text-center mb-8">
+        <span class="section-label">PARTNER RESOURCES</span>
+        <h2 class="section-title">Learn and grow with us</h2>
+        <p class="section-subtitle">Access our library of educational resources designed to boost your success</p>
+      </div>
+      
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <!-- Resource 1 -->
+        <div class="card">
+          <img src="https://placehold.co/600x300?text=Partner+Success+Guide" alt="Partner Success Guide" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px 8px 0 0; margin-bottom: 1.5rem;">
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Partner success guide</h3>
+          <p style="margin-bottom: 1.5rem; color: #4b5563;">Learn strategies from our most successful partners and apply them to your business</p>
+          <a href="/resources/success-guide.pdf" class="card-link">Download guide →</a>
+        </div>
+        
+        <!-- Resource 2 -->
+        <div class="card">
+          <img src="https://placehold.co/600x300?text=Marketing+Toolkit" alt="Marketing Toolkit" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px 8px 0 0; margin-bottom: 1.5rem;">
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Marketing toolkit</h3>
+          <p style="margin-bottom: 1.5rem; color: #4b5563;">Access ready-to-use marketing materials to promote Deriv products effectively</p>
+          <a href="/resources/marketing-toolkit.zip" class="card-link">Download toolkit →</a>
+        </div>
+        
+        <!-- Resource 3 -->
+        <div class="card">
+          <img src="https://placehold.co/600x300?text=Webinar+Series" alt="Webinar Series" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px 8px 0 0; margin-bottom: 1.5rem;">
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Webinar series</h3>
+          <p style="margin-bottom: 1.5rem; color: #4b5563;">Watch our library of educational webinars on marketing strategies and product knowledge</p>
+          <a href="/resources/webinars" class="card-link">View webinars →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section - Moved near the bottom -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="text-center mb-8">
+        <span class="section-label">COMMON QUESTIONS</span>
+        <h2 class="section-title">Frequently asked questions</h2>
+        <p class="section-subtitle">Find answers to common questions about our partnership program</p>
+      </div>
+      
+      <div style="max-width: 900px; margin: 0 auto;">
+        <!-- FAQ Item 1 -->
+        <div style="margin-bottom: 1.5rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1.5rem;">
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">How do I get started as a Deriv partner?</h3>
+          <p style="color: #4b5563;">Starting is simple: Create your free account, complete your profile, and get your unique referral links. You can begin sharing these links immediately to start earning commissions. We provide all the marketing materials and support you need to succeed.</p>
+        </div>
+        
+        <!-- FAQ Item 2 -->
+        <div style="margin-bottom: 1.5rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1.5rem;">
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Do I need trading experience to become a partner?</h3>
+          <p style="color: #4b5563;">No, trading experience is not required. Our program is designed for anyone who can refer clients, whether you're a blogger, content creator, community leader, or just someone with a network. We provide comprehensive training and resources to help you understand our products sufficiently for marketing purposes.</p>
+        </div>
+        
+        <!-- FAQ Item 3 -->
+        <div style="margin-bottom: 1.5rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1.5rem;">
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">How and when do I get paid?</h3>
+          <p style="color: #4b5563;">We process payments weekly for all partners who have reached the minimum withdrawal threshold of $50. You can choose from multiple payment methods including bank transfers, e-wallets, and cryptocurrencies. Detailed transaction reports are available in your partner dashboard.</p>
+        </div>
+        
+        <!-- FAQ Item 4 -->
+        <div style="margin-bottom: 1.5rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1.5rem;">
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">What marketing materials do you provide?</h3>
+          <p style="color: #4b5563;">We offer a comprehensive range of marketing resources including banners, landing pages, videos, email templates, and social media content in multiple languages. Our team can also create custom materials for high-volume partners and provide guidance on effective marketing strategies.</p>
+        </div>
+        
+        <!-- FAQ Item 5 -->
+        <div style="margin-bottom: 1.5rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1.5rem;">
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">What commission rates do you offer?</h3>
+          <p style="color: #4b5563;">We offer competitive commission structures with multiple plans to choose from. Our revenue share plan offers up to 45% of the net revenue generated by your clients. As you advance through our partner tiers, you'll receive multipliers that further increase your commission rates.</p>
+        </div>
+        
+        <!-- FAQ Item 6 -->
+        <div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #0e2140;">Can I become a partner if my country has restrictions?</h3>
+          <p style="color: #4b5563;">While we operate globally, there are certain restrictions based on regulatory requirements. Please contact our partnership team to discuss your specific situation. We're constantly expanding our jurisdictional coverage and may be able to recommend alternative solutions.</p>
+        </div>
+      </div>
+      
+      <div class="text-center" style="margin-top: 3rem;">
+        <a href="/partners/faq.html" class="btn btn-outline">View all FAQs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section - Moved to just before the footer -->
+  <section class="section bg-white">
+    <div class="container">
+      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1.5rem; color: #0e2140;">Start your partnership journey today</h2>
+        <p style="font-size: 1.25rem; margin-bottom: 2.5rem; color: #4b5563;">Join thousands of successful partners earning with Deriv's industry-leading partnership program</p>
+        
+        <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+          <a href="/signup" class="btn btn-primary" style="font-size: 1.125rem; padding: 1rem 2rem;">Sign up now</a>
+          <a href="/contact" class="btn btn-outline" style="font-size: 1.125rem; padding: 1rem 2rem;">Talk to our team</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-heading">Products</h3>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#">Options trading</a></li>
+            <li class="footer-link"><a href="#">CFD trading</a></li>
+            <li class="footer-link"><a href="#">Multipliers</a></li>
+            <li class="footer-link"><a href="#">MT5 platform</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">Partners</h3>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#">Affiliate program</a></li>
+            <li class="footer-link"><a href="#">IB program</a></li>
+            <li class="footer-link"><a href="#">API</a></li>
+            <li class="footer-link"><a href="#">Partner portal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">Company</h3>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#">About us</a></li>
+            <li class="footer-link"><a href="#">Contact us</a></li>
+            <li class="footer-link"><a href="#">Careers</a></li>
+            <li class="footer-link"><a href="#">Terms and conditions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">Support</h3>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#">Help center</a></li>
+            <li class="footer-link"><a href="#">Payment methods</a></li>
+            <li class="footer-link"><a href="#">FAQs</a></li>
+            <li class="footer-link"><a href="#">Community</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2023 Deriv. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Quick Navigation -->
+  <nav style="position: sticky; top: 0; z-index: 100; background-color: white; border-bottom: 1px solid #e5e7eb; padding: 1rem 0; display: none;" id="quickNav">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: #0e2140; margin: 0;">Deriv Partners</h3>
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem;">
+          <a href="#metrics" style="color: #0e2140; font-weight: 500; text-decoration: none;">Proven Track Record</a>
+          <a href="#usp" style="color: #0e2140; font-weight: 500; text-decoration: none;">Why Choose Us</a>
+          <a href="#pathways" style="color: #0e2140; font-weight: 500; text-decoration: none;">Partnership Types</a>
+          <a href="#commissions" style="color: #0e2140; font-weight: 500; text-decoration: none;">Commission Plans</a>
+          <a href="#tiers" style="color: #0e2140; font-weight: 500; text-decoration: none;">Partner Tiers</a>
+          <a href="#premium" style="color: #0e2140; font-weight: 500; text-decoration: none;">Premium Programs</a>
+          <a href="#tools" style="color: #0e2140; font-weight: 500; text-decoration: none;">Success Tools</a>
+          <a href="#resources" style="color: #0e2140; font-weight: 500; text-decoration: none;">Resources</a>
+          <a href="#faq" style="color: #0e2140; font-weight: 500; text-decoration: none;">FAQs</a>
+          <a href="#specialized" style="color: #0e2140; font-weight: 500; text-decoration: none;">Specialized Programs</a>
+        </div>
+        
+        <a href="/signup" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">Sign up now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Fix IDs for Navigation -->
+  <script>
+    // Add IDs to sections for navigation
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add section IDs for the new order
+      const sections = document.querySelectorAll('section');
+      if (sections.length > 0) {
+        sections[0].id = "hero"; // Hero Section
+        sections[1].id = "journey"; // Partner Journey (moved up)
+        sections[2].id = "metrics"; // Metrics Section
+        sections[3].id = "usp"; // USP Section (moved after metrics)
+        sections[4].id = "pathways"; // Partnership Opportunities
+        sections[5].id = "commissions"; // Flexible Commission Plans  
+        sections[6].id = "tiers"; // Partner Tiers
+        sections[7].id = "premium"; // Premium Partner Programs
+        sections[8].id = "tools"; // Partner Success Tools
+        sections[9].id = "why"; // Why Partner With Us Section
+        sections[10].id = "resources"; // Resources Section
+        sections[11].id = "faq"; // FAQ Section
+        sections[12].id = "specialized"; // Specialized Programs (moved to after FAQ)
+        
+        // Show quick navigation when scrolling
+        const quickNav = document.getElementById('quickNav');
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 300) {
+            quickNav.style.display = 'block';
+          } else {
+            quickNav.style.display = 'none';
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html> 
