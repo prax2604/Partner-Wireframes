@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partners Hub | Deriv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f7fa;
+    }
+    a {
+      color: #ff444f;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      width: 100%;
+      padding: 0 1.5rem;
+    }
+    
+    /* Layout */
+    .app-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+    }
+    
+    /* Header */
+    .app-header {
+      position: sticky;
+      top: 0;
+      grid-column: 1 / -1;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      z-index: 100;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0e2140;
+      display: flex;
+      align-items: center;
+    }
+    .logo span {
+      color: #ff444f;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .user-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: background-color 0.2s;
+    }
+    .user-menu:hover {
+      background-color: #f5f7fa;
+    }
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #0e2140;
+      font-size: 1rem;
+    }
+    .user-info {
+      text-align: left;
+    }
+    .user-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #0e2140;
+    }
+    .user-id {
+      font-size: 0.8rem;
+      color: #666;
+    }
+    .header-icon {
+      font-size: 1.25rem;
+      color: #555;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .header-icon:hover {
+      color: #ff444f;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+      background-color: #0e2140;
+      color: #fff;
+      padding: 1.5rem 0;
+      grid-row: 2 / span 1;
+    }
+    .nav-section {
+      margin-bottom: 2rem;
+    }
+    .nav-heading {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.6);
+      padding: 0 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .nav-items {
+      list-style: none;
+    }
+    .nav-item {
+      margin-bottom: 0.25rem;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.5rem;
+      color: rgba(255,255,255,0.9);
+      transition: background-color 0.2s;
+      position: relative;
+    }
+    .nav-link:hover {
+      background-color: rgba(255,255,255,0.1);
+      text-decoration: none;
+    }
+    .nav-link.active {
+      background-color: rgba(255,255,255,0.15);
+    }
+    .nav-link.active::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: #ff444f;
+    }
+    .nav-icon {
+      font-size: 1.25rem;
+      width: 20px;
+      text-align: center;
+    }
+    
+    /* Main content */
+    .main-content {
+      grid-column: 2 / -1;
+      grid-row: 2 / span 1;
+      padding: 2rem 2rem 4rem;
+    }
+    
+    /* Page header */
+    .page-header {
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .page-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #0e2140;
+    }
+    .page-actions {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    /* Buttons */
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary {
+      background-color: #ff444f;
+      color: white;
+    }
+    .btn-primary:hover {
+      background-color: #e03e47;
+      text-decoration: none;
+    }
+    .btn-secondary {
+      background-color: #fff;
+      color: #0e2140;
+      border: 1px solid #ddd;
+    }
+    .btn-secondary:hover {
+      background-color: #f5f7fa;
+      text-decoration: none;
+    }
+    
+    /* Cards */
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #0e2140;
+    }
+    .card-action {
+      font-size: 0.9rem;
+      color: #ff444f;
+      font-weight: 500;
+    }
+    
+    /* Dashboard grid */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Tier status */
+    .tier-status {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+    }
+    .tier-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .tier-badges {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin: 1.5rem 0 0.5rem;
+    }
+    .tier-badge {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      position: relative;
+    }
+    .tier-badge.active {
+      background-color: #0e2140;
+      color: white;
+    }
+    .tier-badge.active::after {
+      content: "Current";
+      position: absolute;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      color: #0e2140;
+      font-weight: 600;
+    }
+    .tier-badge-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+    .tier-progress {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background-color: #f0f0f0;
+      z-index: 1;
+    }
+    .tier-progress-filled {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background-color: #0e2140;
+      width: 40%; /* Will be dynamically calculated */
+    }
+    .tier-details {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2.5rem;
+    }
+    .tier-stat {
+      text-align: center;
+    }
+    .tier-stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0e2140;
+    }
+    .tier-stat-label {
+      font-size: 0.85rem;
+      color: #666;
+    }
+    
+    /* Stats card */
+    .stat-card {
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem;
+    }
+    .stat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .stat-title {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .stat-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1rem;
+    }
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0e2140;
+      margin-bottom: 0.25rem;
+    }
+    .stat-change {
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .stat-change.positive {
+      color: #0cb383;
+    }
+    .stat-change.negative {
+      color: #ff444f;
+    }
+    
+    /* Commission overview */
+    .commission-overview {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .commission-card {
+      border: 1px solid #f0f0f0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .commission-header {
+      background-color: #f9f9f9;
+      padding: 1rem;
+      font-weight: 600;
+      color: #0e2140;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .commission-model {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: #e0f5ff;
+      color: #0077cc;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+    .commission-body {
+      padding: 1.25rem;
+    }
+    .commission-value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #0e2140;
+      margin-bottom: 0.75rem;
+    }
+    .commission-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+    .status-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+    }
+    .status-icon.paid {
+      background-color: #0cb383;
+    }
+    .status-icon.pending {
+      background-color: #ffc107;
+    }
+    .commission-meta {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .commission-note {
+      font-size: 0.85rem;
+      color: #666;
+      background-color: #f9f9f9;
+      padding: 0.75rem;
+      border-radius: 6px;
+      border-left: 3px solid #0e2140;
+    }
+    
+    /* Quick actions */
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .action-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .action-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-decoration: none;
+    }
+    .action-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+    }
+    .action-title {
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .action-desc {
+      font-size: 0.85rem;
+      color: #666;
+    }
+    
+    /* Recent activity */
+    .activity-list {
+      list-style: none;
+    }
+    .activity-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+    .activity-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .activity-content {
+      flex: 1;
+    }
+    .activity-title {
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.25rem;
+    }
+    .activity-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: #666;
+    }
+    .activity-time {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .quick-actions {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .app-layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        display: none;
+      }
+      .commission-overview {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+      .tier-badges {
+        overflow-x: auto;
+        padding-bottom: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-layout">
+    <!-- App Header -->
+    <header class="app-header">
+      <a href="index.html" class="logo"><span>deriv</span>Partners</a>
+      
+      <div class="header-actions">
+        <div class="header-icon">🔔</div>
+        <div class="header-icon">⚙️</div>
+        <div class="header-icon">❓</div>
+        
+        <div class="user-menu">
+          <div class="user-avatar">MP</div>
+          <div class="user-info">
+            <div class="user-name">Michael Phytides</div>
+            <div class="user-id">Partner ID: CU21417</div>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="nav-section">
+        <h3 class="nav-heading">Core</h3>
+        <ul class="nav-items">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link active">
+              <span class="nav-icon">📊</span>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="commissions.html" class="nav-link">
+              <span class="nav-icon">💰</span>
+              Commissions & Earnings
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="links.html" class="nav-link">
+              <span class="nav-icon">🔗</span>
+              Marketing Links
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="clients.html" class="nav-link">
+              <span class="nav-icon">👥</span>
+              Clients
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="reports.html" class="nav-link">
+              <span class="nav-icon">📈</span>
+              Reports & Analytics
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3 class="nav-heading">Resources</h3>
+        <ul class="nav-items">
+          <li class="nav-item">
+            <a href="marketing.html" class="nav-link">
+              <span class="nav-icon">🎯</span>
+              Marketing Resources
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="tiers.html" class="nav-link">
+              <span class="nav-icon">🏆</span>
+              Partner Tiers
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="master.html" class="nav-link">
+              <span class="nav-icon">⭐</span>
+              Master Partner Program
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../help-center-landing.html" class="nav-link">
+              <span class="nav-icon">❓</span>
+              Help Center
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3 class="nav-heading">Account</h3>
+        <ul class="nav-items">
+          <li class="nav-item">
+            <a href="profile.html" class="nav-link">
+              <span class="nav-icon">👤</span>
+              Profile Settings
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="payments.html" class="nav-link">
+              <span class="nav-icon">💳</span>
+              Payment Methods
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="nav-icon">🚪</span>
+              Log Out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1 class="page-title">Partner Dashboard</h1>
+        
+        <div class="page-actions">
+          <button class="btn btn-secondary">
+            <span>📅</span> This Month
+          </button>
+          <button class="btn btn-primary">
+            <span>🔗</span> Create New Link
+          </button>
+        </div>
+      </div>
+      
+      <!-- Tier Status Card -->
+      <div class="card tier-status">
+        <div class="tier-header">
+          <h2 class="card-title">Your Partner Tier & Progress</h2>
+          <a href="tiers.html" class="card-action">View All Benefits</a>
+        </div>
+        
+        <div class="tier-badges">
+          <div class="tier-progress">
+            <div class="tier-progress-filled"></div>
+          </div>
+          
+          <div class="tier-badge active">
+            <span>🥉</span>
+            <span class="tier-badge-label">Bronze</span>
+          </div>
+          
+          <div class="tier-badge">
+            <span>🥈</span>
+            <span class="tier-badge-label">Silver</span>
+          </div>
+          
+          <div class="tier-badge">
+            <span>🥇</span>
+            <span class="tier-badge-label">Gold</span>
+          </div>
+          
+          <div class="tier-badge">
+            <span>💎</span>
+            <span class="tier-badge-label">Platinum</span>
+          </div>
+          
+          <div class="tier-badge">
+            <span>👑</span>
+            <span class="tier-badge-label">VIP</span>
+          </div>
+        </div>
+        
+        <div class="tier-details">
+          <div class="tier-stat">
+            <div class="tier-stat-value">100%</div>
+            <div class="tier-stat-label">Commission Multiplier</div>
+          </div>
+          
+          <div class="tier-stat">
+            <div class="tier-stat-value">3</div>
+            <div class="tier-stat-label">Active Clients Needed for Silver</div>
+          </div>
+          
+          <div class="tier-stat">
+            <div class="tier-stat-value">$1,500</div>
+            <div class="tier-stat-label">Volume Needed for Silver</div>
+          </div>
+          
+          <div class="tier-stat">
+            <div class="tier-stat-value">15 Days</div>
+            <div class="tier-stat-label">Estimated Time to Silver</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Stats Grid -->
+      <div class="dashboard-grid">
+        <div class="card stat-card">
+          <div class="stat-header">
+            <h3 class="stat-title">Total Earnings</h3>
+            <div class="stat-icon" style="background-color: #0cb383;">💰</div>
+          </div>
+          <div class="stat-value">$1,238.50</div>
+          <div class="stat-change positive">↑ 12.3% from last month</div>
+        </div>
+        
+        <div class="card stat-card">
+          <div class="stat-header">
+            <h3 class="stat-title">Active Clients</h3>
+            <div class="stat-icon" style="background-color: #4071ff;">👥</div>
+          </div>
+          <div class="stat-value">12</div>
+          <div class="stat-change positive">↑ 2 new this month</div>
+        </div>
+        
+        <div class="card stat-card">
+          <div class="stat-header">
+            <h3 class="stat-title">Trading Volume</h3>
+            <div class="stat-icon" style="background-color: #ff944f;">📊</div>
+          </div>
+          <div class="stat-value">$24,892</div>
+          <div class="stat-change positive">↑ 8.7% from last month</div>
+        </div>
+      </div>
+      
+      <!-- Commission Overview -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Commission Overview</h2>
+          <a href="commissions.html" class="card-action">View Detailed Earnings</a>
+        </div>
+        
+        <div class="commission-overview">
+          <div class="commission-card">
+            <div class="commission-header">
+              CFD Trading Products
+              <div class="commission-model">Turnover Model</div>
+            </div>
+            <div class="commission-body">
+              <div class="commission-value">$834.25</div>
+              <div class="commission-status">
+                <div class="status-icon paid"></div>
+                <span>Paid daily, last payment: Today, 06:00 AM</span>
+              </div>
+              <div class="commission-meta">
+                MT5, Deriv X, cTrader platforms
+              </div>
+              <div class="commission-note">
+                CFD commissions are calculated daily based on client trading volume using the Turnover model
+              </div>
+            </div>
+          </div>
+          
+          <div class="commission-card">
+            <div class="commission-header">
+              Options Trading Products
+              <div class="commission-model">Revenue Share</div>
+            </div>
+            <div class="commission-body">
+              <div class="commission-value">$404.25</div>
+              <div class="commission-status">
+                <div class="status-icon pending"></div>
+                <span>Paid monthly, next payment: 5 days</span>
+              </div>
+              <div class="commission-meta">
+                Deriv Trader, SmartTrader, Deriv Bot platforms
+              </div>
+              <div class="commission-note">
+                You're earning 40% revenue share on all options trading. <a href="#">Compare with Turnover model</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Quick Actions -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Quick Actions</h2>
+        </div>
+        
+        <div class="quick-actions">
+          <a href="links.html" class="action-card">
+            <div class="action-icon" style="background-color: #4071ff;">🔗</div>
+            <div class="action-title">Create Marketing Link</div>
+            <div class="action-desc">Generate tracking links for your campaigns</div>
+          </a>
+          
+          <a href="marketing.html" class="action-card">
+            <div class="action-icon" style="background-color: #ff944f;">🎯</div>
+            <div class="action-title">Marketing Materials</div>
+            <div class="action-desc">Access banners, logos, and promotional content</div>
+          </a>
+          
+          <a href="clients.html" class="action-card">
+            <div class="action-icon" style="background-color: #0cb383;">👥</div>
+            <div class="action-title">Client Activity</div>
+            <div class="action-desc">Monitor your clients and their trading</div>
+          </a>
+          
+          <a href="reports.html" class="action-card">
+            <div class="action-icon" style="background-color: #9747ff;">📈</div>
+            <div class="action-title">Performance Report</div>
+            <div class="action-desc">Download detailed reports and analytics</div>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Recent Activity -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Recent Activity</h2>
+          <a href="#" class="card-action">View All</a>
+        </div>
+        
+        <ul class="activity-list">
+          <li class="activity-item">
+            <div class="activity-icon" style="background-color: #0cb383;">💰</div>
+            <div class="activity-content">
+              <div class="activity-title">Commission Payment Received</div>
+              <div class="activity-meta">
+                <span>$124.50</span>
+                <span class="activity-time">⏱️ 2 hours ago</span>
+              </div>
+            </div>
+          </li>
+          
+          <li class="activity-item">
+            <div class="activity-icon" style="background-color: #4071ff;">👤</div>
+            <div class="activity-content">
+              <div class="activity-title">New Client Registered</div>
+              <div class="activity-meta">
+                <span>John D. from Germany</span>
+                <span class="activity-time">⏱️ Yesterday</span>
+              </div>
+            </div>
+          </li>
+          
+          <li class="activity-item">
+            <div class="activity-icon" style="background-color: #ff944f;">🔗</div>
+            <div class="activity-content">
+              <div class="activity-title">Marketing Link Created</div>
+              <div class="activity-meta">
+                <span>deriv.com/signup?ref=YOUR_ID</span>
+                <span class="activity-time">⏱️ 3 days ago</span>
+              </div>
+            </div>
+          </li>
+          
+          <li class="activity-item">
+            <div class="activity-icon" style="background-color: #9747ff;">📊</div>
+            <div class="activity-content">
+              <div class="activity-title">Trading Volume Milestone</div>
+              <div class="activity-meta">
+                <span>Reached $20,000 monthly volume</span>
+                <span class="activity-time">⏱️ 1 week ago</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+  </div>
+</body>
+</html> 

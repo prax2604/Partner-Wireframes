@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commissions & Earnings | Partners Hub | Deriv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f7fa;
+    }
+    a {
+      color: #ff444f;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      width: 100%;
+      padding: 0 1.5rem;
+    }
+    
+    /* Layout */
+    .app-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+    }
+    
+    /* Header */
+    .app-header {
+      position: sticky;
+      top: 0;
+      grid-column: 1 / -1;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      z-index: 100;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0e2140;
+      display: flex;
+      align-items: center;
+    }
+    .logo span {
+      color: #ff444f;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .user-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: background-color 0.2s;
+    }
+    .user-menu:hover {
+      background-color: #f5f7fa;
+    }
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #0e2140;
+      font-size: 1rem;
+    }
+    .user-info {
+      text-align: left;
+    }
+    .user-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #0e2140;
+    }
+    .user-id {
+      font-size: 0.8rem;
+      color: #666;
+    }
+    .header-icon {
+      font-size: 1.25rem;
+      color: #555;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .header-icon:hover {
+      color: #ff444f;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+      background-color: #0e2140;
+      color: #fff;
+      padding: 1.5rem 0;
+      grid-row: 2 / span 1;
+    }
+    .nav-section {
+      margin-bottom: 2rem;
+    }
+    .nav-heading {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.6);
+      padding: 0 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .nav-items {
+      list-style: none;
+    }
+    .nav-item {
+      margin-bottom: 0.25rem;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.5rem;
+      color: rgba(255,255,255,0.9);
+      transition: background-color 0.2s;
+      position: relative;
+    }
+    .nav-link:hover {
+      background-color: rgba(255,255,255,0.1);
+      text-decoration: none;
+    }
+    .nav-link.active {
+      background-color: rgba(255,255,255,0.15);
+    }
+    .nav-link.active::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: #ff444f;
+    }
+    .nav-icon {
+      font-size: 1.25rem;
+      width: 20px;
+      text-align: center;
+    }
+    
+    /* Main content */
+    .main-content {
+      grid-column: 2 / -1;
+      grid-row: 2 / span 1;
+      padding: 2rem 2rem 4rem;
+    }
+    
+    /* Page header */
+    .page-header {
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .page-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #0e2140;
+    }
+    .page-actions {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    /* Buttons */
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary {
+      background-color: #ff444f;
+      color: white;
+    }
+    .btn-primary:hover {
+      background-color: #e03e47;
+      text-decoration: none;
+    }
+    .btn-secondary {
+      background-color: #fff;
+      color: #0e2140;
+      border: 1px solid #ddd;
+    }
+    .btn-secondary:hover {
+      background-color: #f5f7fa;
+      text-decoration: none;
+    }
+    
+    /* Cards */
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #0e2140;
+    }
+    .card-action {
+      font-size: 0.9rem;
+      color: #ff444f;
+      font-weight: 500;
+    }
+    
+    /* Tabs */
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 1.5rem;
+    }
+    .tab {
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+      color: #666;
+      cursor: pointer;
+      position: relative;
+    }
+    .tab.active {
+      color: #0e2140;
+      font-weight: 600;
+    }
+    .tab.active::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: #ff444f;
+    }
+    
+    /* Earnings summary */
+    .earnings-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .earnings-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .earnings-label {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+    .earnings-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .earnings-period {
+      font-size: 0.85rem;
+      color: #888;
+    }
+    .earnings-chart {
+      height: 300px;
+      background-color: #f9f9f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Product earnings */
+    .product-earnings {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .product-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    .product-header {
+      background-color: #0e2140;
+      color: white;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .product-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    .commission-badge {
+      background-color: rgba(255,255,255,0.15);
+      border-radius: 4px;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .commission-badge-blue {
+      background-color: rgba(64, 113, 255, 0.15);
+      color: #4071ff;
+    }
+    .product-content {
+      padding: 1.5rem;
+    }
+    .product-info {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .info-item {
+      text-align: center;
+    }
+    .info-value {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .info-label {
+      font-size: 0.85rem;
+      color: #666;
+    }
+    .product-details {
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .details-title {
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .payment-schedule {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      background-color: #fff;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      border: 1px solid #eee;
+    }
+    .schedule-icon {
+      background-color: #e6f7f1;
+      color: #0cb383;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+    .schedule-content {
+      flex: 1;
+    }
+    .schedule-title {
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.25rem;
+    }
+    .schedule-desc {
+      font-size: 0.85rem;
+      color: #666;
+    }
+    
+    /* Model comparison */
+    .model-comparison {
+      background-color: #f0f7ff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+    .comparison-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 1rem;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
+    .comparison-table th {
+      text-align: left;
+      padding: 0.75rem;
+      background-color: #e0f0ff;
+      color: #0e2140;
+      font-weight: 600;
+    }
+    .comparison-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+    .comparison-tip {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background-color: #fff;
+      border-radius: 6px;
+      padding: 1rem;
+      border-left: 4px solid #4071ff;
+    }
+    .tip-icon {
+      color: #4071ff;
+      font-size: 1.25rem;
+      margin-top: 0.25rem;
+    }
+    .tip-content h4 {
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .tip-content p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+    
+    /* History section */
+    .payment-history-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .payment-history-table th {
+      text-align: left;
+      padding: 0.75rem;
+      background-color: #f5f7fa;
+      color: #0e2140;
+      font-weight: 600;
+    }
+    .payment-history-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #eee;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .status-paid {
+      background-color: #e6f7f1;
+      color: #0cb383;
+    }
+    .status-pending {
+      background-color: #fff5e6;
+      color: #ff944f;
+    }
+    .status-processing {
+      background-color: #e6f0ff;
+      color: #4071ff;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .earnings-summary {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .product-info {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .app-layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        display: none;
+      }
+      .earnings-summary {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 0.5rem;
+      }
+      .product-info {
+        grid-template-columns: 1fr;
+      }
+      .payment-history-table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-layout">
+    <!-- App Header -->
+    <header class="app-header">
+      <a href="index.html" class="logo"><span>deriv</span>Partners</a>
+      
+      <div class="header-actions">
+        <div class="header-icon">🔔</div>
+        <div class="header-icon">⚙️</div>
+        <div class="header-icon">❓</div>
+        
+        <div class="user-menu">
+          <div class="user-avatar">MP</div>
+          <div class="user-info">
+            <div class="user-name">Michael Phytides</div>
+            <div class="user-id">Partner ID: CU21417</div>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="nav-section">
+        <h3 class="nav-heading">Core</h3>
+        <ul class="nav-items">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">
+              <span class="nav-icon">📊</span>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="commissions.html" class="nav-link active">
+              <span class="nav-icon">💰</span>
+              Commissions & Earnings
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="links.html" class="nav-link">
+              <span class="nav-icon">🔗</span>
+              Marketing Links
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="clients.html" class="nav-link">
+              <span class="nav-icon">👥</span>
+              Clients
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="reports.html" class="nav-link">
+              <span class="nav-icon">📈</span>
+              Reports & Analytics
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3 class="nav-heading">Resources</h3>
+        <ul class="nav-items">
+          <li class="nav-item">
+            <a href="marketing.html" class="nav-link">
+              <span class="nav-icon">🎯</span>
+              Marketing Resources
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="tiers.html" class="nav-link">
+              <span class="nav-icon">🏆</span>
+              Partner Tiers
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="master.html" class="nav-link">
+              <span class="nav-icon">⭐</span>
+              Master Partner Program
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../help-center-landing.html" class="nav-link">
+              <span class="nav-icon">❓</span>
+              Help Center
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3 class="nav-heading">Account</h3>
+        <ul class="nav-items">
+          <li class="nav-item">
+            <a href="profile.html" class="nav-link">
+              <span class="nav-icon">👤</span>
+              Profile Settings
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="payments.html" class="nav-link">
+              <span class="nav-icon">💳</span>
+              Payment Methods
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="nav-icon">🚪</span>
+              Log Out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1 class="page-title">Commissions & Earnings</h1>
+        
+        <div class="page-actions">
+          <button class="btn btn-secondary">
+            <span>📅</span> This Month
+          </button>
+          <button class="btn btn-primary">
+            <span>📥</span> Download Report
+          </button>
+        </div>
+      </div>
+      
+      <!-- Earnings Summary -->
+      <div class="earnings-summary">
+        <div class="earnings-card">
+          <div class="earnings-label">Total Earnings</div>
+          <div class="earnings-value">$1,238.50</div>
+          <div class="earnings-period">Month to Date</div>
+        </div>
+        
+        <div class="earnings-card">
+          <div class="earnings-label">CFD Products</div>
+          <div class="earnings-value">$834.25</div>
+          <div class="earnings-period">Month to Date</div>
+        </div>
+        
+        <div class="earnings-card">
+          <div class="earnings-label">Options Products</div>
+          <div class="earnings-value">$404.25</div>
+          <div class="earnings-period">Month to Date</div>
+        </div>
+      </div>
+      
+      <!-- Earnings Chart -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Earnings Trend</h2>
+          <div class="card-action">
+            <div class="tabs">
+              <div class="tab active">Daily</div>
+              <div class="tab">Weekly</div>
+              <div class="tab">Monthly</div>
+              <div class="tab">Yearly</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="earnings-chart">
+          [Earnings Chart - Placeholder]
+        </div>
+        
+        <div class="tabs">
+          <div class="tab active">All Products</div>
+          <div class="tab">CFD Products</div>
+          <div class="tab">Options Products</div>
+        </div>
+      </div>
+      
+      <!-- Product Earnings Details -->
+      <div class="product-earnings">
+        <!-- CFD Products -->
+        <div class="product-card">
+          <div class="product-header">
+            <h3 class="product-title">CFD Trading Products</h3>
+            <div class="commission-badge">Turnover Model</div>
+          </div>
+          
+          <div class="product-content">
+            <div class="product-info">
+              <div class="info-item">
+                <div class="info-value">$834.25</div>
+                <div class="info-label">Month to Date</div>
+              </div>
+              
+              <div class="info-item">
+                <div class="info-value">$24,892</div>
+                <div class="info-label">Trading Volume</div>
+              </div>
+              
+              <div class="info-item">
+                <div class="info-value">7</div>
+                <div class="info-label">Active CFD Clients</div>
+              </div>
+              
+              <div class="info-item">
+                <div class="info-value">100%</div>
+                <div class="info-label">Your Tier Multiplier</div>
+              </div>
+            </div>
+            
+            <div class="product-details">
+              <h4 class="details-title">Commission Details</h4>
+              <p>Your commission for CFD trading products is calculated using the <strong>Turnover model</strong>. This means you earn a percentage of your clients' trading volume regardless of whether they win or lose.</p>
+              
+              <div class="payment-schedule">
+                <div class="schedule-icon">💼</div>
+                <div class="schedule-content">
+                  <div class="schedule-title">Daily Payouts</div>
+                  <div class="schedule-desc">Commissions from CFD products are calculated and paid daily to your wallet. Last payment: Today, 06:00 AM.</div>
+                </div>
+              </div>
+            </div>
+            
+            <h4 class="details-title">Platforms Included</h4>
+            <p>You earn commissions from the following CFD trading platforms:</p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+              <li>MT5 (MetaTrader 5)</li>
+              <li>Deriv X</li>
+              <li>cTrader</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Options Products -->
+        <div class="product-card">
+          <div class="product-header" style="background-color: #4071ff;">
+            <h3 class="product-title">Options Trading Products</h3>
+            <div class="commission-badge">Revenue Share (40%)</div>
+          </div>
+          
+          <div class="product-content">
+            <div class="product-info">
+              <div class="info-item">
+                <div class="info-value">$404.25</div>
+                <div class="info-label">Month to Date</div>
+              </div>
+              
+              <div class="info-item">
+                <div class="info-value">$1,010.63</div>
+                <div class="info-label">Client Net Loss</div>
+              </div>
+              
+              <div class="info-item">
+                <div class="info-value">9</div>
+                <div class="info-label">Active Options Clients</div>
+              </div>
+              
+              <div class="info-item">
+                <div class="info-value">100%</div>
+                <div class="info-label">Your Tier Multiplier</div>
+              </div>
+            </div>
+            
+            <div class="product-details">
+              <h4 class="details-title">Commission Details</h4>
+              <p>Your commission for Options trading products is calculated using the <strong>Revenue Share model</strong>. This means you earn a percentage of Deriv's revenue from your clients' trading activity.</p>
+              
+              <div class="payment-schedule">
+                <div class="schedule-icon" style="background-color: #fff5e6; color: #ff944f;">📅</div>
+                <div class="schedule-content">
+                  <div class="schedule-title">Monthly Payouts</div>
+                  <div class="schedule-desc">Commissions from Options products are calculated and paid monthly to your wallet. Next payment: 5 days remaining.</div>
+                </div>
+              </div>
+            </div>
+            
+            <h4 class="details-title">Platforms Included</h4>
+            <p>You earn commissions from the following Options trading platforms:</p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+              <li>Deriv Trader</li>
+              <li>SmartTrader</li>
+              <li>Deriv Bot</li>
+            </ul>
+            
+            <div class="model-comparison">
+              <h4 class="comparison-title">Revenue Share vs Turnover Model</h4>
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Feature</th>
+                    <th>Revenue Share (Current)</th>
+                    <th>Turnover Model (Alternative)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Calculation Basis</td>
+                    <td>40% of Deriv's revenue from your clients</td>
+                    <td>Percentage of clients' trading volume</td>
+                  </tr>
+                  <tr>
+                    <td>Earnings Potential</td>
+                    <td>Higher when clients have net losses</td>
+                    <td>Consistent regardless of client profitability</td>
+                  </tr>
+                  <tr>
+                    <td>Predictability</td>
+                    <td>Varies based on client performance</td>
+                    <td>More predictable based on volume</td>
+                  </tr>
+                  <tr>
+                    <td>Best For</td>
+                    <td>Most partners (98% choose this option)</td>
+                    <td>Partners with winning clients</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              <div class="comparison-tip">
+                <div class="tip-icon">💡</div>
+                <div class="tip-content">
+                  <h4>Want to switch your Options commission model?</h4>
+                  <p>You can change between Revenue Share and Turnover model for Options products once every 30 days. <a href="#">Contact us</a> to make the switch.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Payment History -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Payment History</h2>
+          <a href="#" class="card-action">View All</a>
+        </div>
+        
+        <div class="tabs">
+          <div class="tab active">All Payments</div>
+          <div class="tab">CFD Payments</div>
+          <div class="tab">Options Payments</div>
+        </div>
+        
+        <table class="payment-history-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Product Category</th>
+              <th>Commission Model</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Apr 28, 2023</td>
+              <td>CFD Products</td>
+              <td>Turnover</td>
+              <td>$124.50</td>
+              <td><span class="status-badge status-paid">Paid</span></td>
+            </tr>
+            <tr>
+              <td>Apr 27, 2023</td>
+              <td>CFD Products</td>
+              <td>Turnover</td>
+              <td>$98.75</td>
+              <td><span class="status-badge status-paid">Paid</span></td>
+            </tr>
+            <tr>
+              <td>Apr 26, 2023</td>
+              <td>CFD Products</td>
+              <td>Turnover</td>
+              <td>$112.30</td>
+              <td><span class="status-badge status-paid">Paid</span></td>
+            </tr>
+            <tr>
+              <td>Apr 25, 2023</td>
+              <td>CFD Products</td>
+              <td>Turnover</td>
+              <td>$87.40</td>
+              <td><span class="status-badge status-paid">Paid</span></td>
+            </tr>
+            <tr>
+              <td>Apr 01, 2023</td>
+              <td>Options Products</td>
+              <td>Revenue Share</td>
+              <td>$385.60</td>
+              <td><span class="status-badge status-paid">Paid</span></td>
+            </tr>
+            <tr>
+              <td>May 01, 2023</td>
+              <td>Options Products</td>
+              <td>Revenue Share</td>
+              <td>$404.25</td>
+              <td><span class="status-badge status-pending">Pending</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+    </main>
+  </div>
+</body>
+</html> 

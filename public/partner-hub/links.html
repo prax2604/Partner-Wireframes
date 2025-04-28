@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing Links | Partners Hub | Deriv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f7fa;
+    }
+    a {
+      color: #ff444f;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      width: 100%;
+      padding: 0 1.5rem;
+    }
+    
+    /* Layout */
+    .app-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+    }
+    
+    /* Header */
+    .app-header {
+      position: sticky;
+      top: 0;
+      grid-column: 1 / -1;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      z-index: 100;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0e2140;
+      display: flex;
+      align-items: center;
+    }
+    .logo span {
+      color: #ff444f;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .user-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: background-color 0.2s;
+    }
+    .user-menu:hover {
+      background-color: #f5f7fa;
+    }
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #0e2140;
+      font-size: 1rem;
+    }
+    .user-info {
+      text-align: left;
+    }
+    .user-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #0e2140;
+    }
+    .user-id {
+      font-size: 0.8rem;
+      color: #666;
+    }
+    .header-icon {
+      font-size: 1.25rem;
+      color: #555;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .header-icon:hover {
+      color: #ff444f;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+      background-color: #0e2140;
+      color: #fff;
+      padding: 1.5rem 0;
+      grid-row: 2 / span 1;
+    }
+    .nav-section {
+      margin-bottom: 2rem;
+    }
+    .nav-heading {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.6);
+      padding: 0 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .nav-items {
+      list-style: none;
+    }
+    .nav-item {
+      margin-bottom: 0.25rem;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.5rem;
+      color: rgba(255,255,255,0.9);
+      transition: background-color 0.2s;
+      position: relative;
+    }
+    .nav-link:hover {
+      background-color: rgba(255,255,255,0.1);
+      text-decoration: none;
+    }
+    .nav-link.active {
+      background-color: rgba(255,255,255,0.15);
+    }
+    .nav-link.active::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: #ff444f;
+    }
+    .nav-icon {
+      font-size: 1.25rem;
+      width: 20px;
+      text-align: center;
+    }
+    
+    /* Main content */
+    .main-content {
+      grid-column: 2 / -1;
+      grid-row: 2 / span 1;
+      padding: 2rem 2rem 4rem;
+    }
+    
+    /* Page header */
+    .page-header {
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .page-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #0e2140;
+    }
+    .page-actions {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    /* Buttons */
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary {
+      background-color: #ff444f;
+      color: white;
+    }
+    .btn-primary:hover {
+      background-color: #e03e47;
+      text-decoration: none;
+    }
+    .btn-secondary {
+      background-color: #fff;
+      color: #0e2140;
+      border: 1px solid #ddd;
+    }
+    .btn-secondary:hover {
+      background-color: #f5f7fa;
+      text-decoration: none;
+    }
+    
+    /* Cards */
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #0e2140;
+    }
+    .card-action {
+      font-size: 0.9rem;
+      color: #ff444f;
+      font-weight: 500;
+    }
+    
+    /* Tabs */
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 1.5rem;
+    }
+    .tab {
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+      color: #666;
+      cursor: pointer;
+      position: relative;
+    }
+    .tab.active {
+      color: #0e2140;
+      font-weight: 600;
+    }
+    .tab.active::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: #ff444f;
+    }
+    
+    /* Link Creator */
+    .link-creator {
+      margin-top: 1.5rem;
+    }
+    .creator-steps {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .creator-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .creator-step::after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      background-color: #eee;
+      z-index: 1;
+    }
+    .creator-step:last-child::after {
+      display: none;
+    }
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 0.75rem;
+      position: relative;
+      z-index: 2;
+    }
+    .step-number.active {
+      background-color: #ff444f;
+      color: white;
+    }
+    .step-number.completed {
+      background-color: #0cb383;
+      color: white;
+    }
+    .step-label {
+      font-size: 0.85rem;
+      color: #666;
+    }
+    .step-label.active {
+      color: #0e2140;
+      font-weight: 600;
+    }
+    
+    .creator-panel {
+      padding: 2rem;
+      border: 1px solid #eee;
+      border-radius: 8px;
+    }
+    .panel-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 1.5rem;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-label {
+      display: block;
+      font-weight: 500;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .form-subtitle {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 0.75rem;
+    }
+    .form-input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-family: inherit;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #4071ff;
+      box-shadow: 0 0 0 3px rgba(64, 113, 255, 0.1);
+    }
+    
+    .product-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .product-option {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .product-option:hover {
+      border-color: #4071ff;
+      transform: translateY(-2px);
+    }
+    .product-option.selected {
+      border-color: #4071ff;
+      background-color: rgba(64, 113, 255, 0.05);
+      box-shadow: 0 2px 8px rgba(64, 113, 255, 0.1);
+    }
+    .product-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background-color: #f0f7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .product-name {
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .product-desc {
+      font-size: 0.8rem;
+      color: #666;
+    }
+    
+    .landing-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .landing-option {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .landing-option:hover {
+      border-color: #4071ff;
+      transform: translateY(-2px);
+    }
+    .landing-option.selected {
+      border-color: #4071ff;
+      box-shadow: 0 2px 8px rgba(64, 113, 255, 0.1);
+    }
+    .landing-image {
+      width: 100%;
+      height: 120px;
+      background-color: #f0f7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .landing-info {
+      padding: 1rem;
+    }
+    .landing-name {
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .landing-desc {
+      font-size: 0.85rem;
+      color: #666;
+    }
+    
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+    
+    .link-result {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .result-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #e6f7f1;
+      color: #0cb383;
+      font-size: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .result-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 1rem;
+    }
+    .result-subtitle {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .link-box {
+      background-color: #f5f7fa;
+      border: 1px dashed #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .link-text {
+      flex: 1;
+      font-family: monospace;
+      font-size: 0.9rem;
+      word-break: break-all;
+    }
+    .copy-btn {
+      background-color: #0e2140;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin-left: 1rem;
+      white-space: nowrap;
+    }
+    .copy-btn:hover {
+      background-color: #1a3563;
+    }
+    
+    /* Marketing links table */
+    .links-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .links-table th {
+      text-align: left;
+      padding: 0.75rem;
+      background-color: #f5f7fa;
+      color: #0e2140;
+      font-weight: 600;
+    }
+    .links-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #eee;
+      vertical-align: middle;
+    }
+    .links-table tr:hover {
+      background-color: #f9f9f9;
+    }
+    .link-name {
+      font-weight: 500;
+      color: #0e2140;
+    }
+    .link-url {
+      font-size: 0.85rem;
+      color: #666;
+      font-family: monospace;
+      word-break: break-all;
+    }
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-right: 0.25rem;
+    }
+    .tag-all {
+      background-color: #e6f7f1;
+      color: #0cb383;
+    }
+    .tag-cfd {
+      background-color: #fff5e6;
+      color: #ff944f;
+    }
+    .tag-options {
+      background-color: #e6f0ff;
+      color: #4071ff;
+    }
+    .link-metrics {
+      display: flex;
+      gap: 1rem;
+    }
+    .metric {
+      text-align: center;
+    }
+    .metric-value {
+      font-weight: 600;
+      color: #0e2140;
+    }
+    .metric-label {
+      font-size: 0.75rem;
+      color: #666;
+    }
+    .actions-cell {
+      text-align: right;
+    }
+    .link-action {
+      background: none;
+      border: none;
+      color: #666;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: color 0.2s;
+      margin-left: 0.5rem;
+    }
+    .link-action:hover {
+      color: #ff444f;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .product-options {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .app-layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        display: none;
+      }
+      .landing-options {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .product-options {
+        grid-template-columns: 1fr;
+      }
+      .creator-steps {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .creator-step {
+        width: 100%;
+        flex-direction: row;
+        gap: 1rem;
+        align-items: center;
+      }
+      .creator-step::after {
+        display: none;
+      }
+      .links-table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-layout">
+    <!-- App Header -->
+    <header class="app-header">
+      <a href="index.html" class="logo"><span>deriv</span>Partners</a>
+      
+      <div class="header-actions">
+        <div class="header-icon">🔔</div>
+        <div class="header-icon">⚙️</div>
+        <div class="header-icon">❓</div>
+        
+        <div class="user-menu">
+          <div class="user-avatar">MP</div>
+          <div class="user-info">
+            <div class="user-name">Michael Phytides</div>
+            <div class="user-id">Partner ID: CU21417</div>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="nav-section">
+        <h3 class="nav-heading">Core</h3>
+        <ul class="nav-items">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">
+              <span class="nav-icon">📊</span>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="commissions.html" class="nav-link">
+              <span class="nav-icon">💰</span>
+              Commissions & Earnings
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="links.html" class="nav-link active">
+              <span class="nav-icon">🔗</span>
+              Marketing Links
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="clients.html" class="nav-link">
+              <span class="nav-icon">👥</span>
+              Clients
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="reports.html" class="nav-link">
+              <span class="nav-icon">📈</span>
+              Reports & Analytics
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3 class="nav-heading">Resources</h3>
+        <ul class="nav-items">
+          <li class="nav-item">
+            <a href="marketing.html" class="nav-link">
+              <span class="nav-icon">🎯</span>
+              Marketing Resources
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="tiers.html" class="nav-link">
+              <span class="nav-icon">🏆</span>
+              Partner Tiers
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="master.html" class="nav-link">
+              <span class="nav-icon">⭐</span>
+              Master Partner Program
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../help-center-landing.html" class="nav-link">
+              <span class="nav-icon">❓</span>
+              Help Center
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3 class="nav-heading">Account</h3>
+        <ul class="nav-items">
+          <li class="nav-item">
+            <a href="profile.html" class="nav-link">
+              <span class="nav-icon">👤</span>
+              Profile Settings
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="payments.html" class="nav-link">
+              <span class="nav-icon">💳</span>
+              Payment Methods
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="nav-icon">🚪</span>
+              Log Out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1 class="page-title">Marketing Links</h1>
+        
+        <div class="page-actions">
+          <button class="btn btn-primary">
+            <span>🔗</span> Create New Link
+          </button>
+        </div>
+      </div>
+      
+      <!-- Link Creation Wizard -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Create Marketing Link</h2>
+          <a href="#" class="card-action">Need Help?</a>
+        </div>
+        
+        <div class="link-creator">
+          <!-- Steps Indicator -->
+          <div class="creator-steps">
+            <div class="creator-step">
+              <div class="step-number completed">✓</div>
+              <div class="step-label">1. Choose Products</div>
+            </div>
+            
+            <div class="creator-step">
+              <div class="step-number active">2</div>
+              <div class="step-label active">2. Select Landing Page</div>
+            </div>
+            
+            <div class="creator-step">
+              <div class="step-number">3</div>
+              <div class="step-label">3. Customize Link</div>
+            </div>
+          </div>
+          
+          <!-- Step 2: Landing Page Selection -->
+          <div class="creator-panel">
+            <h3 class="panel-title">Select Landing Page</h3>
+            <p class="form-subtitle">Choose where your clients will land after clicking your link. Select the page that best aligns with your marketing strategy.</p>
+            
+            <div class="landing-options">
+              <div class="landing-option selected">
+                <div class="landing-image">🏠</div>
+                <div class="landing-info">
+                  <div class="landing-name">General Sign-up Page</div>
+                  <div class="landing-desc">The main Deriv registration page featuring all trading options. Perfect for general audiences.</div>
+                </div>
+              </div>
+              
+              <div class="landing-option">
+                <div class="landing-image">📊</div>
+                <div class="landing-info">
+                  <div class="landing-name">CFD Trading Page</div>
+                  <div class="landing-desc">Dedicated page highlighting CFD trading options including MT5, Deriv X, and cTrader platforms.</div>
+                </div>
+              </div>
+              
+              <div class="landing-option">
+                <div class="landing-image">📈</div>
+                <div class="landing-info">
+                  <div class="landing-name">Options Trading Page</div>
+                  <div class="landing-desc">Focused page featuring Options trading products including SmartTrader and Deriv Bot.</div>
+                </div>
+              </div>
+              
+              <div class="landing-option">
+                <div class="landing-image">🤖</div>
+                <div class="landing-info">
+                  <div class="landing-name">Deriv Bot Page</div>
+                  <div class="landing-desc">Highlighting automated trading solutions with our easy-to-use bot creation platform.</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Custom URL Parameters (Optional)</label>
+              <p class="form-subtitle">Add custom URL parameters to track campaigns or source in your analytics.</p>
+              <input type="text" class="form-input" placeholder="e.g., utm_source=newsletter&utm_medium=email">
+            </div>
+            
+            <div class="form-actions">
+              <button class="btn btn-secondary">Back</button>
+              <button class="btn btn-primary">Continue</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Existing Links -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Your Marketing Links</h2>
+          
+          <div class="card-action">
+            <div class="tabs">
+              <div class="tab active">All (7)</div>
+              <div class="tab">Active (6)</div>
+              <div class="tab">Archived (1)</div>
+            </div>
+          </div>
+        </div>
+        
+        <table class="links-table">
+          <thead>
+            <tr>
+              <th>Link Name</th>
+              <th>Products</th>
+              <th>Performance</th>
+              <th>Created</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="link-name">Main Website Link</div>
+                <div class="link-url">deriv.com/signup?ref=YOUR_ID</div>
+              </td>
+              <td>
+                <span class="tag tag-all">All Products</span>
+              </td>
+              <td>
+                <div class="link-metrics">
+                  <div class="metric">
+                    <div class="metric-value">356</div>
+                    <div class="metric-label">Clicks</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-value">28</div>
+                    <div class="metric-label">Sign-ups</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-value">14</div>
+                    <div class="metric-label">Active</div>
+                  </div>
+                </div>
+              </td>
+              <td>Apr 15, 2023</td>
+              <td class="actions-cell">
+                <button class="link-action">📋</button>
+                <button class="link-action">📊</button>
+                <button class="link-action">⋮</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="link-name">Facebook Campaign</div>
+                <div class="link-url">deriv.com/signup?ref=YOUR_ID&utm_source=facebook</div>
+              </td>
+              <td>
+                <span class="tag tag-all">All Products</span>
+              </td>
+              <td>
+                <div class="link-metrics">
+                  <div class="metric">
+                    <div class="metric-value">284</div>
+                    <div class="metric-label">Clicks</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-value">21</div>
+                    <div class="metric-label">Sign-ups</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-value">9</div>
+                    <div class="metric-label">Active</div>
+                  </div>
+                </div>
+              </td>
+              <td>Apr 20, 2023</td>
+              <td class="actions-cell">
+                <button class="link-action">📋</button>
+                <button class="link-action">📊</button>
+                <button class="link-action">⋮</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="link-name">MT5 Promotion</div>
+                <div class="link-url">deriv.com/mt5?ref=YOUR_ID</div>
+              </td>
+              <td>
+                <span class="tag tag-cfd">CFD Only</span>
+              </td>
+              <td>
+                <div class="link-metrics">
+                  <div class="metric">
+                    <div class="metric-value">176</div>
+                    <div class="metric-label">Clicks</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-value">15</div>
+                    <div class="metric-label">Sign-ups</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-value">7</div>
+                    <div class="metric-label">Active</div>
+                  </div>
+                </div>
+              </td>
+              <td>Apr 22, 2023</td>
+              <td class="actions-cell">
+                <button class="link-action">📋</button>
+                <button class="link-action">📊</button>
+                <button class="link-action">⋮</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="link-name">Blog Post Link</div>
+                <div class="link-url">deriv.com/signup?ref=YOUR_ID&utm_source=blog</div>
+              </td>
+              <td>
+                <span class="tag tag-all">All Products</span>
+              </td>
+              <td>
+                <div class="link-metrics">
+                  <div class="metric">
+                    <div class="metric-value">129</div>
+                    <div class="metric-label">Clicks</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-value">11</div>
+                    <div class="metric-label">Sign-ups</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-value">4</div>
+                    <div class="metric-label">Active</div>
+                  </div>
+                </div>
+              </td>
+              <td>Apr 25, 2023</td>
+              <td class="actions-cell">
+                <button class="link-action">📋</button>
+                <button class="link-action">📊</button>
+                <button class="link-action">⋮</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="link-name">Deriv Bot Campaign</div>
+                <div class="link-url">deriv.com/bot?ref=YOUR_ID</div>
+              </td>
+              <td>
+                <span class="tag tag-options">Options Only</span>
+              </td>
+              <td>
+                <div class="link-metrics">
+                  <div class="metric">
+                    <div class="metric-value">98</div>
+                    <div class="metric-label">Clicks</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-value">8</div>
+                    <div class="metric-label">Sign-ups</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-value">3</div>
+                    <div class="metric-label">Active</div>
+                  </div>
+                </div>
+              </td>
+              <td>Apr 27, 2023</td>
+              <td class="actions-cell">
+                <button class="link-action">📋</button>
+                <button class="link-action">📊</button>
+                <button class="link-action">⋮</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</body>
+</html> 
