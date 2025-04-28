@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Academy | Deriv</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f7fa;
+    }
+    a {
+      color: #ff444f;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      width: 100%;
+      padding: 0 1.5rem;
+    }
+    
+    /* Layout */
+    .app-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+    }
+    
+    /* Header */
+    .app-header {
+      position: sticky;
+      top: 0;
+      grid-column: 1 / -1;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      z-index: 100;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0e2140;
+      display: flex;
+      align-items: center;
+    }
+    .logo span {
+      color: #ff444f;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .user-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: background-color 0.2s;
+    }
+    .user-menu:hover {
+      background-color: #f5f7fa;
+    }
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #0e2140;
+      font-size: 1rem;
+    }
+    .user-info {
+      text-align: left;
+    }
+    .user-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #0e2140;
+    }
+    .user-id {
+      font-size: 0.8rem;
+      color: #666;
+    }
+    .header-icon {
+      font-size: 1.25rem;
+      color: #555;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .header-icon:hover {
+      color: #ff444f;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+      background-color: #0e2140;
+      color: #fff;
+      padding: 1.5rem 0;
+      grid-row: 2 / span 1;
+    }
+    .nav-section {
+      margin-bottom: 2rem;
+    }
+    .nav-heading {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.6);
+      padding: 0 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .nav-items {
+      list-style: none;
+    }
+    .nav-item {
+      margin-bottom: 0.25rem;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.5rem;
+      color: rgba(255,255,255,0.9);
+      transition: background-color 0.2s;
+      position: relative;
+    }
+    .nav-link:hover {
+      background-color: rgba(255,255,255,0.1);
+      text-decoration: none;
+    }
+    .nav-link.active {
+      background-color: rgba(255,255,255,0.15);
+    }
+    .nav-link.active::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: #ff444f;
+    }
+    .nav-icon {
+      font-size: 1.25rem;
+      width: 20px;
+      text-align: center;
+    }
+    
+    /* Main content */
+    .main-content {
+      grid-column: 2 / -1;
+      grid-row: 2 / span 1;
+      padding: 2rem 2rem 4rem;
+    }
+    
+    /* Page header */
+    .page-header {
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .page-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #0e2140;
+    }
+    .page-actions {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    /* Buttons */
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary {
+      background-color: #ff444f;
+      color: white;
+    }
+    .btn-primary:hover {
+      background-color: #e03e47;
+      text-decoration: none;
+    }
+    .btn-secondary {
+      background-color: #fff;
+      color: #0e2140;
+      border: 1px solid #ddd;
+    }
+    .btn-secondary:hover {
+      background-color: #f5f7fa;
+      text-decoration: none;
+    }
+    
+    /* Cards */
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #0e2140;
+    }
+    .card-action {
+      font-size: 0.9rem;
+      color: #ff444f;
+      font-weight: 500;
+    }
+    
+    /* Academy overview */
+    .academy-overview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .academy-stat {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .academy-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: #f0f7ff;
+      color: #4071ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 1rem;
+    }
+    .academy-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0e2140;
+      margin-bottom: 0.5rem;
+    }
+    .academy-label {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    /* Course tabs */
+    .course-tabs {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 2rem;
+    }
+    .course-tab {
+      padding: 1rem 1.5rem;
+      font-weight: 500;
+      color: #666;
+      cursor: pointer;
+      position: relative;
+    }
+    .course-tab.active {
+      color: #0e2140;
+      font-weight: 600;
+    }
+    .course-tab.active::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: #ff444f;
+    }
+    
+    /* Course cards */
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .course-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .course-card:hover {
+      transform: translateY(-5px);
+    }
+    .course-image {
+      height: 160px;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-weight: 500;
+    }
+    .course-content {
+      padding: 1.25rem;
+    }
+    .course-tag {
+      display: inline-flex;
+      align-items: center;
+      background-color: #f0f7ff;
+      color: #4071ff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    .course-tag.beginner {
+      background-color: #e3fcef;
+      color: #0cb383;
+    }
+    .course-tag.intermediate {
+      background-color: #fff4e5;
+      color: #ff8c00;
+    }
+    .course-tag.advanced {
+      background-color: #ffe5e5;
+      color: #ff444f;
+    }
+    .course-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #0e2140;
+    }
+    .course-desc {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .course-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #666;
+    }
+    .course-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .course-info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .course-progress {
+      margin-top: 1rem;
+    }
+    .progress-bar {
+      height: 6px;
+      background-color: #f0f0f0;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+    .progress-fill {
+      height: 100%;
+      background-color: #4071ff;
+    }
+    .progress-status {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #666;
+    }
+    
+    /* Learning paths */
+    .path-card {
+      display: flex;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+    .path-icon {
+      width: 140px;
+      background-color: #f0f7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: #4071ff;
+    }
+    .path-content {
+      flex: 1;
+      padding: 1.5rem;
+    }
+    .path-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #4071ff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .path-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0e2140;
+      margin-bottom: 0.75rem;
+    }
+    .path-desc {
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .path-stats {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .path-stat {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .path-action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .path-steps {
+      display: flex;
+    }
+    .path-step {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      position: relative;
+      margin-right: 24px;
+    }
+    .path-step.completed {
+      background-color: #0cb383;
+    }
+    .path-step.current {
+      background-color: #4071ff;
+    }
+    .path-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 16px;
+      top: 7px;
+      height: 2px;
+      width: 24px;
+      background-color: #f0f0f0;
+    }
+    .path-step.completed:not(:last-child)::after {
+      background-color: #0cb383;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .academy-overview,
+      .course-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .app-layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        display: none;
+      }
+      .path-card {
+        flex-direction: column;
+      }
+      .path-icon {
+        width: 100%;
+        height: 120px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .academy-overview,
+      .course-grid {
+        grid-template-columns: 1fr;
+      }
+      .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .course-tabs {
+        overflow-x: auto;
+        width: 100%;
+      }
+      .course-tab {
+        white-space: nowrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-layout">
+    <!-- App Header -->
+    <header class="app-header">
+      <a href="index.html" class="logo"><span>deriv</span>Partners</a>
+      
+      <div class="header-actions">
+        <div class="header-icon" onclick="window.location.href='notifications.html'">🔔</div>
+        <div class="header-icon" onclick="window.location.href='profile.html'">⚙️</div>
+        <div class="header-icon" onclick="window.location.href='../help-center-landing.html'">❓</div>
+        
+        <div class="user-menu" onclick="window.location.href='profile.html'">
+          <div class="user-avatar">MP</div>
+          <div class="user-info">
+            <div class="user-name">Michael Phytides</div>
+            <div class="user-id">Partner ID: CU21417</div>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="nav-section">
+        <h3 class="nav-heading">Core</h3>
+        <ul class="nav-items">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">
+              <span class="nav-icon">🏠</span>
+              Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="dashboard.html" class="nav-link">
+              <span class="nav-icon">📊</span>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="commissions.html" class="nav-link">
+              <span class="nav-icon">💰</span>
+              Commissions & Earnings
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="links.html" class="nav-link">
+              <span class="nav-icon">🔗</span>
+              Marketing Links
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="clients.html" class="nav-link">
+              <span class="nav-icon">👥</span>
+              Clients
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="reports.html" class="nav-link">
+              <span class="nav-icon">📈</span>
+              Reports & Analytics
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3 class="nav-heading">Resources</h3>
+        <ul class="nav-items">
+          <li class="nav-item">
+            <a href="marketing-tools.html" class="nav-link">
+              <span class="nav-icon">🎯</span>
+              Marketing Resources
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="academy.html" class="nav-link active">
+              <span class="nav-icon">🎓</span>
+              Partner Academy
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="tiers.html" class="nav-link">
+              <span class="nav-icon">🏆</span>
+              Partner Tiers
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="master.html" class="nav-link">
+              <span class="nav-icon">⭐</span>
+              Master Partner Program
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../help-center-landing.html" class="nav-link">
+              <span class="nav-icon">❓</span>
+              Help Center
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3 class="nav-heading">Account</h3>
+        <ul class="nav-items">
+          <li class="nav-item">
+            <a href="profile.html" class="nav-link">
+              <span class="nav-icon">👤</span>
+              Profile Settings
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="payments.html" class="nav-link">
+              <span class="nav-icon">💳</span>
+              Payment Methods
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="nav-icon">🚪</span>
+              Log Out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1 class="page-title">Partner Academy</h1>
+        
+        <div class="page-actions">
+          <button class="btn btn-secondary">
+            <span>📜</span> My Certificates
+          </button>
+          <button class="btn btn-primary">
+            <span>🔍</span> Browse All Courses
+          </button>
+        </div>
+      </div>
+      
+      <!-- Academy Overview Stats -->
+      <div class="academy-overview">
+        <div class="academy-stat">
+          <div class="academy-icon">📚</div>
+          <div class="academy-value">3</div>
+          <div class="academy-label">Courses in Progress</div>
+        </div>
+        
+        <div class="academy-stat">
+          <div class="academy-icon">🏆</div>
+          <div class="academy-value">2</div>
+          <div class="academy-label">Courses Completed</div>
+        </div>
+        
+        <div class="academy-stat">
+          <div class="academy-icon">📜</div>
+          <div class="academy-value">1</div>
+          <div class="academy-label">Certificates Earned</div>
+        </div>
+      </div>
+      
+      <!-- Course Tabs -->
+      <div class="course-tabs">
+        <div class="course-tab active">My Courses</div>
+        <div class="course-tab">Recommended</div>
+        <div class="course-tab">All Courses</div>
+        <div class="course-tab">Learning Paths</div>
+      </div>
+      
+      <!-- Courses In Progress -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Continue Learning</h2>
+          <a href="#" class="card-action">View All My Courses</a>
+        </div>
+        
+        <div class="course-grid">
+          <div class="course-card">
+            <div class="course-image">Course Thumbnail</div>
+            <div class="course-content">
+              <div class="course-tag beginner">Beginner</div>
+              <h3 class="course-title">Partner Onboarding Essentials</h3>
+              <p class="course-desc">Learn the basics of the Deriv Partner Program and how to get started quickly.</p>
+              <div class="course-meta">
+                <div class="course-info">
+                  <div class="course-info-item">📚 5 modules</div>
+                  <div class="course-info-item">⏱️ 30 min</div>
+                </div>
+                <a href="#" class="card-action">Continue</a>
+              </div>
+              <div class="course-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 60%;"></div>
+                </div>
+                <div class="progress-status">
+                  <span>3/5 modules</span>
+                  <span>60%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="course-card">
+            <div class="course-image">Course Thumbnail</div>
+            <div class="course-content">
+              <div class="course-tag intermediate">Intermediate</div>
+              <h3 class="course-title">Digital Marketing for Partners</h3>
+              <p class="course-desc">Master digital marketing techniques to attract more clients to your partnership.</p>
+              <div class="course-meta">
+                <div class="course-info">
+                  <div class="course-info-item">📚 8 modules</div>
+                  <div class="course-info-item">⏱️ 1 hour</div>
+                </div>
+                <a href="#" class="card-action">Continue</a>
+              </div>
+              <div class="course-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 25%;"></div>
+                </div>
+                <div class="progress-status">
+                  <span>2/8 modules</span>
+                  <span>25%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="course-card">
+            <div class="course-image">Course Thumbnail</div>
+            <div class="course-content">
+              <div class="course-tag advanced">Advanced</div>
+              <h3 class="course-title">Commission Optimization Techniques</h3>
+              <p class="course-desc">Learn advanced strategies to maximize your earnings with different commission models.</p>
+              <div class="course-meta">
+                <div class="course-info">
+                  <div class="course-info-item">📚 6 modules</div>
+                  <div class="course-info-item">⏱️ 45 min</div>
+                </div>
+                <a href="#" class="card-action">Start</a>
+              </div>
+              <div class="course-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 0%;"></div>
+                </div>
+                <div class="progress-status">
+                  <span>0/6 modules</span>
+                  <span>0%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Learning Paths -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Learning Paths</h2>
+          <a href="#" class="card-action">View All Paths</a>
+        </div>
+        
+        <div class="path-card">
+          <div class="path-icon">🚀</div>
+          <div class="path-content">
+            <div class="path-label">Featured Path</div>
+            <h3 class="path-title">Partner Accelerator Program</h3>
+            <p class="path-desc">Complete this learning path to fast-track your journey to becoming a successful Deriv partner. This comprehensive program covers all aspects of partner marketing, client acquisition, and commission optimization.</p>
+            <div class="path-stats">
+              <div class="path-stat">
+                <span>📚</span>
+                <span>5 Courses</span>
+              </div>
+              <div class="path-stat">
+                <span>⏱️</span>
+                <span>3.5 hours</span>
+              </div>
+              <div class="path-stat">
+                <span>🏆</span>
+                <span>Advanced Certificate</span>
+              </div>
+            </div>
+            <div class="path-action">
+              <div class="path-steps">
+                <div class="path-step completed"></div>
+                <div class="path-step completed"></div>
+                <div class="path-step current"></div>
+                <div class="path-step"></div>
+                <div class="path-step"></div>
+              </div>
+              <button class="btn btn-primary">Continue Path</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="path-card">
+          <div class="path-icon">💹</div>
+          <div class="path-content">
+            <div class="path-label">Specialized Path</div>
+            <h3 class="path-title">CFD Marketing Specialist</h3>
+            <p class="path-desc">Become an expert in promoting CFD trading products. This path focuses on understanding CFD products, target audiences, and specialized marketing techniques to attract qualified CFD traders.</p>
+            <div class="path-stats">
+              <div class="path-stat">
+                <span>📚</span>
+                <span>3 Courses</span>
+              </div>
+              <div class="path-stat">
+                <span>⏱️</span>
+                <span>2 hours</span>
+              </div>
+              <div class="path-stat">
+                <span>🏆</span>
+                <span>Specialist Certificate</span>
+              </div>
+            </div>
+            <div class="path-action">
+              <div class="path-steps">
+                <div class="path-step"></div>
+                <div class="path-step"></div>
+                <div class="path-step"></div>
+              </div>
+              <button class="btn btn-secondary">Start Path</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Recommended Courses -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Recommended For You</h2>
+          <a href="#" class="card-action">View All Recommendations</a>
+        </div>
+        
+        <div class="course-grid">
+          <div class="course-card">
+            <div class="course-image">Course Thumbnail</div>
+            <div class="course-content">
+              <div class="course-tag intermediate">Intermediate</div>
+              <h3 class="course-title">Social Media Marketing for Financial Products</h3>
+              <p class="course-desc">Learn strategies for promoting trading products effectively on various social media platforms.</p>
+              <div class="course-meta">
+                <div class="course-info">
+                  <div class="course-info-item">📚 7 modules</div>
+                  <div class="course-info-item">⏱️ 50 min</div>
+                </div>
+                <a href="#" class="card-action">Start</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="course-card">
+            <div class="course-image">Course Thumbnail</div>
+            <div class="course-content">
+              <div class="course-tag beginner">Beginner</div>
+              <h3 class="course-title">Understanding Financial Trading Products</h3>
+              <p class="course-desc">A comprehensive overview of the financial trading products available on Deriv platforms.</p>
+              <div class="course-meta">
+                <div class="course-info">
+                  <div class="course-info-item">📚 6 modules</div>
+                  <div class="course-info-item">⏱️ 45 min</div>
+                </div>
+                <a href="#" class="card-action">Start</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="course-card">
+            <div class="course-image">Course Thumbnail</div>
+            <div class="course-content">
+              <div class="course-tag advanced">Advanced</div>
+              <h3 class="course-title">Building a Partner Website</h3>
+              <p class="course-desc">Learn how to create an effective website to promote your partnership and attract more clients.</p>
+              <div class="course-meta">
+                <div class="course-info">
+                  <div class="course-info-item">📚 9 modules</div>
+                  <div class="course-info-item">⏱️ 1.5 hours</div>
+                </div>
+                <a href="#" class="card-action">Start</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html> 

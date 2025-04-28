@@ -550,12 +550,163 @@
       gap: 0.25rem;
     }
     
+    /* Events section */
+    .events-section {
+      margin-top: 1.5rem;
+    }
+    .events-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .events-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .event-card {
+      border: 1px solid #f0f0f0;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    .event-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .event-image {
+      height: 140px;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-weight: 600;
+    }
+    .event-body {
+      padding: 1rem;
+    }
+    .event-date {
+      font-size: 0.85rem;
+      color: #ff444f;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .event-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #0e2140;
+    }
+    .event-location {
+      font-size: 0.85rem;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .event-desc {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 0.75rem;
+    }
+    .event-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+    .event-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background-color: #f0f7ff;
+      color: #4071ff;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+    
+    /* Partner Academy */
+    .academy-section {
+      margin-top: 1.5rem;
+    }
+    .academy-courses {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .course-card {
+      border: 1px solid #f0f0f0;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    .course-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .course-image {
+      height: 120px;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-weight: 600;
+    }
+    .course-body {
+      padding: 1rem;
+    }
+    .course-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background-color: #fff2e0;
+      color: #ff8c00;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .course-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #0e2140;
+    }
+    .course-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 0.75rem;
+    }
+    .course-progress {
+      height: 6px;
+      background-color: #f0f0f0;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+    .course-progress-bar {
+      height: 100%;
+      background-color: #4071ff;
+    }
+    .course-completion {
+      font-size: 0.85rem;
+      color: #666;
+      text-align: right;
+    }
+    
     /* Responsive adjustments */
     @media (max-width: 1200px) {
       .dashboard-grid {
         grid-template-columns: repeat(2, 1fr);
       }
       .quick-actions {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .events-list, .academy-courses {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -580,6 +731,9 @@
         overflow-x: auto;
         padding-bottom: 2rem;
       }
+      .events-list, .academy-courses {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -590,11 +744,11 @@
       <a href="index.html" class="logo"><span>deriv</span>Partners</a>
       
       <div class="header-actions">
-        <div class="header-icon">🔔</div>
-        <div class="header-icon">⚙️</div>
-        <div class="header-icon">❓</div>
+        <div class="header-icon" onclick="window.location.href='notifications.html'">🔔</div>
+        <div class="header-icon" onclick="window.location.href='profile.html'">⚙️</div>
+        <div class="header-icon" onclick="window.location.href='../help-center-landing.html'">❓</div>
         
-        <div class="user-menu">
+        <div class="user-menu" onclick="window.location.href='profile.html'">
           <div class="user-avatar">MP</div>
           <div class="user-info">
             <div class="user-name">Michael Phytides</div>
@@ -611,6 +765,12 @@
         <ul class="nav-items">
           <li class="nav-item">
             <a href="index.html" class="nav-link active">
+              <span class="nav-icon">🏠</span>
+              Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="dashboard.html" class="nav-link">
               <span class="nav-icon">📊</span>
               Dashboard
             </a>
@@ -646,9 +806,15 @@
         <h3 class="nav-heading">Resources</h3>
         <ul class="nav-items">
           <li class="nav-item">
-            <a href="marketing.html" class="nav-link">
+            <a href="marketing-tools.html" class="nav-link">
               <span class="nav-icon">🎯</span>
               Marketing Resources
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="academy.html" class="nav-link">
+              <span class="nav-icon">🎓</span>
+              Partner Academy
             </a>
           </li>
           <li class="nav-item">
@@ -701,13 +867,13 @@
     <main class="main-content">
       <!-- Page Header -->
       <div class="page-header">
-        <h1 class="page-title">Partner Dashboard</h1>
+        <h1 class="page-title">Welcome to Your Partner Hub</h1>
         
         <div class="page-actions">
-          <button class="btn btn-secondary">
-            <span>📅</span> This Month
+          <button class="btn btn-secondary" onclick="window.location.href='notifications.html'">
+            <span>🔔</span> Notifications
           </button>
-          <button class="btn btn-primary">
+          <button class="btn btn-primary" onclick="window.location.href='links.html'">
             <span>🔗</span> Create New Link
           </button>
         </div>
@@ -716,7 +882,7 @@
       <!-- Tier Status Card -->
       <div class="card tier-status">
         <div class="tier-header">
-          <h2 class="card-title">Your Partner Tier & Progress</h2>
+          <h2 class="card-title">Your Partner Tier: Bronze</h2>
           <a href="tiers.html" class="card-action">View All Benefits</a>
         </div>
         
@@ -776,7 +942,7 @@
       
       <!-- Stats Grid -->
       <div class="dashboard-grid">
-        <div class="card stat-card">
+        <div class="card stat-card" onclick="window.location.href='commissions.html'">
           <div class="stat-header">
             <h3 class="stat-title">Total Earnings</h3>
             <div class="stat-icon" style="background-color: #0cb383;">💰</div>
@@ -785,7 +951,7 @@
           <div class="stat-change positive">↑ 12.3% from last month</div>
         </div>
         
-        <div class="card stat-card">
+        <div class="card stat-card" onclick="window.location.href='clients.html'">
           <div class="stat-header">
             <h3 class="stat-title">Active Clients</h3>
             <div class="stat-icon" style="background-color: #4071ff;">👥</div>
@@ -794,7 +960,7 @@
           <div class="stat-change positive">↑ 2 new this month</div>
         </div>
         
-        <div class="card stat-card">
+        <div class="card stat-card" onclick="window.location.href='reports.html'">
           <div class="stat-header">
             <h3 class="stat-title">Trading Volume</h3>
             <div class="stat-icon" style="background-color: #ff944f;">📊</div>
@@ -847,7 +1013,45 @@
                 Deriv Trader, SmartTrader, Deriv Bot platforms
               </div>
               <div class="commission-note">
-                You're earning 40% revenue share on all options trading. <a href="#">Compare with Turnover model</a>
+                You're earning 40% revenue share on all options trading. <a href="../help-center-revenue-share.html">Compare with Turnover model</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Events Section -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Upcoming Events in Your Region</h2>
+          <a href="events.html" class="card-action">View All Events</a>
+        </div>
+        
+        <div class="events-list">
+          <div class="event-card">
+            <div class="event-image">Event Image Placeholder</div>
+            <div class="event-body">
+              <div class="event-date">May 15, 2025</div>
+              <div class="event-title">Partner Meetup: Cyprus</div>
+              <div class="event-location">📍 Limassol, Cyprus</div>
+              <div class="event-desc">Join us for an exclusive partner meetup to discuss trading strategies and network with other successful partners.</div>
+              <div class="event-actions">
+                <div class="event-tag">In-Person</div>
+                <a href="#" class="btn btn-secondary">Register</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="event-card">
+            <div class="event-image">Event Image Placeholder</div>
+            <div class="event-body">
+              <div class="event-date">May 22, 2025</div>
+              <div class="event-title">Webinar: Maximizing CFD Commissions</div>
+              <div class="event-location">🌐 Online</div>
+              <div class="event-desc">Learn advanced techniques for promoting CFD products and increasing your commission earnings.</div>
+              <div class="event-actions">
+                <div class="event-tag">Virtual</div>
+                <a href="#" class="btn btn-secondary">Register</a>
               </div>
             </div>
           </div>
@@ -867,7 +1071,7 @@
             <div class="action-desc">Generate tracking links for your campaigns</div>
           </a>
           
-          <a href="marketing.html" class="action-card">
+          <a href="marketing-tools.html" class="action-card">
             <div class="action-icon" style="background-color: #ff944f;">🎯</div>
             <div class="action-title">Marketing Materials</div>
             <div class="action-desc">Access banners, logos, and promotional content</div>
@@ -887,11 +1091,69 @@
         </div>
       </div>
       
+      <!-- Partner Academy Section -->
+      <div class="card academy-section">
+        <div class="card-header">
+          <h2 class="card-title">Partner Academy</h2>
+          <a href="academy.html" class="card-action">View All Courses</a>
+        </div>
+        
+        <div class="academy-courses">
+          <div class="course-card">
+            <div class="course-image">Course Image Placeholder</div>
+            <div class="course-body">
+              <div class="course-tag">Beginner</div>
+              <div class="course-title">Partner Onboarding Essentials</div>
+              <div class="course-meta">
+                <span>📚 5 modules</span>
+                <span>⏱️ 30 min</span>
+              </div>
+              <div class="course-progress">
+                <div class="course-progress-bar" style="width: 60%;"></div>
+              </div>
+              <div class="course-completion">60% completed</div>
+            </div>
+          </div>
+          
+          <div class="course-card">
+            <div class="course-image">Course Image Placeholder</div>
+            <div class="course-body">
+              <div class="course-tag">Intermediate</div>
+              <div class="course-title">Digital Marketing for Partners</div>
+              <div class="course-meta">
+                <span>📚 8 modules</span>
+                <span>⏱️ 1 hour</span>
+              </div>
+              <div class="course-progress">
+                <div class="course-progress-bar" style="width: 25%;"></div>
+              </div>
+              <div class="course-completion">25% completed</div>
+            </div>
+          </div>
+          
+          <div class="course-card">
+            <div class="course-image">Course Image Placeholder</div>
+            <div class="course-body">
+              <div class="course-tag">Advanced</div>
+              <div class="course-title">Commission Optimization Techniques</div>
+              <div class="course-meta">
+                <span>📚 6 modules</span>
+                <span>⏱️ 45 min</span>
+              </div>
+              <div class="course-progress">
+                <div class="course-progress-bar" style="width: 0%;"></div>
+              </div>
+              <div class="course-completion">Not started</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <!-- Recent Activity -->
       <div class="card">
         <div class="card-header">
           <h2 class="card-title">Recent Activity</h2>
-          <a href="#" class="card-action">View All</a>
+          <a href="activity.html" class="card-action">View All</a>
         </div>
         
         <ul class="activity-list">
@@ -942,5 +1204,13 @@
       </div>
     </main>
   </div>
+  
+  <script>
+    // Add click handlers for navigation elements
+    document.addEventListener('DOMContentLoaded', function() {
+      // This is just a placeholder for actual JavaScript functionality
+      console.log('Partner Hub initialized');
+    });
+  </script>
 </body>
 </html> 
