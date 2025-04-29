@@ -13,6 +13,12 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true
   },
+  // Enable static exports
+  output: 'export',
+  // Configure static export options
+  trailingSlash: true,
+  // Ensure we copy the public directory content as-is
+  distDir: 'out',
   async redirects() {
     return [
       {
@@ -23,6 +29,11 @@ const nextConfig = {
       {
         source: '/partners/:path*',
         destination: '/partners.html',
+        permanent: false,
+      },
+      {
+        source: '/partner-hub',
+        destination: '/partner-hub/index.html',
         permanent: false,
       }
     ]
